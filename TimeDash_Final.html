@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TimeDash — Final</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;background:#0b0d12;color:white;font-family:Inter,system-ui,sans-serif;overflow:hidden;}
+.bg{position:fixed;inset:0;background-size:cover;background-position:center;transition:background-image 0.6s;}
+.overlay{position:fixed;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.1),rgba(0,0,0,0.6));}
+.wrap{position:relative;height:100%;padding:4vh 4vw;display:grid;grid-template-rows:auto 1fr auto;gap:3vh;}
+.clock{font-family:'DM Sans';font-size:7.8vw;font-weight:700;line-height:1.05;text-shadow:0 10px 24px rgba(0,0,0,0.3);}
+.date{font-size:2.2vw;color:rgba(255,255,255,0.8);}
+.panel{padding:3vh 3vw;border-radius:24px;background:rgba(255,255,255,0.14);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);}
+.task-title{font-family:'DM Sans';font-size:5.4vw;font-weight:700;margin:0 0 1vh 0;}
+.range{margin:0 0 2vh 0;font-size:2.0vw;color:rgba(255,255,255,0.85);}
+.progress{display:flex;align-items:center;gap:1vw;flex-wrap:wrap;margin-bottom:2vh;}
+.bar{height:12px;width:min(60vw,520px);background:rgba(255,255,255,0.24);border-radius:999px;overflow:hidden;}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,rgba(255,255,255,0.85),rgba(255,255,255,0.6));}
+.left{font-size:2.0vw;color:rgba(255,255,255,0.8);}
+.next{margin-top:2vh;padding-top:2vh;border-top:2px dashed rgba(255,255,255,0.35);}
+.next label{font-size:1.4vw;letter-spacing:0.14em;color:rgba(255,255,255,0.75);}
+.next h3{margin:0;font-size:3.6vw;font-weight:600;}
+.next p{margin:0;font-size:2.2vw;color:rgba(255,255,255,0.75);}
+.footer{display:flex;gap:1vw;font-size:1.3vw;color:rgba(255,255,255,0.75);}
+.pill{padding:0.4vh 1vw;border-radius:999px;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.24);backdrop-filter:blur(6px);}
+</style>
+</head>
+<body>
+<div class="bg" id="bg"></div>
+<div class="overlay"></div>
+
+<div class="wrap">
+  <div>
+    <div class="clock" id="clock">--:--</div>
+    <div class="date" id="date">Loading…</div>
+  </div>
+
+  <div class="panel">
+    <div class="task-title" id="task">Loading…</div>
+    <div class="range" id="range"></div>
+    <div class="progress">
+      <div class="bar"><i id="bar"></i></div>
+      <div class="left" id="left"></div>
+    </div>
+    <div class="next">
+      <label>UP NEXT</label>
+      <h3 id="nextTask"></h3>
+      <p id="nextRange"></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="pill">Rigid schedule • Local time</div>
+    <div class="pill" id="tz"></div>
+  </div>
+</div>
+
+<script>
+const SCHEDULE=[
+{order:1,name:"Morning beauty routine",start:"03:30",end:"05:00",cat:"SelfCare"},
+{order:2,name:"Holistic workout",start:"05:00",end:"07:00",cat:"Exercise"},
+{order:3,name:"Work block 1",start:"07:00",end:"12:00",cat:"Work"},
+{order:4,name:"COOKING HOUR",start:"12:00",end:"13:30",cat:"Cooking"},
+{order:5,name:"Lunch",start:"13:30",end:"14:30",cat:"Meal"},
+{order:6,name:"Work block 2",start:"14:30",end:"16:30",cat:"Work"},
+{order:7,name:"Break",start:"16:30",end:"17:00",cat:"Break"},
+{order:8,name:"Dinner",start:"17:00",end:"18:00",cat:"Meal"},
+{order:9,name:"Evening beauty routine",start:"18:00",end:"19:00",cat:"SelfCare"},
+{order:10,name:"Wind down / prep for tomorrow",start:"19:00",end:"20:00",cat:"WindDown"},
+{order:11,name:"Sleep",start:"20:00",end:"03:30",cat:"Sleep"}
+];
+
+const BGS={
+SelfCare:"https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop",
+Exercise:"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1600&auto=format&fit=crop",
+Work:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
+Cooking:"https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1600&auto=format&fit=crop",
+Meal:"https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=1600&auto=format&fit=crop",
+Break:"https://images.unsplash.com/photo-1514053026555-49ce8886ae41?q=80&w=1600&auto=format&fit=crop",
+WindDown:"https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop",
+Sleep:"https://images.unsplash.com/photo-1541779981-c0d1f2d1a4a2?q=80&w=1600&auto=format&fit=crop"
+};
+
+const $=id=>document.getElementById(id);
+function pm(s){let[h,m]=s.split(":").map(Number);return h*60+m;}
+function t12(n){n=(n%(1440)+1440)%1440;let h=Math.floor(n/60),m=n%60,ap=h>=12?"PM":"AM";h=h%12||12;return h+":"+(m<10?"0"+m:m)+" "+ap;}
+function fmt(s,e){return t12(s)+" – "+t12(e);}
+function next(o){return SCHEDULE.find(b=>b.order==(o==11?1:o+1));}
+function tick(){
+let d=new Date(),now=d.getHours()*60+d.getMinutes();
+$("clock").textContent=t12(now);
+$("date").textContent=d.toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric"});
+$("tz").textContent=Intl.DateTimeFormat().resolvedOptions().timeZone;
+let cur=null;
+for(const b of SCHEDULE){
+ let s=pm(b.start),e=pm(b.end),cross=e<s;
+ if((!cross&&now>=s&&now<e)||(cross&&(now>=s||now<e))){cur={b,s,e};break;}
+}
+if(!cur)return;
+$("task").textContent=cur.b.name;
+$("range").textContent=fmt(cur.s,cur.e);
+let total=(cur.e>=cur.s)?cur.e-cur.s:(1440-cur.s)+cur.e;
+let left=(cur.e>=cur.s)?cur.e-now:(now>=cur.s?(1440-now)+cur.e:cur.e-now);
+left=Math.max(0,left);
+$("bar").style.width=(100*(total-left)/total)+"%";
+$("left").textContent=left+" min left";
+let n=next(cur.b.order);
+if(n){$("nextTask").textContent=n.name;$("nextRange").textContent=fmt(pm(n.start),pm(n.end));}
+$("bg").style.backgroundImage=`url(${BGS[cur.b.cat]})`;
+}
+tick();
+setInterval(tick,1000);
+</script>
+</body>
+</html>
