@@ -1,1 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<title>TimeDash — Weekly Schedule</title>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=DM+Sans:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #0b0d12;
+  color: white;
+  font-family: Inter, system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.6s;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.68)
+  );
+}
+
+.wrap {
+  position: relative;
+  height: 100%;
+  padding: 4vh 4vw;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 3vh;
+}
+
+.clock {
+  font-family: "DM Sans", sans-serif;
+  font-size: 7.8vw;
+  font-weight: 700;
+  line-height: 1.05;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.date {
+  font-size: 2.2vw;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.panel {
+  padding: 3vh 3vw;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.day-label {
+  margin-bottom: 1vh;
+  font-size: 1.4vw;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.task-title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 5.4vw;
+  font-weight: 700;
+  margin: 0 0 1vh 0;
+}
+
+.range {
+  margin: 0 0 2vh 0;
+  font-size: 2vw;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  flex-wrap: wrap;
+  margin-bottom: 2vh;
+}
+
+.bar {
+  height: 12px;
+  width: min(60vw, 520px);
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.6)
+  );
+  transition: width 0.4s;
+}
+
+.left {
+  font-size: 2vw;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.next {
+  margin-top: 2vh;
+  padding-top: 2vh;
+  border-top: 2px dashed rgba(255, 255, 255, 0.35);
+}
+
+.next label {
+  font-size: 1.4vw;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.next h3 {
+  margin: 0;
+  font-size: 3.6vw;
+  font-weight: 600;
+}
+
+.next p {
+  margin: 0;
+  font-size: 2.2vw;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer {
+  display: flex;
+  gap: 1vw;
+  flex-wrap: wrap;
+  font-size: 1.3vw;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pill {
+  padding: 0.4vh 1vw;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(6px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg" id="bg"></div>
+<div class="overlay"></div>
+
+<div class="wrap">
+
+  <div>
+    <div class="clock" id="clock">--:--</div>
+    <div class="date" id="date">Loading…</div>
+  </div>
+
+  <div class="panel">
+
+    <div class="day-label" id="dayLabel"></div>
+
+    <div class="task-title" id="task">
+      Loading…
+    </div>
+
+    <div class="range" id="range"></div>
+
+    <div class="progress">
+      <div class="bar">
+        <i id="bar"></i>
+      </div>
+
+      <div class="left" id="left"></div>
+    </div>
+
+    <div class="next">
+      <label>UP NEXT</label>
+      <h3 id="nextTask"></h3>
+      <p id="nextRange"></p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="pill">Weekly schedule • Local time</div>
+    <div class="pill" id="scheduleDay"></div>
+    <div class="pill" id="tz"></div>
+  </div>
+
+</div>
+
+<script>
+
+/*
+=========================================================
+TIMEDASH WEEKLY SCHEDULE
+=========================================================
+
+To change a task later, edit:
+- name
+- start
+- end
+- cat
+
+Times must remain in 24-hour format.
+
+Examples:
+8:00 AM  = "08:00"
+2:00 PM  = "14:00"
+8:00 PM  = "20:00"
+=========================================================
+*/
+
+const DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+const SCHEDULES = {
+
+  Monday: [
+    {
+      name: "Wake up",
+      start: "03:30",
+      end: "04:00",
+      cat: "Morning"
+    },
+    {
+      name: "Morning beauty routine",
+      start: "04:00",
+      end: "05:00",
+      cat: "SelfCare"
+    },
+    {
+      name: "Breakfast",
+      start: "05:00",
+      end: "06:00",
+      cat: "Meal"
+    },
+    {
+      name: "Arms workout",
+      start: "06:00",
+      end: "07:30",
+      cat: "Exercise"
+    },
+    {
+      name: "Transition to work",
+      start: "07:30",
+      end: "08:00",
+      cat: "Transition"
+    },
+    {
+      name: "Protected work block",
+      start: "08:00",
+      end: "12:00",
+      cat: "Work"
+    },
+    {
+      name: "Free time",
+      start: "12:00",
+      end: "19:00",
+      cat: "Free"
+    },
+    {
+      name: "Wind down",
+      start: "19:00",
+      end: "20:00",
+      cat: "WindDown"
+    },
+    {
+      name: "Sleep",
+      start: "20:00",
+      end: "03:30",
+      cat: "Sleep"
+    }
+  ],
+
+  Tuesday: [
+    {
+      name: "Wake up",
+      start: "03:30",
+      end: "04:00",
+      cat: "Morning"
+    },
+    {
+      name: "Morning beauty routine",
+      start: "04:00",
+      end: "05:00",
+      cat: "SelfCare"
+    },
+    {
+      name: "Breakfast",
+      start: "05:00",
+      end: "06:00",
+      cat: "Meal"
+    },
+    {
+      name: "Legs workout",
+      start: "06:00",
+      end: "07:30",
+      cat: "Exercise"
+    },
+    {
+      name: "Transition to work",
+      start: "07:30",
+      end: "08:00",
+      cat: "Transition"
+    },
+    {
+      name: "Protected work block",
+      start: "08:00",
+      end: "16:00",
+      cat: "Work"
+    },
+    {
+      name: "Free time",
+      start: "16:00",
+      end: "19:00",
+      cat: "Free"
+    },
+    {
+      name: "Wind down",
+      start: "19:00",
+      end: "20:00",
+      cat: "WindDown"
+    },
+    {
+      name: "Sleep",
+      start: "20:00",
+      end: "05:30",
+      cat: "Sleep"
+    }
+  ],
+
+  Wednesday: [
+    {
+      name: "Wake up",
+      start: "05:30",
+      end: "06:00",
+      cat: "Morning"
+    },
+    {
+      name: "Beauty routine and breakfast",
+      start: "06:00",
+      end: "07:30",
+      cat: "SelfCare"
+    },
+    {
+      name: "Prepare to leave",
+      start: "07:30",
+      end: "08:00",
+      cat: "Transition"
+    },
+    {
+      name: "Hair appointment and travel",
+      start: "08:00",
+      end: "13:00",
+      cat: "Hair"
+    },
+    {
+      name: "Lunch and transition",
+      start: "13:00",
+      end: "14:00",
+      cat: "Meal"
+    },
+    {
+      name: "Protected work block",
+      start: "14:00",
+      end: "18:00",
+      cat: "Work"
+    },
+    {
+      name: "Dinner",
+      start: "18:00",
+      end: "19:00",
+      cat: "Meal"
+    },
+    {
+      name: "Wind down",
+      start: "19:00",
+      end: "20:00",
+      cat: "WindDown"
+    },
+    {
+      name: "Sleep",
+      start: "20:00",
+      end: "03:30",
+      cat: "Sleep"
+    }
+  ],
+
+  Thursday: [
+    {
+      name: "Wake up",
+      start: "03:30",
+      end: "04:00",
+      cat: "Morning"
+    },
+    {
+      name: "Morning beauty routine",
+      start: "04:00",
+      end: "05:00",
+      cat: "SelfCare"
+    },
+    {
+      name: "Breakfast",
+      start: "05:00",
+      end: "06:00",
+      cat: "Meal"
+    },
+    {
+      name: "Core workout",
+      start: "06:00",
+      end: "07:30",
+      cat: "Exercise"
+    },
+    {
+      name: "Transition to work",
+      start: "07:30",
+      end: "08:00",
+      cat: "Transition"
+    },
+    {
+      name: "Protected work block",
+      start: "08:00",
+      end: "16:00",
+      cat: "Work"
+    },
+    {
+      name: "Transition home",
+      start: "16:00",
+      end: "17:00",
+      cat: "Transition"
+    },
+    {
+      name: "Home care",
+      start: "17:00",
+      end: "19:00",
+      cat: "Cleaning"
+    },
+    {
+      name: "Wind down",
+      start: "19:00",
+      end: "20:00",
+      cat: "WindDown"
+    },
+    {
+      name: "Sleep",
+      start: "20:00",
+      end: "03:30",
+      cat: "Sleep"
+    }
+  ],
+
+  Friday: [
+    {
+      name: "Wake up",
+      start: "03:30",
+      end: "04:00",
+      cat: "Morning"
+    },
+    {
+      name: "Morning beauty routine",
+      start: "04:00",
+      end: "05:00",
+      cat: "SelfCare"
+    },
+    {
+      name: "Breakfast",
+      start: "05:00",
+      end: "06:00",
+      cat: "Meal"
+    },
+    {
+      name: "Cardio workout",
+      start: "06:00",
+      end: "07:30",
+      cat: "Exercise"
+    },
+    {
+      name: "Transition to work",
+      start: "07:30",
+      end: "08:00",
+      cat: "Transition"
+    },
+    {
+      name: "Protected work block",
+      start: "08:00",
+      end: "16:00",
+      cat: "Work"
+    },
+    {
+      name: "Transition home",
+      start: "16:00",
+      end: "17:00",
+      cat: "Transition"
+    },
+    {
+      name: "Home care",
+      start: "17:00",
+      end: "19:00",
+      cat: "Cleaning"
+    },
+    {
+      name: "Wind down",
+      start: "19:00",
+      end: "20:00",
+      cat: "WindDown"
+    },
+    {
+      name: "Sleep",
+      start: "20:00",
+      end: "06:00",
+      cat: "Sleep"
+    }
+  ],
+
+  Saturday: [
+    {
+      name: "Wake up",
+      start: "06:00",
+      end: "06:15",
+      cat: "Morning"
+    },
+    {
+      name: "Get ready for workout",
+      start: "06:15",
+      end: "06:45",
+      cat: "SelfCare"
+    },
+    {
+      name: "Travel to workout",
+      start: "06:45",
+      end: "07:00",
+      cat: "Transition"
+    },
+    {
+      name: "Fun workout",
+      start: "07:00",
+      end: "08:00",
+      cat: "Exercise"
+    },
+    {
+      name: "Shower and transition",
+      start: "08:00",
+      end: "08:30",
+      cat: "SelfCare"
+    },
+    {
+      name: "Home reset and cleaning",
+      start: "08:30",
+      end: "12:30",
+      cat: "Cleaning"
+    },
+    {
+      name: "Lunch",
+      start: "12:30",
+      end: "13:00",
+      cat: "Meal"
+    },
+    {
+      name: "Laundry, errands and home projects",
+      start: "13:00",
+      end: "16:00",
+      cat: "Errands"
+    },
+    {
+      name: "Free time and Saturday fun",
+      start: "16:00",
+      end: "19:00",
+      cat: "Fun"
+    },
+    {
+      name: "Wind down",
+      start: "19:00",
+      end: "20:00",
+      cat: "WindDown"
+    },
+    {
+      name: "Sleep",
+      start: "20:00",
+      end: "06:00",
+      cat: "Sleep"
+    }
+  ],
+
+  Sunday: [
+    {
+      name: "Wake up",
+      start: "06:00",
+      end: "06:15",
+      cat: "Morning"
+    },
+    {
+      name: "Beauty routine and get ready",
+      start: "06:15",
+      end: "07:15",
+      cat: "SelfCare"
+    },
+    {
+      name: "Slow transition into the day",
+      start: "07:15",
+      end: "08:00",
+      cat: "Morning"
+    },
+    {
+      name: "Food preparation",
+      start: "08:00",
+      end: "12:00",
+      cat: "Cooking"
+    },
+    {
+      name: "Rest and time with Lancine",
+      start: "12:00",
+      end: "19:00",
+      cat: "Rest"
+    },
+    {
+      name: "Wind down",
+      start: "19:00",
+      end: "20:00",
+      cat: "WindDown"
+    },
+    {
+      name: "Sleep",
+      start: "20:00",
+      end: "03:30",
+      cat: "Sleep"
+    }
+  ]
+};
+
+
+/*
+=========================================================
+BACKGROUND IMAGES
+=========================================================
+*/
+
+const BGS = {
+  Morning:
+    "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=1600&auto=format&fit=crop",
+
+  SelfCare:
+    "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop",
+
+  Exercise:
+    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1600&auto=format&fit=crop",
+
+  Work:
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
+
+  Cooking:
+    "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1600&auto=format&fit=crop",
+
+  Meal:
+    "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=1600&auto=format&fit=crop",
+
+  Transition:
+    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop",
+
+  Cleaning:
+    "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1600&auto=format&fit=crop",
+
+  Errands:
+    "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1600&auto=format&fit=crop",
+
+  Hair:
+    "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1600&auto=format&fit=crop",
+
+  Free:
+    "https://images.unsplash.com/photo-1500534314209-a25ddb2bd4297?q=80&w=1600&auto=format&fit=crop",
+
+  Fun:
+    "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=1600&auto=format&fit=crop",
+
+  Rest:
+    "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1600&auto=format&fit=crop",
+
+  WindDown:
+    "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop",
+
+  Sleep:
+    "https://images.unsplash.com/photo-1541779981-c0d1f2d1a4a2?q=80&w=1600&auto=format&fit=crop"
+};
+
+
+const $ = id => document.getElementById(id);
+
+
+function minutesFromTime(time) {
+  const [hours, minutes] = time.split(":").map(Number);
+  return hours * 60 + minutes;
+}
+
+
+function twelveHourTime(totalMinutes) {
+  totalMinutes =
+    (totalMinutes % 1440 + 1440) % 1440;
+
+  let hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  const period = hours >= 12 ? "PM" : "AM";
+
+  hours = hours % 12 || 12;
+
+  return (
+    hours +
+    ":" +
+    String(minutes).padStart(2, "0") +
+    " " +
+    period
+  );
+}
+
+
+function formatRange(start, end) {
+  return (
+    twelveHourTime(start) +
+    " – " +
+    twelveHourTime(end)
+  );
+}
+
+
+function previousDayIndex(dayIndex) {
+  return (dayIndex + 6) % 7;
+}
+
+
+function nextDayIndex(dayIndex) {
+  return (dayIndex + 1) % 7;
+}
+
+
+/*
+If the current time is earlier than today's wake time,
+TimeDash treats it as the previous day's sleep period.
+*/
+
+function getScheduleContext(date) {
+  const actualDayIndex = date.getDay();
+  const actualDayName = DAYS[actualDayIndex];
+
+  const todaySchedule = SCHEDULES[actualDayName];
+
+  const firstTaskStart =
+    minutesFromTime(todaySchedule[0].start);
+
+  const now =
+    date.getHours() * 60 + date.getMinutes();
+
+  if (now < firstTaskStart) {
+    const anchorDayIndex =
+      previousDayIndex(actualDayIndex);
+
+    const anchorDayName =
+      DAYS[anchorDayIndex];
+
+    return {
+      actualDayIndex,
+      actualDayName,
+      anchorDayIndex,
+      anchorDayName,
+      schedule: SCHEDULES[anchorDayName]
+    };
+  }
+
+  return {
+    actualDayIndex,
+    actualDayName,
+    anchorDayIndex: actualDayIndex,
+    anchorDayName: actualDayName,
+    schedule: todaySchedule
+  };
+}
+
+
+function findCurrentTask(schedule, now) {
+  for (let index = 0; index < schedule.length; index++) {
+    const task = schedule[index];
+
+    const start =
+      minutesFromTime(task.start);
+
+    const end =
+      minutesFromTime(task.end);
+
+    const crossesMidnight = end < start;
+
+    const active =
+      (!crossesMidnight &&
+        now >= start &&
+        now < end) ||
+      (crossesMidnight &&
+        (now >= start || now < end));
+
+    if (active) {
+      return {
+        task,
+        index,
+        start,
+        end
+      };
+    }
+  }
+
+  return null;
+}
+
+
+function getNextTask(context, currentIndex) {
+  const currentSchedule = context.schedule;
+
+  if (currentIndex < currentSchedule.length - 1) {
+    return {
+      task: currentSchedule[currentIndex + 1],
+      dayName: context.anchorDayName
+    };
+  }
+
+  const nextIndex =
+    nextDayIndex(context.anchorDayIndex);
+
+  const nextDayName =
+    DAYS[nextIndex];
+
+  return {
+    task: SCHEDULES[nextDayName][0],
+    dayName: nextDayName
+  };
+}
+
+
+function calculateTimeValues(start, end, now) {
+  const total =
+    end >= start
+      ? end - start
+      : 1440 - start + end;
+
+  let elapsed;
+
+  if (end >= start) {
+    elapsed = now - start;
+  } else if (now >= start) {
+    elapsed = now - start;
+  } else {
+    elapsed = 1440 - start + now;
+  }
+
+  elapsed = Math.max(0, Math.min(total, elapsed));
+
+  const remaining = total - elapsed;
+  const percentage =
+    total === 0 ? 100 : (elapsed / total) * 100;
+
+  return {
+    total,
+    elapsed,
+    remaining,
+    percentage
+  };
+}
+
+
+function formatRemaining(minutes) {
+  if (minutes < 60) {
+    return minutes + " min left";
+  }
+
+  const hours = Math.floor(minutes / 60);
+  const extraMinutes = minutes % 60;
+
+  if (extraMinutes === 0) {
+    return hours + (hours === 1 ? " hr left" : " hrs left");
+  }
+
+  return hours + " hr " + extraMinutes + " min left";
+}
+
+
+function tick() {
+  const date = new Date();
+
+  const now =
+    date.getHours() * 60 +
+    date.getMinutes();
+
+  $("clock").textContent =
+    twelveHourTime(now);
+
+  $("date").textContent =
+    date.toLocaleDateString(undefined, {
+      weekday: "long",
+      month: "long",
+      day: "numeric"
+    });
+
+  $("tz").textContent =
+    Intl.DateTimeFormat()
+      .resolvedOptions()
+      .timeZone;
+
+  const context =
+    getScheduleContext(date);
+
+  const current =
+    findCurrentTask(
+      context.schedule,
+      now
+    );
+
+  if (!current) {
+    $("task").textContent =
+      "Schedule unavailable";
+
+    $("range").textContent = "";
+    $("left").textContent = "";
+    $("bar").style.width = "0%";
+    return;
+  }
+
+  $("dayLabel").textContent =
+    context.actualDayName;
+
+  $("scheduleDay").textContent =
+    context.actualDayName + " schedule";
+
+  $("task").textContent =
+    current.task.name;
+
+  $("range").textContent =
+    formatRange(
+      current.start,
+      current.end
+    );
+
+  const timeValues =
+    calculateTimeValues(
+      current.start,
+      current.end,
+      now
+    );
+
+  $("bar").style.width =
+    timeValues.percentage + "%";
+
+  $("left").textContent =
+    formatRemaining(
+      timeValues.remaining
+    );
+
+  const next =
+    getNextTask(
+      context,
+      current.index
+    );
+
+  $("nextTask").textContent =
+    next.task.name;
+
+  $("nextRange").textContent =
+    formatRange(
+      minutesFromTime(next.task.start),
+      minutesFromTime(next.task.end)
+    );
+
+  const background =
+    BGS[current.task.cat] ||
+    BGS.Morning;
+
+  $("bg").style.backgroundImage =
+    `url("${background}")`;
+}
+
+
+tick();
+
+setInterval(tick, 1000);
+
+</script>
+
+</body>
+</html>
