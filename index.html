@@ -212,13 +212,13 @@
 const DAY_NAMES=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const MONDAY_ORDER=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 const SCHEDULES={
-  Monday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Arms workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block",start:"08:00",end:"12:00",category:"Work"},{name:"Free afternoon / life",start:"12:00",end:"18:30",category:"Free"},{name:"Set Tuesday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night routine / wind down",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}],
-  Tuesday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Legs workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},{name:"Free time",start:"16:00",end:"18:30",category:"Free"},{name:"Set Wednesday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night routine / wind down",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"05:30",category:"Sleep"}],
-  Wednesday:[{name:"Wake up",start:"05:30",end:"06:00",category:"Wake"},{name:"Beauty routine",start:"06:00",end:"07:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"07:00",end:"08:00",category:"Breakfast"},{name:"Hair appointment + travel",start:"08:00",end:"13:00",category:"Hair"},{name:"Lunch / transition",start:"13:00",end:"14:00",category:"Meal"},{name:"Protected work block",start:"14:00",end:"18:00",category:"Work"},{name:"Set Thursday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night routine / wind down",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}],
-  Thursday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Core workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},{name:"Transition home",start:"16:00",end:"17:00",category:"Transition"},{name:"Home care",start:"17:00",end:"19:00",category:"Home"},{name:"Night routine / wind down",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}],
+  Monday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Arms workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block",start:"08:00",end:"12:00",category:"Work"},{name:"Free afternoon / life",start:"12:00",end:"18:30",category:"Free"},{name:"Set Tuesday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}],
+  Tuesday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Legs workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},{name:"Free time",start:"16:00",end:"18:30",category:"Free"},{name:"Set Wednesday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"05:30",category:"Sleep"}],
+  Wednesday:[{name:"Wake up",start:"05:30",end:"06:00",category:"Wake"},{name:"Beauty routine",start:"06:00",end:"07:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"07:00",end:"08:00",category:"Breakfast"},{name:"Hair appointment + travel",start:"08:00",end:"13:00",category:"Hair"},{name:"Lunch / transition",start:"13:00",end:"14:00",category:"Meal"},{name:"Protected work block",start:"14:00",end:"18:00",category:"Work"},{name:"Set Thursday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}],
+  Thursday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Core workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},{name:"Transition home",start:"16:00",end:"17:00",category:"Transition"},{name:"Home care",start:"17:00",end:"19:00",category:"Home"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}],
   Friday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Cardio workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block",start:"08:00",end:"16:00",category:"Work"},{name:"Free evening",start:"16:00",end:"21:00",category:"Free"},{name:"Wrap it up",start:"21:00",end:"22:00",category:"Intention"},{name:"Sleep",start:"22:00",end:"06:00",category:"Sleep"}],
-  Saturday:[{name:"Wake up",start:"06:00",end:"06:15",category:"Wake"},{name:"Beauty routine",start:"06:15",end:"06:40",category:"Beauty"},{name:"Tidy + make breakfast",start:"06:40",end:"07:00",category:"Breakfast"},{name:"Travel / transition",start:"07:00",end:"07:30",category:"Transition"},{name:"Fun workout",start:"07:30",end:"09:00",category:"Exercise"},{name:"Deep apartment clean",start:"09:00",end:"12:00",category:"Home"},{name:"Lunch / transition",start:"12:00",end:"13:00",category:"Meal"},{name:"Laundry",start:"13:00",end:"16:00",category:"Laundry"},{name:"Free / fun evening",start:"16:00",end:"21:00",category:"Free"},{name:"Wrap it up",start:"21:00",end:"22:00",category:"Intention"},{name:"Sleep",start:"22:00",end:"06:00",category:"Sleep"}],
-  Sunday:[{name:"Wake up",start:"06:00",end:"06:15",category:"Wake"},{name:"Beauty routine",start:"06:15",end:"07:00",category:"Beauty"},{name:"Tidy + breakfast / slow start",start:"07:00",end:"08:00",category:"Breakfast"},{name:"Food Reset / cooking",start:"08:00",end:"12:00",category:"Cooking"},{name:"Rest / Lancine / family / free time",start:"12:00",end:"18:30",category:"Free"},{name:"Set Monday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night routine / wind down",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}]
+  Saturday:[{name:"Wake up",start:"06:00",end:"06:30",category:"Wake"},{name:"Beauty routine & Lounge",start:"06:30",end:"08:00",category:"Beauty"},{name:"Travel / transition",start:"08:00",end:"08:30",category:"Transition"},{name:"Fun workout",start:"08:30",end:"10:00",category:"Exercise"},{name:"Deep apartment clean",start:"10:00",end:"14:00",category:"Home"},{name:"Lunch / transition",start:"14:00",end:"15:00",category:"Meal"},{name:"Laundry",start:"15:00",end:"19:00",category:"Laundry"},{name:"Night Beauty Routine / Get ready to go out",start:"19:00",end:"20:00",category:"Beauty"},{name:"Free / fun evening",start:"20:00",end:"00:00",category:"Free"},{name:"Sleep",start:"00:00",end:"06:00",category:"Sleep",overnight:true}],
+  Sunday:[{name:"Wake up",start:"06:00",end:"06:30",category:"Wake"},{name:"Beauty routine & Lounge",start:"06:30",end:"08:00",category:"Beauty"},{name:"Food Reset / cooking",start:"08:00",end:"12:00",category:"Cooking"},{name:"Rest / Lancine / family / free time",start:"12:00",end:"18:30",category:"Free"},{name:"Set Monday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}]
 };
 const DAY_META={
   Monday:{summary:"Arms + Light Work",desc:"A lighter workday with an early finish and room for life in the afternoon.",wake:"3:30 AM"},
@@ -258,23 +258,77 @@ function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x;}
 function sameDate(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();}
 function dayName(d){return DAY_NAMES[d.getDay()];}
 function blockAt(date){
-  const name=dayName(date), mins=date.getHours()*60+date.getMinutes(), blocks=SCHEDULES[name];
-  for(let i=0;i<blocks.length;i++){
-    const b=blocks[i], s=parseHM(b.start), e=parseHM(b.end), cross=e<=s;
-    if((!cross&&mins>=s&&mins<e)||(cross&&(mins>=s||mins<e))) return {block:b,index:i,day:name};
+  const currentName=dayName(date);
+  const currentMins=date.getHours()*60+date.getMinutes();
+
+  const previousDate=addDays(date,-1);
+  const previousName=dayName(previousDate);
+  const previousBlocks=SCHEDULES[previousName];
+
+  for(let i=0;i<previousBlocks.length;i++){
+    const b=previousBlocks[i];
+    const s=parseHM(b.start), e=parseHM(b.end);
+    const crossesMidnight=b.overnight===true || e<=s;
+    if(crossesMidnight && currentMins<e){
+      return {block:b,index:i,day:previousName,source:"previous"};
+    }
   }
-  const future=blocks.map((b,i)=>({b,i,s:parseHM(b.start)})).filter(x=>x.s>mins).sort((a,b)=>a.s-b.s)[0];
-  if(future) return {block:{name:"Open / transition time",start:`${pad(Math.floor(mins/60))}:${pad(mins%60)}`,end:future.b.start,category:"Free"},index:future.i-1,day:name,synthetic:true};
-  return {block:{name:"Open / transition time",start:`${pad(Math.floor(mins/60))}:${pad(mins%60)}`,end:"23:59",category:"Free"},index:blocks.length-1,day:name,synthetic:true};
+
+  const blocks=SCHEDULES[currentName];
+  for(let i=0;i<blocks.length;i++){
+    const b=blocks[i];
+    const s=parseHM(b.start), e=parseHM(b.end);
+    const crossesMidnight=b.overnight===true || e<=s;
+
+    if(b.overnight===true) continue;
+
+    if(!crossesMidnight && currentMins>=s && currentMins<e){
+      return {block:b,index:i,day:currentName,source:"current"};
+    }
+    if(crossesMidnight && currentMins>=s){
+      return {block:b,index:i,day:currentName,source:"current"};
+    }
+  }
+
+  const future=blocks
+    .map((b,i)=>({b,i,s:parseHM(b.start)}))
+    .filter(x=>x.b.overnight!==true && x.s>currentMins)
+    .sort((a,b)=>a.s-b.s)[0];
+
+  if(future){
+    return {
+      block:{name:"Open / transition time",start:`${pad(Math.floor(currentMins/60))}:${pad(currentMins%60)}`,end:future.b.start,category:"Free"},
+      index:future.i-1,day:currentName,source:"current",synthetic:true
+    };
+  }
+
+  return {
+    block:{name:"Open / transition time",start:`${pad(Math.floor(currentMins/60))}:${pad(currentMins%60)}`,end:"23:59",category:"Free"},
+    index:blocks.length-1,day:currentName,source:"current",synthetic:true
+  };
 }
 function nextRealBlock(date,current){
-  const blocks=SCHEDULES[dayName(date)];
+  const calendarDayName=dayName(date);
+
+  if(current.source==="previous"){
+    return SCHEDULES[calendarDayName][0];
+  }
+
+  const blocks=SCHEDULES[calendarDayName];
+
   if(current.synthetic){
     const mins=date.getHours()*60+date.getMinutes();
-    const future=blocks.map((b,i)=>({b,i,s:parseHM(b.start)})).filter(x=>x.s>mins).sort((a,b)=>a.s-b.s)[0];
+    const future=blocks
+      .map((b,i)=>({b,i,s:parseHM(b.start)}))
+      .filter(x=>x.b.overnight!==true && x.s>mins)
+      .sort((a,b)=>a.s-b.s)[0];
     if(future) return future.b;
-  } else if(current.index+1<blocks.length){return blocks[current.index+1];}
-  return SCHEDULES[dayName(addDays(date,1))][0];
+  } else if(current.index+1<blocks.length){
+    return blocks[current.index+1];
+  }
+
+  const nextDate=addDays(date,1);
+  return SCHEDULES[dayName(nextDate)][0];
 }
 function progressFor(date,b){
   let now=date.getHours()*60+date.getMinutes()+date.getSeconds()/60, s=parseHM(b.start), e=parseHM(b.end);
@@ -301,7 +355,7 @@ function renderDay(){
 }
 function renderNow(){
   const now=new Date(), cur=blockAt(now), b=cur.block, next=nextRealBlock(now,cur), pr=progressFor(now,b);
-  $("nowDay").textContent=dayName(now); $("nowTitle").textContent=b.name; $("nowRange").textContent=fmtRange(b);
+  $("nowDay").textContent=cur.day; $("nowTitle").textContent=b.name; $("nowRange").textContent=fmtRange(b);
   $("progressFill").style.width=`${pr.pct}%`; $("remainingText").textContent=formatLeft(pr.left); $("nextTitle").textContent=next.name; $("nextRange").textContent=fmtRange(next);
   $("nowBg").style.backgroundImage=`url("${BACKGROUNDS[b.category]||BACKGROUNDS.Free}")`; $("liveClock").textContent=now.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}); $("liveDate").textContent=now.toLocaleDateString([], {weekday:"short",month:"short",day:"numeric"});
 }
