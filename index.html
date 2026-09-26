@@ -15,22 +15,36 @@
       --accent:#d6a55d;--accent-2:#f0c782;--teal:#55d2c3;--shadow:0 24px 70px rgba(0,0,0,.35);
       --nav-bg:rgba(10,11,13,.88);--nav-active:#211d17;--week-card:#15181e;--input:#1b1f25;--radius:24px;
     }
+
     body.light{
       --bg:#f5f0e7;--bg-2:#fbf8f3;--panel:#fffdf9;--panel-2:#f7f1e8;--glass:rgba(255,252,247,.86);
       --text:#201b16;--muted:#6e665d;--muted-2:#938a81;--line:rgba(53,40,26,.11);
       --accent:#a86f25;--accent-2:#c78a37;--teal:#148f86;--shadow:0 22px 55px rgba(93,69,37,.15);
       --nav-bg:rgba(255,251,245,.92);--nav-active:#f1e1c9;--week-card:#fffdf9;--input:#f1ece5;
     }
+
     *{box-sizing:border-box}
     html{height:100%;background:var(--bg)}
+
     body{
       margin:0; min-height:100%; color:var(--text);
       background:radial-gradient(circle at 18% -10%, rgba(214,165,93,.13), transparent 28%), radial-gradient(circle at 92% 8%, rgba(85,210,195,.06), transparent 24%), var(--bg);
       font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; transition:background .25s ease,color .25s ease;
     }
-    button{font:inherit;color:inherit} button,.day-card{touch-action:manipulation}
+
+    button{font:inherit;color:inherit}
+    button,.day-card{touch-action:manipulation}
+
     .app{min-height:100dvh;display:flex;flex-direction:column}
-    .topbar{position:sticky; top:0; z-index:30; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px clamp(16px,3vw,38px); background:linear-gradient(to bottom,var(--nav-bg),rgba(0,0,0,0)); backdrop-filter:blur(14px);}
+
+    .topbar{
+      position:sticky; top:0; z-index:30;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px clamp(16px,3vw,38px);
+      background:linear-gradient(to bottom,var(--nav-bg),rgba(0,0,0,0));
+      backdrop-filter:blur(14px);
+    }
+
     .brand{display:flex;align-items:center;gap:12px;min-width:0}
     .logo-mark{width:42px;height:42px;flex:0 0 auto}
     .brand-text{display:flex;align-items:baseline;gap:1px;white-space:nowrap}
@@ -38,349 +52,2112 @@
     .brand-text .dash{color:var(--accent);letter-spacing:.13em}
     .tagline{font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-top:2px}
     .brand-copy{min-width:0}
+
     .top-actions{display:flex;align-items:center;gap:8px}
-    .icon-btn{width:42px;height:42px;border-radius:14px;border:1px solid var(--line);background:var(--glass);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(12px);transition:.2s ease;}
+
+    .mode-switch{
+      display:flex;
+      align-items:center;
+      gap:4px;
+      padding:4px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--glass);
+      backdrop-filter:blur(12px)
+    }
+
+    .mode-switch button{
+      border:0;
+      background:transparent;
+      padding:8px 10px;
+      border-radius:10px;
+      color:var(--muted);
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.08em;
+      cursor:pointer;
+      transition:.2s ease
+    }
+
+    .mode-switch button.active{
+      background:var(--nav-active);
+      color:var(--accent-2)
+    }
+
+    .icon-btn{
+      width:42px;height:42px;border-radius:14px;
+      border:1px solid var(--line);background:var(--glass);
+      display:grid;place-items:center;cursor:pointer;
+      backdrop-filter:blur(12px);transition:.2s ease;
+    }
+
     .icon-btn:hover{transform:translateY(-1px);border-color:rgba(214,165,93,.45)}
-    .desktop-tabs{display:none;align-items:center;gap:6px;padding:5px;border:1px solid var(--line);border-radius:16px;background:var(--glass);backdrop-filter:blur(14px)}
-    .desktop-tabs button{border:0;background:transparent;padding:9px 16px;border-radius:12px;color:var(--muted);font-weight:600;cursor:pointer}
+
+    .desktop-tabs{
+      display:none;align-items:center;gap:6px;padding:5px;
+      border:1px solid var(--line);border-radius:16px;
+      background:var(--glass);backdrop-filter:blur(14px)
+    }
+
+    .desktop-tabs button{
+      border:0;background:transparent;padding:9px 16px;
+      border-radius:12px;color:var(--muted);font-weight:600;cursor:pointer
+    }
+
     .desktop-tabs button.active{background:var(--nav-active);color:var(--accent-2)}
-    .main{width:min(1540px,100%);margin:0 auto;flex:1;padding:18px clamp(16px,3vw,38px) calc(100px + env(safe-area-inset-bottom));}
-    .view{display:none;animation:fade .22s ease}.view.active{display:block}
-    @keyframes fade{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
-    .eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
-    h1,h2,h3,p{margin-top:0} h1,h2,h3{font-family:"DM Sans",sans-serif}
-    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:8px 0 22px;}
-    .section-head h1{font-size:clamp(30px,5vw,54px);letter-spacing:-.03em;margin-bottom:4px}.section-head p{color:var(--muted);margin:0}
+
+    .main{
+      width:min(1540px,100%);
+      margin:0 auto;flex:1;
+      padding:18px clamp(16px,3vw,38px) calc(100px + env(safe-area-inset-bottom));
+    }
+
+    .view{display:none;animation:fade .22s ease}
+    .view.active{display:block}
+
+    @keyframes fade{
+      from{opacity:.4;transform:translateY(6px)}
+      to{opacity:1;transform:none}
+    }
+
+    .eyebrow{
+      color:var(--accent);font-size:12px;font-weight:700;
+      letter-spacing:.18em;text-transform:uppercase
+    }
+
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{font-family:"DM Sans",sans-serif}
+
+    .section-head{
+      display:flex;align-items:flex-end;justify-content:space-between;
+      gap:16px;margin:8px 0 22px;
+    }
+
+    .section-head h1{
+      font-size:clamp(30px,5vw,54px);
+      letter-spacing:-.03em;margin-bottom:4px
+    }
+
+    .section-head p{color:var(--muted);margin:0}
     .date-controls{display:flex;gap:8px}
-    .round-btn{border:1px solid var(--line);background:var(--panel);border-radius:999px;width:42px;height:42px;display:grid;place-items:center;cursor:pointer}
+
+    .round-btn{
+      border:1px solid var(--line);background:var(--panel);
+      border-radius:999px;width:42px;height:42px;
+      display:grid;place-items:center;cursor:pointer
+    }
+
     .week-grid{display:grid;grid-template-columns:1fr;gap:12px}
-    .day-card{position:relative;overflow:hidden;cursor:pointer;background:linear-gradient(145deg,var(--week-card),var(--panel-2));border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 10px 28px rgba(0,0,0,.08);transition:.22s ease;}
+
+    .day-card{
+      position:relative;overflow:hidden;cursor:pointer;
+      background:linear-gradient(145deg,var(--week-card),var(--panel-2));
+      border:1px solid var(--line);border-radius:20px;
+      padding:18px;box-shadow:0 10px 28px rgba(0,0,0,.08);
+      transition:.22s ease;
+    }
+
     .day-card:hover{transform:translateY(-2px);border-color:rgba(214,165,93,.4)}
-    .day-card.today{border-color:var(--teal);box-shadow:0 0 0 1px rgba(85,210,195,.22),var(--shadow)}
-    .day-card.today:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--teal)}
-    .day-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:15px}
-    .day-name{font-size:22px;font-weight:700}.day-date{color:var(--muted);font-size:12px;margin-top:3px}
-    .wake-chip{border:1px solid var(--line);border-radius:999px;padding:7px 9px;font-size:11px;color:var(--accent-2);white-space:nowrap}
-    .day-summary{font-weight:600;margin-bottom:12px}.mini-list{display:grid;gap:8px}
-    .mini-row{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:13px;min-width:0}
-    .mini-time{width:74px;flex:0 0 74px;color:var(--muted-2);font-variant-numeric:tabular-nums}.mini-task{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+    .day-card.today{
+      border-color:var(--teal);
+      box-shadow:0 0 0 1px rgba(85,210,195,.22),var(--shadow)
+    }
+
+    .day-card.today:before{
+      content:"";position:absolute;left:0;top:0;bottom:0;
+      width:4px;background:var(--teal)
+    }
+
+    .day-card-head{
+      display:flex;justify-content:space-between;
+      align-items:flex-start;gap:10px;margin-bottom:15px
+    }
+
+    .day-name{font-size:22px;font-weight:700}
+    .day-date{color:var(--muted);font-size:12px;margin-top:3px}
+
+    .wake-chip{
+      border:1px solid var(--line);
+      border-radius:999px;padding:7px 9px;
+      font-size:11px;color:var(--accent-2);white-space:nowrap
+    }
+
+    .day-summary{font-weight:600;margin-bottom:12px}
+    .mini-list{display:grid;gap:8px}
+
+    .mini-row{
+      display:flex;gap:10px;align-items:center;
+      color:var(--muted);font-size:13px;min-width:0
+    }
+
+    .mini-time{
+      width:74px;flex:0 0 74px;color:var(--muted-2);
+      font-variant-numeric:tabular-nums
+    }
+
+    .mini-task{
+      overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+    }
+
     .day-layout{display:grid;grid-template-columns:1fr;gap:18px}
-    .day-hero{border:1px solid var(--line);background:linear-gradient(145deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
-    .hero-day{font-size:clamp(34px,6vw,64px);margin:8px 0 2px}.hero-date{color:var(--muted);font-size:16px}
-    .hero-summary{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)} .hero-summary strong{display:block;font-size:17px;margin-bottom:8px}
-    .hero-summary p{color:var(--muted);line-height:1.55;margin-bottom:0}
-    .timeline{border:1px solid var(--line);background:var(--panel);border-radius:var(--radius);padding:12px 14px;box-shadow:var(--shadow)}
-    .timeline-row{display:grid;grid-template-columns:88px 24px minmax(0,1fr);gap:8px;min-height:72px;align-items:stretch}
-    .timeline-time{font-size:12px;color:var(--muted);text-align:right;padding:19px 6px 0 0;font-variant-numeric:tabular-nums}
-    .timeline-track{position:relative;display:flex;justify-content:center}.timeline-track:after{content:"";position:absolute;top:0;bottom:0;width:1px;background:var(--line)}
-    .timeline-dot{margin-top:21px;width:10px;height:10px;border-radius:50%;background:var(--muted-2);border:2px solid var(--panel);z-index:2}
-    .timeline-row.current .timeline-dot{background:var(--teal);box-shadow:0 0 0 4px rgba(85,210,195,.12)}
-    .timeline-row.current .timeline-card{border-color:rgba(85,210,195,.45);background:linear-gradient(145deg,var(--panel-2),rgba(85,210,195,.05))}
-    .timeline-card{border:1px solid var(--line);border-radius:15px;padding:14px 15px;margin:5px 0;display:flex;align-items:center;justify-content:space-between;gap:14px}
-    .timeline-title{font-weight:600;font-size:14px}.timeline-category{font-size:11px;color:var(--muted);margin-top:3px}.category-icon{font-size:20px;opacity:.85}
-    .now-shell{position:relative;min-height:calc(100dvh - 160px);border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:var(--shadow);background:#111;}
-    .now-bg{position:absolute;inset:0;background-position:center;background-size:cover;transition:background-image .35s ease}
-    .now-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,7,9,.84),rgba(6,7,9,.50) 55%,rgba(6,7,9,.22)), linear-gradient(to top,rgba(6,7,9,.80),transparent 55%);}
-    body.light .now-bg:after{background:linear-gradient(90deg,rgba(249,244,236,.92),rgba(249,244,236,.68) 58%,rgba(249,244,236,.38)), linear-gradient(to top,rgba(249,244,236,.86),transparent 55%);}
-    .now-content{position:relative;z-index:2;min-height:inherit;padding:clamp(24px,5vw,76px);display:flex;align-items:center}
-    .now-card{width:min(760px,100%);padding:clamp(22px,4vw,46px);border-radius:28px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(18px)}
-    .now-day{font-size:12px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
-    .now-title{font-family:"DM Sans",sans-serif;font-size:clamp(38px,7vw,78px);line-height:.98;letter-spacing:-.04em;margin:12px 0 10px}
-    .now-range{font-size:clamp(15px,2.2vw,22px);color:var(--muted);margin-bottom:30px}
-    .progress-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-    .progress-track{height:12px;background:var(--input);border-radius:999px;overflow:hidden;flex:1;min-width:180px}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),#7be7d9);border-radius:inherit}
-    .remaining{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
-    .divider{border:0;border-top:1px dashed var(--line);margin:32px 0 24px}
-    .upnext-label{font-size:11px;letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:7px}
-    .upnext-title{font-family:"DM Sans",sans-serif;font-size:clamp(24px,4vw,38px);margin-bottom:4px}.upnext-range{color:var(--muted)}
-    .now-clock{position:absolute;right:clamp(20px,4vw,48px);top:clamp(20px,4vw,42px);z-index:3;text-align:right}
-    .now-clock .time{font-family:"DM Sans",sans-serif;font-size:clamp(22px,3vw,38px);font-weight:600}.now-clock .date{font-size:12px;color:var(--muted)}
-    .bottom-nav{position:fixed;z-index:50;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));height:72px;border:1px solid var(--line);background:var(--nav-bg);backdrop-filter:blur(20px);border-radius:24px;padding:7px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;box-shadow:0 18px 50px rgba(0,0,0,.28)}
-    .bottom-nav button{border:0;background:transparent;border-radius:18px;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:600;letter-spacing:.04em;cursor:pointer}
-    .bottom-nav svg{width:22px;height:22px}.bottom-nav button.active{background:var(--nav-active);color:var(--accent-2)}
-    .footer-note{color:var(--muted-2);font-size:11px;text-align:center;margin:28px 0 8px}
-    @media(min-width:700px){.week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.main{padding-bottom:40px}.bottom-nav{display:none}.desktop-tabs{display:flex}.day-layout{grid-template-columns:minmax(260px,.75fr) minmax(0,1.8fr)}.day-hero{position:sticky;top:92px;height:max-content}}
-    @media(min-width:1100px){.week-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.topbar{padding-top:18px;padding-bottom:18px}}
-    @media(min-width:1450px){.week-grid{grid-template-columns:repeat(7,minmax(0,1fr))}.day-card{min-height:330px}}
-    @media(max-width:699px){.brand-text b{font-size:15px}.tagline{display:none}.logo-mark{width:36px;height:36px}.topbar{padding:10px 14px}.main{padding-top:8px}.section-head{align-items:center;margin-top:2px}.section-head h1{font-size:32px}.section-head p{font-size:13px}.day-card{padding:16px}.timeline{padding:8px}.timeline-row{grid-template-columns:74px 20px minmax(0,1fr)}.timeline-time{font-size:11px;padding-right:2px}.timeline-card{padding:13px 12px}.now-shell{min-height:calc(100dvh - 150px);border-radius:24px}.now-content{align-items:flex-end;padding:18px 14px 20px}.now-card{padding:20px;border-radius:22px}.now-clock{right:18px;top:18px}.now-title{font-size:46px}.progress-row{display:block}.remaining{margin-top:9px}}
-    @media(max-width:380px){.day-card-head{display:block}.wake-chip{display:inline-flex;margin-top:9px}.timeline-row{grid-template-columns:62px 16px minmax(0,1fr)}.timeline-time{font-size:10px}}
+
+    .day-hero{
+      border:1px solid var(--line);
+      background:linear-gradient(145deg,var(--panel),var(--panel-2));
+      border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)
+    }
+
+    .hero-day{font-size:clamp(34px,6vw,64px);margin:8px 0 2px}
+    .hero-date{color:var(--muted);font-size:16px}
+
+    .hero-summary{
+      margin-top:26px;padding-top:20px;border-top:1px solid var(--line)
+    }
+
+    .hero-summary strong{display:block;font-size:17px;margin-bottom:8px}
+
+    .hero-summary p{
+      color:var(--muted);line-height:1.55;margin-bottom:0
+    }
+
+    .timeline{
+      border:1px solid var(--line);background:var(--panel);
+      border-radius:var(--radius);padding:12px 14px;box-shadow:var(--shadow)
+    }
+
+    .timeline-row{
+      display:grid;grid-template-columns:88px 24px minmax(0,1fr);
+      gap:8px;min-height:72px;align-items:stretch
+    }
+
+    .timeline-time{
+      font-size:12px;color:var(--muted);text-align:right;
+      padding:19px 6px 0 0;font-variant-numeric:tabular-nums
+    }
+
+    .timeline-track{position:relative;display:flex;justify-content:center}
+
+    .timeline-track:after{
+      content:"";position:absolute;top:0;bottom:0;
+      width:1px;background:var(--line)
+    }
+
+    .timeline-dot{
+      margin-top:21px;width:10px;height:10px;border-radius:50%;
+      background:var(--muted-2);border:2px solid var(--panel);z-index:2
+    }
+
+    .timeline-row.current .timeline-dot{
+      background:var(--teal);box-shadow:0 0 0 4px rgba(85,210,195,.12)
+    }
+
+    .timeline-row.current .timeline-card{
+      border-color:rgba(85,210,195,.45);
+      background:linear-gradient(145deg,var(--panel-2),rgba(85,210,195,.05))
+    }
+
+    .timeline-card{
+      border:1px solid var(--line);border-radius:15px;
+      padding:14px 15px;margin:5px 0;
+      display:flex;align-items:center;justify-content:space-between;gap:14px
+    }
+
+    .timeline-title{font-weight:600;font-size:14px}
+    .timeline-category{font-size:11px;color:var(--muted);margin-top:3px}
+    .category-icon{font-size:20px;opacity:.85}
+
+    .now-shell{
+      position:relative;min-height:calc(100dvh - 160px);
+      border:1px solid var(--line);border-radius:30px;
+      overflow:hidden;box-shadow:var(--shadow);background:#111;
+    }
+
+    .now-bg{
+      position:absolute;inset:0;background-position:center;
+      background-size:cover;transition:background-image .35s ease
+    }
+
+    .now-bg:after{
+      content:"";position:absolute;inset:0;
+      background:
+      linear-gradient(90deg,rgba(6,7,9,.84),rgba(6,7,9,.50) 55%,rgba(6,7,9,.22)),
+      linear-gradient(to top,rgba(6,7,9,.80),transparent 55%);
+    }
+
+    body.light .now-bg:after{
+      background:
+      linear-gradient(90deg,rgba(249,244,236,.92),rgba(249,244,236,.68) 58%,rgba(249,244,236,.38)),
+      linear-gradient(to top,rgba(249,244,236,.86),transparent 55%);
+    }
+
+    .now-content{
+      position:relative;z-index:2;min-height:inherit;
+      padding:clamp(24px,5vw,76px);
+      display:flex;align-items:center
+    }
+
+    .now-card{
+      width:min(760px,100%);
+      padding:clamp(22px,4vw,46px);
+      border-radius:28px;background:var(--glass);
+      border:1px solid var(--line);backdrop-filter:blur(18px)
+    }
+
+    .now-day{
+      font-size:12px;letter-spacing:.18em;color:var(--muted);
+      text-transform:uppercase
+    }
+
+    .now-title{
+      font-family:"DM Sans",sans-serif;
+      font-size:clamp(38px,7vw,78px);
+      line-height:.98;letter-spacing:-.04em;margin:12px 0 10px
+    }
+
+    .now-range{
+      font-size:clamp(15px,2.2vw,22px);
+      color:var(--muted);margin-bottom:30px
+    }
+
+    .progress-row{
+      display:flex;align-items:center;gap:14px;flex-wrap:wrap
+    }
+
+    .progress-track{
+      height:12px;background:var(--input);
+      border-radius:999px;overflow:hidden;
+      flex:1;min-width:180px
+    }
+
+    .progress-fill{
+      height:100%;width:0;
+      background:linear-gradient(90deg,var(--teal),#7be7d9);
+      border-radius:inherit
+    }
+
+    .remaining{
+      font-size:14px;color:var(--muted);
+      font-variant-numeric:tabular-nums
+    }
+
+    .divider{
+      border:0;border-top:1px dashed var(--line);
+      margin:32px 0 24px
+    }
+
+    .upnext-label{
+      font-size:11px;letter-spacing:.18em;
+      color:var(--teal);text-transform:uppercase;margin-bottom:7px
+    }
+
+    .upnext-title{
+      font-family:"DM Sans",sans-serif;
+      font-size:clamp(24px,4vw,38px);margin-bottom:4px
+    }
+
+    .upnext-range{color:var(--muted)}
+
+    .now-clock{
+      position:absolute;right:clamp(20px,4vw,48px);
+      top:clamp(20px,4vw,42px);z-index:3;text-align:right
+    }
+
+    .now-clock .time{
+      font-family:"DM Sans",sans-serif;
+      font-size:clamp(22px,3vw,38px);font-weight:600
+    }
+
+    .now-clock .date{font-size:12px;color:var(--muted)}
+
+    .bottom-nav{
+      position:fixed;z-index:50;
+      left:10px;right:10px;
+      bottom:max(10px,env(safe-area-inset-bottom));
+      height:72px;border:1px solid var(--line);
+      background:var(--nav-bg);backdrop-filter:blur(20px);
+      border-radius:24px;padding:7px;
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:5px;box-shadow:0 18px 50px rgba(0,0,0,.28)
+    }
+
+    .bottom-nav button{
+      border:0;background:transparent;border-radius:18px;
+      color:var(--muted);display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      gap:3px;font-size:10px;font-weight:600;
+      letter-spacing:.04em;cursor:pointer
+    }
+
+    .bottom-nav svg{width:22px;height:22px}
+
+    .bottom-nav button.active{
+      background:var(--nav-active);color:var(--accent-2)
+    }
+
+    .footer-note{
+      color:var(--muted-2);font-size:11px;
+      text-align:center;margin:28px 0 8px
+    }
+
+    @media(min-width:700px){
+      .week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .main{padding-bottom:40px}
+      .bottom-nav{display:none}
+      .desktop-tabs{display:flex}
+      .day-layout{grid-template-columns:minmax(260px,.75fr) minmax(0,1.8fr)}
+      .day-hero{position:sticky;top:92px;height:max-content}
+    }
+
+    @media(min-width:1100px){
+      .week-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+      .topbar{padding-top:18px;padding-bottom:18px}
+    }
+
+    @media(min-width:1450px){
+      .week-grid{grid-template-columns:repeat(7,minmax(0,1fr))}
+      .day-card{min-height:330px}
+    }
+
+    @media(max-width:699px){
+      .mode-switch button{padding:7px 7px;font-size:9px}
+      .brand-text b{font-size:15px}
+      .tagline{display:none}
+      .logo-mark{width:36px;height:36px}
+      .topbar{padding:10px 14px}
+      .main{padding-top:8px}
+      .section-head{align-items:center;margin-top:2px}
+      .section-head h1{font-size:32px}
+      .section-head p{font-size:13px}
+      .day-card{padding:16px}
+      .timeline{padding:8px}
+      .timeline-row{grid-template-columns:74px 20px minmax(0,1fr)}
+      .timeline-time{font-size:11px;padding-right:2px}
+      .timeline-card{padding:13px 12px}
+      .now-shell{min-height:calc(100dvh - 150px);border-radius:24px}
+      .now-content{align-items:flex-end;padding:18px 14px 20px}
+      .now-card{padding:20px;border-radius:22px}
+      .now-clock{right:18px;top:18px}
+      .now-title{font-size:46px}
+      .progress-row{display:block}
+      .remaining{margin-top:9px}
+    }
+
+    @media(max-width:380px){
+      .day-card-head{display:block}
+      .wake-chip{display:inline-flex;margin-top:9px}
+      .timeline-row{grid-template-columns:62px 16px minmax(0,1fr)}
+      .timeline-time{font-size:10px}
+    }
   </style>
 </head>
+
 <body>
+
 <div class="app">
+
   <header class="topbar">
+
     <div class="brand" aria-label="TimeDash">
+
       <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
-        <defs><linearGradient id="gold" x1="0" x2="1"><stop stop-color="#f1cf90"/><stop offset="1" stop-color="#bb7d2d"/></linearGradient></defs>
+        <defs>
+          <linearGradient id="gold" x1="0" x2="1">
+            <stop stop-color="#f1cf90"/>
+            <stop offset="1" stop-color="#bb7d2d"/>
+          </linearGradient>
+        </defs>
+
         <circle cx="32" cy="32" r="24" fill="none" stroke="url(#gold)" stroke-width="3" stroke-dasharray="54 8 12 10"/>
+
         <path d="M20 24h24M32 24v20" fill="none" stroke="url(#gold)" stroke-width="4" stroke-linecap="round"/>
+
         <path d="M22 36l6 6 14-15" fill="none" stroke="url(#gold)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
+
       <div class="brand-copy">
         <div class="brand-text"><b>TIME</b><b class="dash">DASH</b></div>
         <div class="tagline">Time. Plan. Execute. Repeat.</div>
       </div>
+
     </div>
+
     <nav class="desktop-tabs" aria-label="Views">
       <button data-view="week">Week</button>
       <button data-view="day">Day</button>
       <button data-view="now" class="active">Now</button>
     </nav>
+
     <div class="top-actions">
+
+      <div class="mode-switch" aria-label="Schedule mode">
+        <button id="normalModeBtn" type="button">NORMAL</button>
+        <button id="subModeBtn" type="button">SUB</button>
+      </div>
+
       <button class="icon-btn" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
         <svg id="themeIcon" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
         </svg>
       </button>
+
     </div>
+
   </header>
 
+
   <main class="main">
+
     <section class="view" id="weekView">
+
       <div class="section-head">
+
         <div>
           <div class="eyebrow">Weekly view</div>
           <h1 id="weekTitle">This week</h1>
           <p>Your whole week, Monday through Sunday.</p>
         </div>
+
       </div>
+
       <div class="week-grid" id="weekGrid"></div>
+
       <div class="footer-note">Tap any day to open the full daily schedule.</div>
+
     </section>
 
+
     <section class="view" id="dayView">
+
       <div class="section-head">
+
         <div>
           <div class="eyebrow">Daily view</div>
           <h1>Your day</h1>
           <p>See the entire plan without losing the bigger picture.</p>
         </div>
+
         <div class="date-controls">
           <button class="round-btn" id="prevDay" aria-label="Previous day">‹</button>
           <button class="round-btn" id="todayBtn" aria-label="Go to today">•</button>
           <button class="round-btn" id="nextDay" aria-label="Next day">›</button>
         </div>
+
       </div>
+
       <div class="day-layout">
+
         <aside class="day-hero">
+
           <div class="eyebrow" id="dayEyebrow">Wednesday</div>
+
           <h2 class="hero-day" id="heroDay">Wednesday</h2>
+
           <div class="hero-date" id="heroDate">Aug 27</div>
+
           <div class="hero-summary">
             <strong id="heroSummary">Hair Day + Work</strong>
             <p id="heroDescription"></p>
           </div>
+
         </aside>
+
         <div class="timeline" id="timeline"></div>
+
       </div>
+
     </section>
 
+
     <section class="view active" id="nowView">
+
       <div class="now-shell">
+
         <div class="now-bg" id="nowBg"></div>
+
         <div class="now-clock">
           <div class="time" id="liveClock">--:--</div>
           <div class="date" id="liveDate">---</div>
         </div>
+
         <div class="now-content">
+
           <div class="now-card">
+
             <div class="now-day" id="nowDay">Friday</div>
+
             <h2 class="now-title" id="nowTitle">Protected work block</h2>
+
             <div class="now-range" id="nowRange">8:00 AM – 4:00 PM</div>
+
             <div class="progress-row">
-              <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+              <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+
               <div class="remaining" id="remainingText">—</div>
+
             </div>
+
             <hr class="divider">
+
             <div class="upnext-label">Up next</div>
+
             <div class="upnext-title" id="nextTitle">Transition home</div>
+
             <div class="upnext-range" id="nextRange">4:00 PM – 5:00 PM</div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
+
   </main>
 
+
   <nav class="bottom-nav" aria-label="Views">
-    <button data-view="week"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><span>WEEK</span></button>
-    <button data-view="day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg><span>DAY</span></button>
-    <button data-view="now" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>NOW</span></button>
+
+    <button data-view="week">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="3" y="5" width="18" height="16" rx="2"/>
+        <path d="M8 3v4M16 3v4M3 10h18"/>
+      </svg>
+      <span>WEEK</span>
+    </button>
+
+    <button data-view="day">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M8 6h13M8 12h13M8 18h13"/>
+        <circle cx="4" cy="6" r="1"/>
+        <circle cx="4" cy="12" r="1"/>
+        <circle cx="4" cy="18" r="1"/>
+      </svg>
+      <span>DAY</span>
+    </button>
+
+    <button data-view="now" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 7v5l3 2"/>
+      </svg>
+      <span>NOW</span>
+    </button>
+
   </nav>
+
 </div>
 
-<script>
-const DAY_NAMES=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-const MONDAY_ORDER=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-const SCHEDULES={
-  Monday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Arms workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block",start:"08:00",end:"12:00",category:"Work"},{name:"Free afternoon / life",start:"12:00",end:"18:30",category:"Free"},{name:"Set Tuesday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}],
-  Tuesday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Legs workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},{name:"Free time",start:"16:00",end:"18:30",category:"Free"},{name:"Set Wednesday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"05:30",category:"Sleep"}],
-  Wednesday:[{name:"Wake up",start:"05:30",end:"06:00",category:"Wake"},{name:"Beauty routine",start:"06:00",end:"07:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"07:00",end:"08:00",category:"Breakfast"},{name:"Hair appointment + travel",start:"08:00",end:"13:00",category:"Hair"},{name:"Lunch / transition",start:"13:00",end:"14:00",category:"Meal"},{name:"Protected work block",start:"14:00",end:"18:00",category:"Work"},{name:"Set Thursday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}],
-  Thursday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Core workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},{name:"Transition home",start:"16:00",end:"17:00",category:"Transition"},{name:"Home care",start:"17:00",end:"19:00",category:"Home"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}],
-  Friday:[{name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},{name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},{name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},{name:"Cardio workout",start:"06:00",end:"07:30",category:"Exercise"},{name:"Transition",start:"07:30",end:"08:00",category:"Transition"},{name:"Protected work block",start:"08:00",end:"16:00",category:"Work"},{name:"Free evening",start:"16:00",end:"21:00",category:"Free"},{name:"Wrap it up",start:"21:00",end:"22:00",category:"Intention"},{name:"Sleep",start:"22:00",end:"06:00",category:"Sleep"}],
-  Saturday:[{name:"Wake up",start:"06:00",end:"06:30",category:"Wake"},{name:"Beauty routine & Lounge",start:"06:30",end:"08:00",category:"Beauty"},{name:"Travel / transition",start:"08:00",end:"08:30",category:"Transition"},{name:"Fun workout",start:"08:30",end:"10:00",category:"Exercise"},{name:"Deep apartment clean",start:"10:00",end:"14:00",category:"Home"},{name:"Lunch / transition",start:"14:00",end:"15:00",category:"Meal"},{name:"Laundry",start:"15:00",end:"19:00",category:"Laundry"},{name:"Night Beauty Routine / Get ready to go out",start:"19:00",end:"20:00",category:"Beauty"},{name:"Free / fun evening",start:"20:00",end:"00:00",category:"Free"},{name:"Sleep",start:"00:00",end:"06:00",category:"Sleep",overnight:true}],
-  Sunday:[{name:"Wake up",start:"06:00",end:"06:30",category:"Wake"},{name:"Beauty routine & Lounge",start:"06:30",end:"08:00",category:"Beauty"},{name:"Food Reset / cooking",start:"08:00",end:"12:00",category:"Cooking"},{name:"Rest / Lancine / family / free time",start:"12:00",end:"18:30",category:"Free"},{name:"Set Monday intention",start:"18:30",end:"19:00",category:"Intention"},{name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},{name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}]
-};
-const DAY_META={
-  Monday:{summary:"Arms + Light Work",desc:"A lighter workday with an early finish and room for life in the afternoon.",wake:"3:30 AM"},
-  Tuesday:{summary:"Legs + Full Work Day",desc:"A full work or CPS day. No scheduled home care after 4 PM.",wake:"3:30 AM"},
-  Wednesday:{summary:"Midweek Rescue + Hair",desc:"Later wake-up, no gym, hair appointment, then a focused afternoon work block.",wake:"5:30 AM"},
-  Thursday:{summary:"Core + Full Day",desc:"Core in the morning, a full work/CPS day, then home care before wind-down.",wake:"3:30 AM"},
-  Friday:{summary:"Cardio + Full Work Day",desc:"Finish the workweek strong, then enjoy a freer Friday evening.",wake:"3:30 AM"},
-  Saturday:{summary:"Home Reset + Fun",desc:"Workout, deep clean, laundry, then the evening belongs to you.",wake:"6:00 AM"},
-  Sunday:{summary:"Food Reset + Rest",desc:"Reset food for the next few days, then stop at noon and rest.",wake:"6:00 AM"}
-};
-const BACKGROUNDS={
-  Work:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=85&w=1800&auto=format&fit=crop",
-  Exercise:"https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=85&w=1800&auto=format&fit=crop",
-  Cooking:"https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=85&w=1800&auto=format&fit=crop",
-  Meal:"https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=85&w=1800&auto=format&fit=crop",
-  Home:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=85&w=1800&auto=format&fit=crop",
-  Laundry:"https://images.unsplash.com/photo-1484154218962-a197022b5858?q=85&w=1800&auto=format&fit=crop",
-  Hair:"https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=85&w=1800&auto=format&fit=crop",
-  Wake:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=85&w=1800&auto=format&fit=crop",
-  Beauty:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=85&w=1800&auto=format&fit=crop",
-  Breakfast:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=85&w=1800&auto=format&fit=crop",
-  Transition:"https://images.unsplash.com/photo-1493246318656-5bfd4cfb29b8?q=85&w=1800&auto=format&fit=crop",
-  Free:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=85&w=1800&auto=format&fit=crop",
-  Intention:"https://images.unsplash.com/photo-1455390582262-044cdead277a?q=85&w=1800&auto=format&fit=crop",
-  WindDown:"https://images.unsplash.com/photo-1513694203232-719a280e022f?q=85&w=1800&auto=format&fit=crop",
-  Sleep:""
-};
-const ICONS={Work:"💻",Exercise:"◉",Cooking:"🍲",Meal:"🍴",Home:"⌂",Laundry:"▦",Hair:"✂",Wake:"☀",Beauty:"✦",Breakfast:"☕",Transition:"→",Free:"♡",Intention:"✓",WindDown:"◌",Sleep:"☾"};
-const $=id=>document.getElementById(id);
-const pad=n=>String(n).padStart(2,"0");
-function parseHM(s){const [h,m]=s.split(":").map(Number);return h*60+m;}
-function fmt12(s){let [h,m]=s.split(":").map(Number);const ap=h>=12?"PM":"AM";h=h%12||12;return `${h}:${pad(m)} ${ap}`;}
-function fmtRange(b){return `${fmt12(b.start)} – ${fmt12(b.end)}`;}
-function dateOnly(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate());}
-function mondayOf(date){const d=dateOnly(date);const day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return d;}
-function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x;}
-function sameDate(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();}
-function dayName(d){return DAY_NAMES[d.getDay()];}
-function blockAt(date){
-  const currentName=dayName(date);
-  const currentMins=date.getHours()*60+date.getMinutes();
 
-  const previousDate=addDays(date,-1);
-  const previousName=dayName(previousDate);
-  const previousBlocks=SCHEDULES[previousName];
+<script>
+
+const DAY_NAMES=[
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+const MONDAY_ORDER=[
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+];
+
+
+/* =====================================================
+   NORMAL SCHEDULE
+   ===================================================== */
+
+const NORMAL_SCHEDULES={
+
+  Monday:[
+    {name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},
+    {name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},
+    {name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},
+    {name:"Arms workout",start:"06:00",end:"07:30",category:"Exercise"},
+    {name:"Transition",start:"07:30",end:"08:00",category:"Transition"},
+    {name:"Protected work block",start:"08:00",end:"12:00",category:"Work"},
+    {name:"Free afternoon / life",start:"12:00",end:"18:30",category:"Free"},
+    {name:"Set Tuesday intention",start:"18:30",end:"19:00",category:"Intention"},
+    {name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}
+  ],
+
+  Tuesday:[
+    {name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},
+    {name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},
+    {name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},
+    {name:"Legs workout",start:"06:00",end:"07:30",category:"Exercise"},
+    {name:"Transition",start:"07:30",end:"08:00",category:"Transition"},
+    {name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},
+    {name:"Free time",start:"16:00",end:"18:30",category:"Free"},
+    {name:"Set Wednesday intention",start:"18:30",end:"19:00",category:"Intention"},
+    {name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"05:30",category:"Sleep"}
+  ],
+
+  Wednesday:[
+    {name:"Wake up",start:"05:30",end:"06:00",category:"Wake"},
+    {name:"Beauty routine",start:"06:00",end:"07:00",category:"Beauty"},
+    {name:"Tidy + make breakfast",start:"07:00",end:"08:00",category:"Breakfast"},
+    {name:"Hair appointment + travel",start:"08:00",end:"13:00",category:"Hair"},
+    {name:"Lunch / transition",start:"13:00",end:"14:00",category:"Meal"},
+    {name:"Protected work block",start:"14:00",end:"18:00",category:"Work"},
+    {name:"Set Thursday intention",start:"18:30",end:"19:00",category:"Intention"},
+    {name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}
+  ],
+
+  Thursday:[
+    {name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},
+    {name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},
+    {name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},
+    {name:"Core workout",start:"06:00",end:"07:30",category:"Exercise"},
+    {name:"Transition",start:"07:30",end:"08:00",category:"Transition"},
+    {name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},
+    {name:"Transition home",start:"16:00",end:"17:00",category:"Transition"},
+    {name:"Home care",start:"17:00",end:"19:00",category:"Home"},
+    {name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}
+  ],
+
+  Friday:[
+    {name:"Wake up",start:"03:30",end:"04:00",category:"Wake"},
+    {name:"Beauty routine",start:"04:00",end:"05:00",category:"Beauty"},
+    {name:"Tidy + make breakfast",start:"05:00",end:"06:00",category:"Breakfast"},
+    {name:"Cardio workout",start:"06:00",end:"07:30",category:"Exercise"},
+    {name:"Transition",start:"07:30",end:"08:00",category:"Transition"},
+    {name:"Protected work block",start:"08:00",end:"16:00",category:"Work"},
+    {name:"Free evening",start:"16:00",end:"21:00",category:"Free"},
+    {name:"Wrap it up",start:"21:00",end:"22:00",category:"Intention"},
+    {name:"Sleep",start:"22:00",end:"06:00",category:"Sleep"}
+  ],
+
+  Saturday:[
+    {name:"Wake up",start:"06:00",end:"06:30",category:"Wake"},
+    {name:"Beauty routine & Lounge",start:"06:30",end:"08:00",category:"Beauty"},
+    {name:"Travel / transition",start:"08:00",end:"08:30",category:"Transition"},
+    {name:"Fun workout",start:"08:30",end:"10:00",category:"Exercise"},
+    {name:"Deep apartment clean",start:"10:00",end:"14:00",category:"Home"},
+    {name:"Lunch / transition",start:"14:00",end:"15:00",category:"Meal"},
+    {name:"Laundry",start:"15:00",end:"19:00",category:"Laundry"},
+    {name:"Night Beauty Routine / Get ready to go out",start:"19:00",end:"20:00",category:"Beauty"},
+    {name:"Free / fun evening",start:"20:00",end:"00:00",category:"Free"},
+    {name:"Sleep",start:"00:00",end:"06:00",category:"Sleep",overnight:true}
+  ],
+
+  Sunday:[
+    {name:"Wake up",start:"06:00",end:"06:30",category:"Wake"},
+    {name:"Beauty routine & Lounge",start:"06:30",end:"08:00",category:"Beauty"},
+    {name:"Food Reset / cooking",start:"08:00",end:"12:00",category:"Cooking"},
+    {name:"Rest / Lancine / family / free time",start:"12:00",end:"18:30",category:"Free"},
+    {name:"Set Monday intention",start:"18:30",end:"19:00",category:"Intention"},
+    {name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"03:30",category:"Sleep"}
+  ]
+
+};
+
+
+const NORMAL_DAY_META={
+
+  Monday:{
+    summary:"Arms + Light Work",
+    desc:"A lighter workday with an early finish and room for life in the afternoon.",
+    wake:"3:30 AM"
+  },
+
+  Tuesday:{
+    summary:"Legs + Full Work Day",
+    desc:"A full work or CPS day. No scheduled home care after 4 PM.",
+    wake:"3:30 AM"
+  },
+
+  Wednesday:{
+    summary:"Midweek Rescue + Hair",
+    desc:"Later wake-up, no gym, hair appointment, then a focused afternoon work block.",
+    wake:"5:30 AM"
+  },
+
+  Thursday:{
+    summary:"Core + Full Day",
+    desc:"Core in the morning, a full work/CPS day, then home care before wind-down.",
+    wake:"3:30 AM"
+  },
+
+  Friday:{
+    summary:"Cardio + Full Work Day",
+    desc:"Finish the workweek strong, then enjoy a freer Friday evening.",
+    wake:"3:30 AM"
+  },
+
+  Saturday:{
+    summary:"Home Reset + Fun",
+    desc:"Workout, deep clean, laundry, then the evening belongs to you.",
+    wake:"6:00 AM"
+  },
+
+  Sunday:{
+    summary:"Food Reset + Rest",
+    desc:"Reset food for the next few days, then stop at noon and rest.",
+    wake:"6:00 AM"
+  }
+
+};
+
+
+/* =====================================================
+   SUB / VERSION 2
+   ===================================================== */
+
+const SUB_SCHEDULES={
+
+  Monday:[
+    {name:"Wake up + lounge",start:"04:00",end:"04:30",category:"Wake"},
+    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"05:30",category:"Beauty"},
+    {name:"Arms workout",start:"05:30",end:"07:00",category:"Exercise"},
+    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:00",end:"07:30",category:"Transition"},
+    {name:"Commute / arrive at nearby school",start:"07:30",end:"08:30",category:"Transition"},
+    {name:"CPS substitute assignment — close + 8:30 start",start:"08:30",end:"15:45",category:"Work"},
+    {name:"Commute home",start:"15:45",end:"16:15",category:"Transition"},
+    {name:"Dinner + decompress",start:"16:15",end:"17:00",category:"Meal"},
+    {name:"SAC focused work",start:"17:00",end:"19:00",category:"Work"},
+    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
+    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"04:00",category:"Sleep"}
+  ],
+
+  Tuesday:[
+    {name:"Wake up + lounge",start:"04:00",end:"04:30",category:"Wake"},
+    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"05:30",category:"Beauty"},
+    {name:"Legs workout",start:"05:30",end:"07:00",category:"Exercise"},
+    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:00",end:"07:30",category:"Transition"},
+    {name:"Commute / arrive at nearby school",start:"07:30",end:"08:30",category:"Transition"},
+    {name:"CPS substitute assignment — close + 8:30 start",start:"08:30",end:"15:45",category:"Work"},
+    {name:"Commute home",start:"15:45",end:"16:15",category:"Transition"},
+    {name:"Dinner + decompress",start:"16:15",end:"17:00",category:"Meal"},
+    {name:"SAC focused work / onboarding calls",start:"17:00",end:"19:00",category:"Work"},
+    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
+    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"05:30",category:"Sleep"}
+  ],
+
+  Wednesday:[
+    {name:"Wake up + lounge",start:"05:30",end:"06:00",category:"Wake"},
+    {name:"Beauty routine + gentle morning",start:"06:00",end:"07:00",category:"Beauty"},
+    {name:"Whole-home reset",start:"07:00",end:"10:00",category:"Home"},
+    {name:"Hair appointment",start:"10:00",end:"13:00",category:"Hair"},
+    {name:"Lunch + short grocery trip / transition",start:"13:00",end:"14:00",category:"Meal"},
+    {name:"Cook one good meal",start:"14:00",end:"17:00",category:"Cooking"},
+    {name:"Kitchen cleanup + put food away",start:"17:00",end:"18:00",category:"Home"},
+    {name:"Free / gentle evening",start:"18:00",end:"19:00",category:"Free"},
+    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
+    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"04:00",category:"Sleep"}
+  ],
+
+  Thursday:[
+    {name:"Wake up + lounge",start:"04:00",end:"04:30",category:"Wake"},
+    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"05:30",category:"Beauty"},
+    {name:"Core workout",start:"05:30",end:"07:00",category:"Exercise"},
+    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:00",end:"07:30",category:"Transition"},
+    {name:"Commute / arrive at nearby school",start:"07:30",end:"08:30",category:"Transition"},
+    {name:"CPS substitute assignment — close + 8:30 start",start:"08:30",end:"15:45",category:"Work"},
+    {name:"Commute home",start:"15:45",end:"16:15",category:"Transition"},
+    {name:"Dinner + decompress",start:"16:15",end:"17:00",category:"Meal"},
+    {name:"SAC focused work + payroll systems check",start:"17:00",end:"19:00",category:"Work"},
+    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
+    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"04:00",category:"Sleep"}
+  ],
+
+  Friday:[
+    {name:"Wake up + lounge",start:"04:00",end:"04:30",category:"Wake"},
+    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"05:30",category:"Beauty"},
+    {name:"Cardio workout",start:"05:30",end:"07:00",category:"Exercise"},
+    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:00",end:"07:30",category:"Transition"},
+    {name:"Commute / arrive at nearby school",start:"07:30",end:"08:30",category:"Transition"},
+    {name:"CPS substitute assignment — close + 8:30 start",start:"08:30",end:"15:45",category:"Work"},
+    {name:"Commute home",start:"15:45",end:"16:15",category:"Transition"},
+    {name:"Dinner + decompress",start:"16:15",end:"17:00",category:"Meal"},
+    {name:"SAC focused work",start:"17:00",end:"19:00",category:"Work"},
+    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
+    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"06:00",category:"Sleep"}
+  ],
+
+  Saturday:[
+    {name:"Wake up",start:"06:00",end:"06:30",category:"Wake"},
+    {name:"Beauty routine & Lounge",start:"06:30",end:"08:00",category:"Beauty"},
+    {name:"Whole-house clean — HARD CAP",start:"08:00",end:"12:00",category:"Home"},
+    {name:"Eat + transition + load laundry",start:"12:00",end:"12:30",category:"Meal"},
+    {name:"Laundry — full lifecycle",start:"12:30",end:"17:30",category:"Laundry"},
+    {name:"Short grocery stop",start:"17:30",end:"18:00",category:"Transition"},
+    {name:"Light food reset + put groceries away",start:"18:00",end:"19:00",category:"Cooking"},
+    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
+    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"06:00",category:"Sleep"}
+  ],
+
+  Sunday:[
+    {name:"Wake up",start:"06:00",end:"06:30",category:"Wake"},
+    {name:"Beauty routine & Lounge",start:"06:30",end:"08:00",category:"Beauty"},
+    {name:"SAC deep work",start:"08:00",end:"14:00",category:"Work"},
+    {name:"Free afternoon / rest / life",start:"14:00",end:"18:00",category:"Free"},
+    {name:"Therapy",start:"18:00",end:"19:00",category:"Free"},
+    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
+    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"04:00",category:"Sleep"}
+  ]
+
+};
+
+
+const SUB_DAY_META={
+
+  Monday:{
+    summary:"Sub + Arms + SAC",
+    desc:"Close 8:30-start school, full morning workout, then a focused SAC block after work.",
+    wake:"4:00 AM"
+  },
+
+  Tuesday:{
+    summary:"Sub + Legs + SAC",
+    desc:"Close 8:30-start school, legs in the morning, then SAC or onboarding calls from 5–7.",
+    wake:"4:00 AM"
+  },
+
+  Wednesday:{
+    summary:"Midweek Reset + Hair + Cooking",
+    desc:"Later wake-up, no gym, home reset, hair, groceries, then one good meal and kitchen cleanup.",
+    wake:"5:30 AM"
+  },
+
+  Thursday:{
+    summary:"Sub + Core + SAC",
+    desc:"Close 8:30-start school, core in the morning, then SAC with payroll and systems checks.",
+    wake:"4:00 AM"
+  },
+
+  Friday:{
+    summary:"Sub + Cardio + SAC",
+    desc:"Close 8:30-start school, cardio in the morning, then one final focused SAC block.",
+    wake:"4:00 AM"
+  },
+
+  Saturday:{
+    summary:"Household Marathon",
+    desc:"No workout and no SAC. Clean first, then laundry, groceries, and a light food reset.",
+    wake:"6:00 AM"
+  },
+
+  Sunday:{
+    summary:"SAC Deep Work + Late Start",
+    desc:"Later wake-up, six focused SAC hours from 8–2, then the afternoon is yours before therapy.",
+    wake:"6:00 AM"
+  }
+
+};
+
+
+/* =====================================================
+   MODE
+   ===================================================== */
+
+let activeMode=
+  localStorage.getItem("timedash-mode") || "normal";
+
+function currentSchedules(){
+  return activeMode==="sub"
+    ? SUB_SCHEDULES
+    : NORMAL_SCHEDULES;
+}
+
+function currentMeta(){
+  return activeMode==="sub"
+    ? SUB_DAY_META
+    : NORMAL_DAY_META;
+}
+
+
+/* =====================================================
+   BACKGROUNDS
+   ===================================================== */
+
+const BACKGROUNDS={
+
+  Work:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=85&w=1800&auto=format&fit=crop",
+
+  Exercise:"https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=85&w=1800&auto=format&fit=crop",
+
+  Cooking:"https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=85&w=1800&auto=format&fit=crop",
+
+  Meal:"https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=85&w=1800&auto=format&fit=crop",
+
+  Home:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=85&w=1800&auto=format&fit=crop",
+
+  Laundry:"https://images.unsplash.com/photo-1484154218962-a197022b5858?q=85&w=1800&auto=format&fit=crop",
+
+  Hair:"https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=85&w=1800&auto=format&fit=crop",
+
+  Wake:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=85&w=1800&auto=format&fit=crop",
+
+  Beauty:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=85&w=1800&auto=format&fit=crop",
+
+  Breakfast:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=85&w=1800&auto=format&fit=crop",
+
+  Transition:"https://images.unsplash.com/photo-1493246318656-5bfd4cfb29b8?q=85&w=1800&auto=format&fit=crop",
+
+  Free:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=85&w=1800&auto=format&fit=crop",
+
+  Intention:"https://images.unsplash.com/photo-1455390582262-044cdead277a?q=85&w=1800&auto=format&fit=crop",
+
+  WindDown:"https://images.unsplash.com/photo-1513694203232-719a280e022f?q=85&w=1800&auto=format&fit=crop",
+
+  Sleep:""
+
+};
+
+
+const ICONS={
+  Work:"💻",
+  Exercise:"◉",
+  Cooking:"🍲",
+  Meal:"🍴",
+  Home:"⌂",
+  Laundry:"▦",
+  Hair:"✂",
+  Wake:"☀",
+  Beauty:"✦",
+  Breakfast:"☕",
+  Transition:"→",
+  Free:"♡",
+  Intention:"✓",
+  WindDown:"◌",
+  Sleep:"☾"
+};
+
+
+const $=id=>document.getElementById(id);
+
+const pad=n=>String(n).padStart(2,"0");
+
+function parseHM(s){
+  const [h,m]=s.split(":").map(Number);
+  return h*60+m;
+}
+
+function fmt12(s){
+  let [h,m]=s.split(":").map(Number);
+  const ap=h>=12?"PM":"AM";
+  h=h%12||12;
+  return `${h}:${pad(m)} ${ap}`;
+}
+
+function fmtRange(b){
+  return `${fmt12(b.start)} – ${fmt12(b.end)}`;
+}
+
+function dateOnly(d){
+  return new Date(d.getFullYear(),d.getMonth(),d.getDate());
+}
+
+function mondayOf(date){
+  const d=dateOnly(date);
+  const day=(d.getDay()+6)%7;
+  d.setDate(d.getDate()-day);
+  return d;
+}
+
+function addDays(d,n){
+  const x=new Date(d);
+  x.setDate(x.getDate()+n);
+  return x;
+}
+
+function sameDate(a,b){
+  return a.getFullYear()===b.getFullYear()
+    && a.getMonth()===b.getMonth()
+    && a.getDate()===b.getDate();
+}
+
+function dayName(d){
+  return DAY_NAMES[d.getDay()];
+}
+
+
+/* =====================================================
+   CURRENT BLOCK
+   ===================================================== */
+
+function blockAt(date){
+
+  const currentName=dayName(date);
+
+  const currentMins=
+    date.getHours()*60+
+    date.getMinutes();
+
+
+  const previousDate=
+    addDays(date,-1);
+
+  const previousName=
+    dayName(previousDate);
+
+  const previousBlocks=
+    currentSchedules()[previousName];
+
 
   for(let i=0;i<previousBlocks.length;i++){
+
     const b=previousBlocks[i];
-    const s=parseHM(b.start), e=parseHM(b.end);
-    const crossesMidnight=b.overnight===true || e<=s;
+
+    const s=parseHM(b.start);
+    const e=parseHM(b.end);
+
+    const crossesMidnight=
+      b.overnight===true || e<=s;
+
+
     if(crossesMidnight && currentMins<e){
-      return {block:b,index:i,day:previousName,source:"previous"};
+
+      return{
+        block:b,
+        index:i,
+        day:previousName,
+        source:"previous"
+      };
+
     }
+
   }
 
-  const blocks=SCHEDULES[currentName];
+
+  const blocks=
+    currentSchedules()[currentName];
+
+
   for(let i=0;i<blocks.length;i++){
+
     const b=blocks[i];
-    const s=parseHM(b.start), e=parseHM(b.end);
-    const crossesMidnight=b.overnight===true || e<=s;
 
-    if(b.overnight===true) continue;
+    const s=parseHM(b.start);
+    const e=parseHM(b.end);
 
-    if(!crossesMidnight && currentMins>=s && currentMins<e){
-      return {block:b,index:i,day:currentName,source:"current"};
+    const crossesMidnight=
+      b.overnight===true || e<=s;
+
+
+    if(b.overnight===true){
+      continue;
     }
-    if(crossesMidnight && currentMins>=s){
-      return {block:b,index:i,day:currentName,source:"current"};
+
+
+    if(
+      !crossesMidnight
+      &&
+      currentMins>=s
+      &&
+      currentMins<e
+    ){
+
+      return{
+        block:b,
+        index:i,
+        day:currentName,
+        source:"current"
+      };
+
     }
+
+
+    if(
+      crossesMidnight
+      &&
+      currentMins>=s
+    ){
+
+      return{
+        block:b,
+        index:i,
+        day:currentName,
+        source:"current"
+      };
+
+    }
+
   }
 
-  const future=blocks
-    .map((b,i)=>({b,i,s:parseHM(b.start)}))
-    .filter(x=>x.b.overnight!==true && x.s>currentMins)
-    .sort((a,b)=>a.s-b.s)[0];
+
+  const future=
+    blocks
+    .map(
+      (b,i)=>({
+        b,
+        i,
+        s:parseHM(b.start)
+      })
+    )
+    .filter(
+      x=>
+        x.b.overnight!==true
+        &&
+        x.s>currentMins
+    )
+    .sort(
+      (a,b)=>a.s-b.s
+    )[0];
+
 
   if(future){
-    return {
-      block:{name:"Open / transition time",start:`${pad(Math.floor(currentMins/60))}:${pad(currentMins%60)}`,end:future.b.start,category:"Free"},
-      index:future.i-1,day:currentName,source:"current",synthetic:true
+
+    return{
+
+      block:{
+        name:"Open / transition time",
+        start:`${pad(Math.floor(currentMins/60))}:${pad(currentMins%60)}`,
+        end:future.b.start,
+        category:"Free"
+      },
+
+      index:future.i-1,
+
+      day:currentName,
+
+      source:"current",
+
+      synthetic:true
+
     };
+
   }
 
-  return {
-    block:{name:"Open / transition time",start:`${pad(Math.floor(currentMins/60))}:${pad(currentMins%60)}`,end:"23:59",category:"Free"},
-    index:blocks.length-1,day:currentName,source:"current",synthetic:true
+
+  return{
+
+    block:{
+      name:"Open / transition time",
+      start:`${pad(Math.floor(currentMins/60))}:${pad(currentMins%60)}`,
+      end:"23:59",
+      category:"Free"
+    },
+
+    index:blocks.length-1,
+
+    day:currentName,
+
+    source:"current",
+
+    synthetic:true
+
   };
+
 }
+
+
+/* =====================================================
+   NEXT BLOCK
+   ===================================================== */
+
 function nextRealBlock(date,current){
-  const calendarDayName=dayName(date);
+
+  const calendarDayName=
+    dayName(date);
+
 
   if(current.source==="previous"){
-    return SCHEDULES[calendarDayName][0];
+
+    return currentSchedules()[calendarDayName][0];
+
   }
 
-  const blocks=SCHEDULES[calendarDayName];
+
+  const blocks=
+    currentSchedules()[calendarDayName];
+
 
   if(current.synthetic){
-    const mins=date.getHours()*60+date.getMinutes();
-    const future=blocks
-      .map((b,i)=>({b,i,s:parseHM(b.start)}))
-      .filter(x=>x.b.overnight!==true && x.s>mins)
-      .sort((a,b)=>a.s-b.s)[0];
-    if(future) return future.b;
-  } else if(current.index+1<blocks.length){
-    return blocks[current.index+1];
+
+    const mins=
+      date.getHours()*60+
+      date.getMinutes();
+
+
+    const future=
+      blocks
+      .map(
+        (b,i)=>({
+          b,
+          i,
+          s:parseHM(b.start)
+        })
+      )
+      .filter(
+        x=>
+          x.b.overnight!==true
+          &&
+          x.s>mins
+      )
+      .sort(
+        (a,b)=>a.s-b.s
+      )[0];
+
+
+    if(future){
+      return future.b;
+    }
+
   }
 
-  const nextDate=addDays(date,1);
-  return SCHEDULES[dayName(nextDate)][0];
+  else if(
+    current.index+1
+    <
+    blocks.length
+  ){
+
+    return blocks[current.index+1];
+
+  }
+
+
+  const nextDate=
+    addDays(date,1);
+
+
+  return currentSchedules()[dayName(nextDate)][0];
+
 }
+
+
+/* =====================================================
+   PROGRESS
+   ===================================================== */
+
 function progressFor(date,b){
-  let now=date.getHours()*60+date.getMinutes()+date.getSeconds()/60, s=parseHM(b.start), e=parseHM(b.end);
-  if(e<=s) e+=1440; if(now<s&&e>1440) now+=1440;
-  const pct=Math.max(0,Math.min(100,((now-s)/(e-s))*100)), left=Math.max(0,e-now);
-  return {pct,left};
+
+  let now=
+    date.getHours()*60+
+    date.getMinutes()+
+    date.getSeconds()/60;
+
+  let s=
+    parseHM(b.start);
+
+  let e=
+    parseHM(b.end);
+
+
+  if(e<=s){
+    e+=1440;
+  }
+
+  if(
+    now<s
+    &&
+    e>1440
+  ){
+    now+=1440;
+  }
+
+
+  const pct=
+    Math.max(
+      0,
+      Math.min(
+        100,
+        ((now-s)/(e-s))*100
+      )
+    );
+
+
+  const left=
+    Math.max(
+      0,
+      e-now
+    );
+
+
+  return{
+    pct,
+    left
+  };
+
 }
-function formatLeft(mins){const total=Math.round(mins), h=Math.floor(total/60), m=total%60; if(h&&m) return `${h} hr ${m} min left`; if(h) return `${h} hr left`; return `${m} min left`;}
+
+
+function formatLeft(mins){
+
+  const total=
+    Math.round(mins);
+
+  const h=
+    Math.floor(total/60);
+
+  const m=
+    total%60;
+
+
+  if(h&&m){
+    return `${h} hr ${m} min left`;
+  }
+
+  if(h){
+    return `${h} hr left`;
+  }
+
+  return `${m} min left`;
+
+}
+
+
+/* =====================================================
+   WEEK VIEW
+   ===================================================== */
+
 function renderWeek(){
-  const now=new Date(), monday=mondayOf(now), end=addDays(monday,6); $("weekTitle").textContent=`${monday.toLocaleDateString([], {month:"short",day:"numeric"})} – ${end.toLocaleDateString([], {month:"short",day:"numeric"})}`;
-  const grid=$("weekGrid"); grid.innerHTML="";
-  MONDAY_ORDER.forEach((name,idx)=>{const d=addDays(monday,idx), meta=DAY_META[name], card=document.createElement("article");
-    card.className="day-card"+(sameDate(d,now)?" today":"");
-    card.innerHTML=`<div class="day-card-head"><div><div class="day-name">${name.slice(0,3).toUpperCase()}</div><div class="day-date">${d.toLocaleDateString([], {month:"short",day:"numeric"})}</div></div><div class="wake-chip">${meta.wake} wake</div></div><div class="day-summary">${meta.summary}</div><div class="mini-list">${SCHEDULES[name].slice(0,7).map(b=>`<div class="mini-row"><span class="mini-time">${fmt12(b.start)}</span><span class="mini-task">${b.name}</span></div>`).join("")}</div>`;
-    card.addEventListener("click",()=>{selectedDay=d;renderDay();setView("day");}); grid.appendChild(card);});
+
+  const schedules=
+    currentSchedules();
+
+  const metaSet=
+    currentMeta();
+
+
+  const now=
+    new Date();
+
+  const monday=
+    mondayOf(now);
+
+  const end=
+    addDays(monday,6);
+
+
+  $("weekTitle").textContent=
+    `${
+      monday.toLocaleDateString(
+        [],
+        {
+          month:"short",
+          day:"numeric"
+        }
+      )
+    } – ${
+      end.toLocaleDateString(
+        [],
+        {
+          month:"short",
+          day:"numeric"
+        }
+      )
+    }`;
+
+
+  const grid=
+    $("weekGrid");
+
+  grid.innerHTML="";
+
+
+  MONDAY_ORDER.forEach(
+    (name,idx)=>{
+
+      const d=
+        addDays(
+          monday,
+          idx
+        );
+
+
+      const meta=
+        metaSet[name];
+
+
+      const card=
+        document.createElement("article");
+
+
+      card.className=
+        "day-card"
+        +
+        (
+          sameDate(d,now)
+          ?
+          " today"
+          :
+          ""
+        );
+
+
+      card.innerHTML=`
+
+        <div class="day-card-head">
+
+          <div>
+
+            <div class="day-name">
+              ${name.slice(0,3).toUpperCase()}
+            </div>
+
+            <div class="day-date">
+              ${
+                d.toLocaleDateString(
+                  [],
+                  {
+                    month:"short",
+                    day:"numeric"
+                  }
+                )
+              }
+            </div>
+
+          </div>
+
+          <div class="wake-chip">
+            ${meta.wake} wake
+          </div>
+
+        </div>
+
+        <div class="day-summary">
+          ${meta.summary}
+        </div>
+
+        <div class="mini-list">
+
+          ${
+            schedules[name]
+
+            .slice(0,7)
+
+            .map(
+              b=>`
+
+                <div class="mini-row">
+
+                  <span class="mini-time">
+                    ${fmt12(b.start)}
+                  </span>
+
+                  <span class="mini-task">
+                    ${b.name}
+                  </span>
+
+                </div>
+
+              `
+            )
+
+            .join("")
+          }
+
+        </div>
+
+      `;
+
+
+      card.addEventListener(
+        "click",
+        ()=>{
+
+          selectedDay=d;
+
+          renderDay();
+
+          setView("day");
+
+        }
+      );
+
+
+      grid.appendChild(card);
+
+    }
+  );
+
 }
-let selectedDay=new Date();
+
+
+/* =====================================================
+   DAY VIEW
+   ===================================================== */
+
+let selectedDay=
+  new Date();
+
+
 function renderDay(){
-  const name=dayName(selectedDay), meta=DAY_META[name]; $("dayEyebrow").textContent=name; $("heroDay").textContent=name;
-  $("heroDate").textContent=selectedDay.toLocaleDateString([], {month:"long",day:"numeric",year:"numeric"}); $("heroSummary").textContent=meta.summary; $("heroDescription").textContent=meta.desc;
-  const now=new Date(), timeline=$("timeline"); timeline.innerHTML="";
-  SCHEDULES[name].forEach(b=>{const row=document.createElement("div"); const isCurrent=sameDate(selectedDay,now)&&blockAt(now).block.name===b.name; row.className="timeline-row"+(isCurrent?" current":"");
-    row.innerHTML=`<div class="timeline-time">${fmt12(b.start)}</div><div class="timeline-track"><span class="timeline-dot"></span></div><div class="timeline-card"><div><div class="timeline-title">${b.name}</div><div class="timeline-category">${fmtRange(b)}</div></div><div class="category-icon">${ICONS[b.category]||"•"}</div></div>`; timeline.appendChild(row);});
+
+  const schedules=
+    currentSchedules();
+
+  const metaSet=
+    currentMeta();
+
+
+  const name=
+    dayName(selectedDay);
+
+  const meta=
+    metaSet[name];
+
+
+  $("dayEyebrow").textContent=name;
+
+  $("heroDay").textContent=name;
+
+
+  $("heroDate").textContent=
+    selectedDay.toLocaleDateString(
+      [],
+      {
+        month:"long",
+        day:"numeric",
+        year:"numeric"
+      }
+    );
+
+
+  $("heroSummary").textContent=
+    meta.summary;
+
+
+  $("heroDescription").textContent=
+    meta.desc;
+
+
+  const now=
+    new Date();
+
+
+  const timeline=
+    $("timeline");
+
+
+  timeline.innerHTML="";
+
+
+  schedules[name].forEach(
+    b=>{
+
+      const row=
+        document.createElement("div");
+
+
+      const isCurrent=
+        sameDate(
+          selectedDay,
+          now
+        )
+        &&
+        blockAt(now).block.name
+        ===
+        b.name;
+
+
+      row.className=
+        "timeline-row"
+        +
+        (
+          isCurrent
+          ?
+          " current"
+          :
+          ""
+        );
+
+
+      row.innerHTML=`
+
+        <div class="timeline-time">
+          ${fmt12(b.start)}
+        </div>
+
+        <div class="timeline-track">
+          <span class="timeline-dot"></span>
+        </div>
+
+        <div class="timeline-card">
+
+          <div>
+
+            <div class="timeline-title">
+              ${b.name}
+            </div>
+
+            <div class="timeline-category">
+              ${fmtRange(b)}
+            </div>
+
+          </div>
+
+          <div class="category-icon">
+            ${ICONS[b.category]||"•"}
+          </div>
+
+        </div>
+
+      `;
+
+
+      timeline.appendChild(row);
+
+    }
+  );
+
 }
+
+
+/* =====================================================
+   NOW VIEW
+   ===================================================== */
+
 function renderNow(){
-  const now=new Date(), cur=blockAt(now), b=cur.block, next=nextRealBlock(now,cur), pr=progressFor(now,b);
-  $("nowDay").textContent=cur.day; $("nowTitle").textContent=b.name; $("nowRange").textContent=fmtRange(b);
-  $("progressFill").style.width=`${pr.pct}%`; $("remainingText").textContent=formatLeft(pr.left); $("nextTitle").textContent=next.name; $("nextRange").textContent=fmtRange(next);
-  $("nowBg").style.backgroundImage=`url("${BACKGROUNDS[b.category]||BACKGROUNDS.Free}")`; $("liveClock").textContent=now.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}); $("liveDate").textContent=now.toLocaleDateString([], {weekday:"short",month:"short",day:"numeric"});
+
+  const now=
+    new Date();
+
+
+  const cur=
+    blockAt(now);
+
+
+  const b=
+    cur.block;
+
+
+  const next=
+    nextRealBlock(
+      now,
+      cur
+    );
+
+
+  const pr=
+    progressFor(
+      now,
+      b
+    );
+
+
+  $("nowDay").textContent=
+    cur.day;
+
+
+  $("nowTitle").textContent=
+    b.name;
+
+
+  $("nowRange").textContent=
+    fmtRange(b);
+
+
+  $("progressFill").style.width=
+    `${pr.pct}%`;
+
+
+  $("remainingText").textContent=
+    formatLeft(pr.left);
+
+
+  $("nextTitle").textContent=
+    next.name;
+
+
+  $("nextRange").textContent=
+    fmtRange(next);
+
+
+  $("nowBg").style.backgroundImage=
+    `url("${
+      BACKGROUNDS[b.category]
+      ||
+      BACKGROUNDS.Free
+    }")`;
+
+
+  $("liveClock").textContent=
+    now.toLocaleTimeString(
+      [],
+      {
+        hour:"numeric",
+        minute:"2-digit"
+      }
+    );
+
+
+  $("liveDate").textContent=
+    now.toLocaleDateString(
+      [],
+      {
+        weekday:"short",
+        month:"short",
+        day:"numeric"
+      }
+    );
+
 }
+
+
+/* =====================================================
+   VIEW SWITCHING
+   ===================================================== */
+
 function setView(name){
-  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active")); document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===name)); $(`${name}View`).classList.add("active");
-  localStorage.setItem("timedash-view",name); if(name==="week") renderWeek(); if(name==="day") renderDay(); if(name==="now") renderNow();
+
+  document
+    .querySelectorAll(".view")
+    .forEach(
+      v=>
+        v.classList.remove("active")
+    );
+
+
+  document
+    .querySelectorAll("[data-view]")
+    .forEach(
+      b=>
+        b.classList.toggle(
+          "active",
+          b.dataset.view===name
+        )
+    );
+
+
+  $(`${name}View`)
+    .classList
+    .add("active");
+
+
+  localStorage.setItem(
+    "timedash-view",
+    name
+  );
+
+
+  if(name==="week"){
+    renderWeek();
+  }
+
+  if(name==="day"){
+    renderDay();
+  }
+
+  if(name==="now"){
+    renderNow();
+  }
+
 }
-document.querySelectorAll("[data-view]").forEach(btn=>btn.addEventListener("click",()=>setView(btn.dataset.view)));
-$("prevDay").addEventListener("click",()=>{selectedDay=addDays(selectedDay,-1);renderDay();});
-$("nextDay").addEventListener("click",()=>{selectedDay=addDays(selectedDay,1);renderDay();});
-$("todayBtn").addEventListener("click",()=>{selectedDay=new Date();renderDay();});
+
+
+/* =====================================================
+   NORMAL / SUB MODE
+   ===================================================== */
+
+function applyMode(mode){
+
+  activeMode=
+    mode==="sub"
+    ?
+    "sub"
+    :
+    "normal";
+
+
+  localStorage.setItem(
+    "timedash-mode",
+    activeMode
+  );
+
+
+  $("normalModeBtn")
+    .classList
+    .toggle(
+      "active",
+      activeMode==="normal"
+    );
+
+
+  $("subModeBtn")
+    .classList
+    .toggle(
+      "active",
+      activeMode==="sub"
+    );
+
+
+  renderWeek();
+
+  renderDay();
+
+  renderNow();
+
+}
+
+
+$("normalModeBtn")
+  .addEventListener(
+    "click",
+    ()=>applyMode("normal")
+  );
+
+
+$("subModeBtn")
+  .addEventListener(
+    "click",
+    ()=>applyMode("sub")
+  );
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+document
+  .querySelectorAll("[data-view]")
+  .forEach(
+    btn=>
+      btn.addEventListener(
+        "click",
+        ()=>setView(
+          btn.dataset.view
+        )
+      )
+  );
+
+
+$("prevDay")
+  .addEventListener(
+    "click",
+    ()=>{
+
+      selectedDay=
+        addDays(
+          selectedDay,
+          -1
+        );
+
+      renderDay();
+
+    }
+  );
+
+
+$("nextDay")
+  .addEventListener(
+    "click",
+    ()=>{
+
+      selectedDay=
+        addDays(
+          selectedDay,
+          1
+        );
+
+      renderDay();
+
+    }
+  );
+
+
+$("todayBtn")
+  .addEventListener(
+    "click",
+    ()=>{
+
+      selectedDay=
+        new Date();
+
+      renderDay();
+
+    }
+  );
+
+
+/* =====================================================
+   THEME
+   ===================================================== */
+
 function applyTheme(theme){
-  document.body.classList.toggle("light",theme==="light"); localStorage.setItem("timedash-theme",theme); document.querySelector('meta[name="theme-color"]').setAttribute("content",theme==="light"?"#f5f0e7":"#0a0b0d");
-  $("themeIcon").innerHTML = theme==="light" ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>' : '<path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>';
+
+  document.body
+    .classList
+    .toggle(
+      "light",
+      theme==="light"
+    );
+
+
+  localStorage.setItem(
+    "timedash-theme",
+    theme
+  );
+
+
+  document
+    .querySelector(
+      'meta[name="theme-color"]'
+    )
+    .setAttribute(
+      "content",
+      theme==="light"
+      ?
+      "#f5f0e7"
+      :
+      "#0a0b0d"
+    );
+
+
+  $("themeIcon").innerHTML=
+    theme==="light"
+
+    ?
+
+    '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>'
+
+    :
+
+    '<path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>';
+
 }
-$("themeToggle").addEventListener("click",()=>applyTheme(document.body.classList.contains("light")?"dark":"light"));
-const savedTheme=localStorage.getItem("timedash-theme"); if(savedTheme) applyTheme(savedTheme); else applyTheme(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
-renderWeek(); renderDay(); renderNow(); setView(localStorage.getItem("timedash-view") || "now");
-setInterval(()=>{renderNow(); if(document.getElementById("dayView").classList.contains("active")) renderDay(); if(document.getElementById("weekView").classList.contains("active")) renderWeek();},30000);
+
+
+$("themeToggle")
+  .addEventListener(
+    "click",
+    ()=>applyTheme(
+      document.body
+        .classList
+        .contains("light")
+      ?
+      "dark"
+      :
+      "light"
+    )
+  );
+
+
+const savedTheme=
+  localStorage.getItem(
+    "timedash-theme"
+  );
+
+
+if(savedTheme){
+
+  applyTheme(savedTheme);
+
+}
+
+else{
+
+  applyTheme(
+
+    window.matchMedia
+    &&
+    window.matchMedia(
+      "(prefers-color-scheme: light)"
+    ).matches
+
+    ?
+
+    "light"
+
+    :
+
+    "dark"
+
+  );
+
+}
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+applyMode(activeMode);
+
+
+setView(
+  localStorage.getItem(
+    "timedash-view"
+  )
+  ||
+  "now"
+);
+
+
+setInterval(
+  ()=>{
+
+    renderNow();
+
+
+    if(
+      document
+        .getElementById("dayView")
+        .classList
+        .contains("active")
+    ){
+
+      renderDay();
+
+    }
+
+
+    if(
+      document
+        .getElementById("weekView")
+        .classList
+        .contains("active")
+    ){
+
+      renderWeek();
+
+    }
+
+  },
+
+  30000
+);
+
 </script>
 
+
 <noscript>
-  <div style="position:fixed;left:12px;right:12px;bottom:92px;padding:12px 14px;border-radius:14px;background:#211d17;color:#f6f2ea;font:14px system-ui;z-index:999">
-    Interactive Week / Day / Now switching needs JavaScript. The Now view is shown as a static preview here.
+
+  <div style="
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:92px;
+    padding:12px 14px;
+    border-radius:14px;
+    background:#211d17;
+    color:#f6f2ea;
+    font:14px system-ui;
+    z-index:999
+  ">
+
+    Interactive Week / Day / Now switching needs JavaScript.
+    The Now view is shown as a static preview here.
+
   </div>
+
 </noscript>
+
 </body>
 </html>
