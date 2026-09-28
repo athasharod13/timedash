@@ -903,18 +903,19 @@ const SUB_SCHEDULES={
     {name:"Whole-house clean — HARD CAP",start:"08:00",end:"12:00",category:"Home"},
     {name:"Eat + transition",start:"12:00",end:"12:30",category:"Meal"},
     {name:"Laundry — full lifecycle",start:"12:30",end:"17:30",category:"Laundry"},
-    {name:"Short grocery stop",start:"17:30",end:"18:00",category:"Transition"},
-    {name:"Light food reset + put groceries away",start:"18:00",end:"19:00",category:"Cooking"},
-    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
-    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
-    {name:"Sleep",start:"20:00",end:"06:00",category:"Sleep"}
+    {name:"Short grocery stop",start:"17:30",end:"18:30",category:"Transition"},
+    {name:"Put laundry away + put groceries away",start:"18:30",end:"19:15",category:"Cooking"},
+    {name:"Break Time + Wash up",start:"19:15",end:"20:00",category:"WindDown"},
+    {name:"Food Management",start:"20:00",end:"23:00",category:"Cooking"},
+    {name:"Sleep",start:"23:00",end:"06:00",category:"Sleep"}
   ],
 
   Sunday:[
-    {name:"Wake up",start:"06:00",end:"06:30",category:"Wake"},
-    {name:"Beauty routine & Lounge",start:"06:30",end:"08:00",category:"Beauty"},
-    {name:"SAC deep work",start:"08:00",end:"14:00",category:"Work"},
-    {name:"Free afternoon / rest / life",start:"14:00",end:"18:00",category:"Free"},
+    {name:"Wake up",start:"07:00",end:"07:30",category:"Wake"},
+    {name:"Beauty routine & Lounge",start:"07:30",end:"09:00",category:"Beauty"},
+    {name:"SAC deep work",start:"09:00",end:"12:00",category:"Work"},
+    {name:"Meal Prep",start:"12:00",end:"17:00",category:"Cooking"},
+    {name:"Break Time + Wash up",start:"17:00",end:"18:00",category:"WindDown"}
     {name:"Therapy",start:"18:00",end:"19:00",category:"Free"},
     {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
     {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
@@ -964,8 +965,8 @@ const SUB_DAY_META={
 
   Sunday:{
     summary:"SAC Deep Work + Late Start",
-    desc:"Later wake-up, six focused SAC hours from 8–2, then the afternoon is yours before therapy.",
-    wake:"6:00 AM"
+    desc:"Later wake-up, 3 focused SAC hours from 9–12, then a peaceful cooking session along with therapy.",
+    wake:"7:00 AM"
   }
 
 };
