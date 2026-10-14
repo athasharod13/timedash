@@ -3572,7 +3572,133 @@ setInterval(
     tdRenderBills();
     tdRenderSub();
   }
+  // Follow the date selected in Day view.
+  function tdRenderSummary() {
+    const today = new Date();
+    const viewingDay = $("dayView").classList.contains("active");
+    const date = viewingDay ? selectedDay : today;
 
+    const monday = mondayOf(date);
+    const sunday = addDays(monday, 6);
+    const bills = tdDue(date);
+
+    const heading = document.querySelector(
+      ".bill-summary section:first-child .td-kicker"
+    );
+
+    heading.textContent = sameDate(date, today)
+      ? "Due today"
+      : "Due " + date.toLocaleDateString([], {
+          weekday: "short",
+          month: "short",
+          day: "numeric"
+        });
+
+    $("tdTodayTotal").textContent = tdMoney(tdSum(bills));
+    tdBillRows($("tdTodayRows"), bills);
+
+    $("tdWeekDates").textContent =
+      monday.toLocaleDateString([], {
+        month: "short",
+        day: "numeric"
+      }) +
+      " - " +
+      sunday.toLocaleDateString([], {
+        month: "short",
+        day: "numeric"
+      }) +
+      " · Mon-Sun";
+
+    const rows = $("tdWeekRows");
+    rows.replaceChildren();
+
+    let total = 0;
+
+    for (let index = 0; index < 7; index++) {
+      const day = addDays(monday, index);
+      const items = tdDue(day);
+
+      total += tdSum(items);
+
+      if (!items.length) continue;
+
+      const group = tdEl("div");
+
+      group.append(tdEl(
+        "div",
+        day.toLocaleDateString([], {
+          weekday: "short",
+          month: "short",
+          day: "numeric"
+        }) + " · " + tdMoney(tdSum(items)),
+        "td-day-total"
+      ));
+
+      const list = tdEl("div");
+      tdBillRows(list, items);
+
+      group.append(list);
+      rows.append(group);
+    }
+
+    if (!rows.children.length) {
+      rows.append(tdEl("p", "No bills due this week.", "td-muted"));
+    }
+
+    $("tdWeekTotal").textContent = tdMoney(total);
+  }
+
+  // Show bill names and amounts beneath the selected day's total.
+  renderDay = function() {
+    tdOriginalDay();
+
+    const blocks = currentSchedules()[dayName(selectedDay)];
+
+    $("timeline").querySelectorAll(".timeline-card").forEach((card, index) => {
+      if (tdIsGroceryBlock(blocks[index])) {
+        tdAttachControls(
+          card,
+          tdDocKey(selectedDay, blocks[index]),
+          "Add grocery list"
+        );
+      }
+    });
+
+    const previous = $("tdDayBills");
+    if (previous) previous.remove();
+
+    const bills = tdDue(selectedDay);
+    const panel = tdEl("div");
+    panel.id = "tdDayBills";
+
+    panel.append(tdEl(
+      "div",
+      "Bills due this day: " + tdMoney(tdSum(bills)),
+      "td-day-total"
+    ));
+
+    const list = tdEl("div");
+    tdBillRows(list, bills);
+    panel.append(list);
+
+    $("heroDescription").after(panel);
+
+    tdRenderSummary();
+  };
+
+  // Refresh the summary when switching views, too.
+  setView = function(name) {
+    if (!["week", "day", "now", "sub", "bills"].includes(name)) {
+      name = "now";
+    }
+
+    tdOriginalSetView(name);
+
+    if (name === "bills") tdRenderBills();
+    if (name === "sub") tdRenderSub();
+
+    tdRenderSummary();
+  };  
   tdRenderSummary();
   tdRenderBills();
   tdRenderSub();
