@@ -2164,4 +2164,1437 @@ setInterval(
 </noscript>
 
 </body>
+  <script>
+(() => {
+  if (document.getElementById("tdCalendar")) return;
+
+  /* =========================
+     DESIGN
+     ========================= */
+
+  const style = document.createElement("style");
+
+  style.textContent = `
+    :root {
+      --mint: #67efcc;
+      --lilac: #c4a0ff;
+      --amber: #efbf66;
+    }
+
+    body:not(.light) {
+      --bg: #0b0d10;
+      --panel: #15181d;
+      --panel-2: #1b1f26;
+      --line: #2b3038;
+      --text: #f2f3f5;
+      --muted: #aeb4bf;
+      --accent: #e7c27f;
+      --accent-2: #e7c27f;
+      --teal: #67efcc;
+    }
+
+    body.light {
+      --mint: #176958;
+      --lilac: #74529b;
+      --amber: #805516;
+    }
+
+    .bottom-nav {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .bottom-nav button {
+      min-width: 0;
+    }
+
+    .desktop-tabs button {
+      padding: 9px 12px;
+    }
+
+    .bill-summary {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 12px;
+      margin: 0 0 22px;
+    }
+
+    .bill-summary section {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+    }
+
+    .bill-summary section:first-child {
+      border-left: 3px solid var(--amber);
+    }
+
+    .bill-summary section:last-child {
+      border-left: 3px solid var(--mint);
+    }
+
+    .td-kicker {
+      font-size: 11px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .td-total {
+      font-family: "DM Sans", sans-serif;
+      font-size: 28px;
+      margin: 7px 0;
+    }
+
+    .td-muted {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .td-bill-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .td-bill-line:last-child {
+      border-bottom: 0;
+    }
+
+    .td-bill-line span {
+      overflow-wrap: anywhere;
+    }
+
+    .td-btn {
+      font: inherit;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      color: var(--text);
+      padding: 11px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      min-height: 44px;
+    }
+
+    .td-btn.primary {
+      background: var(--nav-active);
+      color: var(--accent-2);
+    }
+
+    .td-btn.file {
+      color: var(--mint);
+    }
+
+    .td-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+
+    .td-panel {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      margin: 14px 0;
+    }
+
+    .td-panel h3 {
+      margin-bottom: 10px;
+    }
+
+    .td-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .td-month-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .td-month-head h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .td-cal {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 5px;
+    }
+
+    .td-cal-label {
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      padding: 8px 0;
+    }
+
+    .td-date {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      min-height: 70px;
+      padding: 8px 3px;
+      background: var(--panel-2);
+      color: var(--text);
+      font: inherit;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .td-date small {
+      font-size: 11px;
+      color: var(--mint);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .td-date[aria-pressed="true"] {
+      border-color: var(--mint);
+      box-shadow: inset 0 0 0 1px var(--mint);
+    }
+
+    .td-date.today {
+      border-top: 3px solid var(--amber);
+    }
+
+    .td-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .td-form-grid label {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .td-form-grid input,
+    .td-form-grid select {
+      width: 100%;
+      font: inherit;
+      font-size: 16px;
+      padding: 12px;
+      background: var(--input);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .td-form-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .td-error {
+      color: var(--amber);
+      font-size: 13px;
+      min-height: 1.3em;
+    }
+
+    .td-attachment {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .td-attachment .td-actions {
+      margin-bottom: 0;
+    }
+
+    .timeline-card {
+      flex-wrap: wrap;
+    }
+
+    .timeline-card .td-attachment {
+      flex-basis: 100%;
+    }
+
+    .td-day-total {
+      color: var(--mint);
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    .td-notice {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .td-toast {
+      position: fixed;
+      bottom: 100px;
+      left: 20px;
+      right: 20px;
+      margin: auto;
+      max-width: 520px;
+      z-index: 150;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .td-dialog {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      width: min(95vw, 940px);
+      max-height: 90dvh;
+      padding: 18px;
+    }
+
+    .td-dialog::backdrop {
+      background: #000b;
+    }
+
+    .td-dialog iframe {
+      width: 100%;
+      height: 62dvh;
+      border: 0;
+      background: #fff;
+    }
+
+    .td-dialog h2 {
+      overflow-wrap: anywhere;
+      font-size: 20px;
+    }
+
+    .td-dialog .td-actions {
+      justify-content: flex-end;
+    }
+
+    .td-dialog a {
+      color: var(--mint);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body:not(.light) .timeline-row.current .timeline-card {
+      border-color: var(--mint);
+      border-left: 3px solid var(--mint);
+    }
+
+    body:not(.light) .hero-summary {
+      border-left: 2px solid var(--lilac);
+      padding-left: 14px;
+    }
+
+    body:not(.light) .bottom-nav button.active {
+      color: var(--mint);
+      background: #20262a;
+    }
+
+    @media (max-width: 699px) {
+      .bill-summary,
+      .td-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .bill-summary {
+        gap: 9px;
+      }
+
+      .bill-summary section {
+        padding: 13px 15px;
+      }
+
+      .td-total {
+        font-size: 24px;
+      }
+
+      .td-panel {
+        padding: 14px;
+      }
+
+      .td-cal {
+        gap: 3px;
+      }
+
+      .td-date {
+        min-height: 60px;
+        font-size: 13px;
+        border-radius: 9px;
+      }
+
+      .td-date small {
+        font-size: 10px;
+      }
+
+      .td-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .td-panel h3 {
+        font-size: 17px;
+      }
+
+      .top-actions {
+        gap: 4px;
+      }
+
+      .bottom-nav button {
+        font-size: 9px;
+      }
+
+      .td-bill-line {
+        font-size: 13px;
+      }
+    }
+
+    @media (min-width: 700px) and (max-width: 1000px) {
+      .topbar {
+        flex-wrap: wrap;
+      }
+
+      .desktop-tabs {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  `;
+
+  document.head.append(style);
+
+  /* =========================
+     NEW APP SECTIONS
+     ========================= */
+
+  document.querySelector("main").insertAdjacentHTML("afterbegin", `
+    <div class="bill-summary" aria-label="Bills overview">
+      <section>
+        <div class="td-kicker">Due today</div>
+        <div id="tdTodayTotal" class="td-total"></div>
+        <div id="tdTodayRows"></div>
+      </section>
+
+      <section>
+        <div class="td-kicker">Bills this week</div>
+        <div id="tdWeekDates" class="td-muted"></div>
+        <div id="tdWeekTotal" class="td-total"></div>
+
+        <details>
+          <summary class="td-muted">View this week's bills</summary>
+          <div id="tdWeekRows"></div>
+        </details>
+      </section>
+    </div>
+  `);
+
+  document.querySelector("main").insertAdjacentHTML("beforeend", `
+    <section class="view" id="billsView">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Bills + subscriptions</div>
+          <h1>Our bills</h1>
+          <p>Recurring dates. Every day has a total.</p>
+        </div>
+      </div>
+
+      <div class="td-actions">
+        <button class="td-btn primary" id="tdAddBill">+ Add a bill</button>
+        <button class="td-btn" id="tdImport">Import bills</button>
+        <button class="td-btn" id="tdExport">Export backup</button>
+      </div>
+
+      <div class="td-layout">
+        <div class="td-panel">
+          <div class="td-month-head">
+            <button class="td-btn" id="tdPrevMonth" aria-label="Previous month">‹</button>
+            <h2 id="tdMonthLabel"></h2>
+            <button class="td-btn" id="tdNextMonth" aria-label="Next month">›</button>
+          </div>
+
+          <div class="td-cal" id="tdCalendar"></div>
+
+          <div class="td-actions">
+            <button class="td-btn" id="tdBillToday">Today</button>
+          </div>
+
+          <div class="td-kicker">Total for this month</div>
+          <div class="td-total" id="tdMonthTotal"></div>
+        </div>
+
+        <div class="td-panel">
+          <h2 id="tdSelectedLabel"></h2>
+          <div class="td-total" id="tdSelectedTotal"></div>
+          <div id="tdSelectedBills"></div>
+        </div>
+      </div>
+
+      <div class="td-panel" id="tdEditor" hidden>
+        <h2 id="tdEditorTitle">Add a bill</h2>
+
+        <form id="tdBillForm">
+          <div class="td-form-grid">
+            <label class="full">
+              Name
+              <input id="tdBillName" maxlength="100" required autocomplete="off">
+            </label>
+
+            <label>
+              Amount ($)
+              <input id="tdBillAmount" type="number"
+                min="0" max="999999" step="0.01" required>
+            </label>
+
+            <label>
+              Repeats
+              <select id="tdBillFrequency">
+                <option value="monthly">Monthly</option>
+                <option value="weekly">Weekly</option>
+              </select>
+            </label>
+
+            <label id="tdMonthlyField">
+              Day of month
+              <input id="tdBillDay" type="number" min="1" max="31" value="1">
+            </label>
+
+            <label id="tdWeeklyField" hidden>
+              Day of week
+              <select id="tdBillWeekday">
+                <option value="0">Sunday</option>
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="td-actions">
+            <button class="td-btn primary" type="submit">Save bill</button>
+            <button class="td-btn" type="button" id="tdCancelBill">Cancel</button>
+          </div>
+
+          <div class="td-error" id="tdFormError" role="alert"></div>
+        </form>
+      </div>
+
+      <div class="td-panel">
+        <h2>Recurring bills</h2>
+        <div id="tdRecurring"></div>
+      </div>
+
+      <p class="td-notice">
+        Your default bills are included in the app code.
+        In-app edits are saved on this phone.
+        Changing the published defaults reloads the updated code list.
+        Export backup keeps a copy of your edits in Files.
+        PDFs remain on this phone.
+        Days 29-31 fall on the last day in shorter months.
+      </p>
+    </section>
+
+    <section class="view" id="subView">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">My sub plan</div>
+          <h1>Work + life</h1>
+          <p>Your calendar and paydays, together.</p>
+        </div>
+      </div>
+
+      <div class="td-panel">
+        <h2>My sub calendar</h2>
+        <div id="tdSubDocument"></div>
+      </div>
+    </section>
+  `);
+
+  document.body.insertAdjacentHTML("beforeend", `
+    <input id="tdImportPicker" type="file"
+      accept="application/json,.json" hidden>
+
+    <input id="tdPdfPicker" type="file"
+      accept="application/pdf,.pdf" hidden>
+
+    <div id="tdToast" class="td-toast" role="status" hidden></div>
+
+    <dialog id="tdPdfDialog" class="td-dialog">
+      <h2 id="tdPdfTitle">Document</h2>
+
+      <div class="td-actions">
+        <a id="tdPdfOpen" class="td-btn file"
+          target="_blank" rel="noopener">Open full screen</a>
+
+        <a id="tdPdfDownload" class="td-btn">Save a copy</a>
+
+        <button id="tdPdfClose" class="td-btn">Close</button>
+      </div>
+
+      <iframe id="tdPdfFrame" title="Attached PDF"
+        sandbox="allow-same-origin"></iframe>
+
+      <p class="td-muted">
+        If the PDF does not display, tap Open full screen.
+      </p>
+    </dialog>
+  `);
+
+  document.querySelector(".desktop-tabs").insertAdjacentHTML("beforeend", `
+    <button data-view="sub">Sub Plan</button>
+    <button data-view="bills">Bills</button>
+  `);
+
+  document.querySelector(".bottom-nav").insertAdjacentHTML("beforeend", `
+    <button data-view="sub">
+      <span aria-hidden="true">▦</span>
+      <span>SUB PLAN</span>
+    </button>
+
+    <button data-view="bills">
+      <span aria-hidden="true">$</span>
+      <span>BILLS</span>
+    </button>
+  `);
+
+  document.querySelectorAll(
+    '[data-view="sub"],[data-view="bills"]'
+  ).forEach(button => {
+    button.onclick = () => setView(button.dataset.view);
+  });
+
+  /* =========================
+     YOUR RECURRING BILLS
+     Amounts are stored in cents.
+     Example: $50 = 5000 cents.
+     ========================= */
+
+  const TD_KEY = "timedash-bills-embedded-v1";
+
+  const TD_DEFAULT_BILLS = [
+    {id:"monthly-0", name:"Rent", cents:110000, frequency:"monthly", day:1},
+    {id:"monthly-1", name:"Atha - Capital One Platinum", cents:30000, frequency:"monthly", day:3},
+    {id:"monthly-2", name:"Lancine - Chase Freedom Unlimited", cents:5900, frequency:"monthly", day:8},
+    {id:"monthly-3", name:"Lancine - American Express", cents:4000, frequency:"monthly", day:8},
+    {id:"monthly-4", name:"Peoples Gas", cents:18000, frequency:"monthly", day:9},
+    {id:"monthly-5", name:"Atha - Capital One Savor", cents:3500, frequency:"monthly", day:11},
+    {id:"monthly-6", name:"Atha - Capital One Quicksilver", cents:26000, frequency:"monthly", day:12},
+    {id:"monthly-7", name:"Atha - Chase Freedom Unlimited", cents:4000, frequency:"monthly", day:14},
+    {id:"monthly-8", name:"Atha - Chase Slate Edge", cents:16000, frequency:"monthly", day:16},
+    {id:"monthly-9", name:"Car note", cents:70000, frequency:"monthly", day:16},
+    {id:"monthly-10", name:"Phone", cents:32000, frequency:"monthly", day:18},
+    {id:"monthly-11", name:"Electric", cents:10000, frequency:"monthly", day:19},
+    {id:"monthly-12", name:"Car insurance", cents:25000, frequency:"monthly", day:25},
+    {id:"monthly-13", name:"Lancine - Chase Slate Edge", cents:4000, frequency:"monthly", day:27},
+    {id:"monthly-14", name:"Lancine - Apple Card", cents:5000, frequency:"monthly", day:28},
+    {id:"monthly-15", name:"Atha - Patreon", cents:500, frequency:"monthly", day:30},
+    {id:"monthly-16", name:"Apple subscription", cents:2500, frequency:"monthly", day:29},
+    {id:"monthly-17", name:"Second Patreon", cents:500, frequency:"monthly", day:4},
+    {id:"monthly-18", name:"ChatGPT", cents:2300, frequency:"monthly", day:1},
+    {id:"monthly-19", name:"Claude", cents:2300, frequency:"monthly", day:27},
+    {id:"monthly-20", name:"Hulu", cents:3300, frequency:"monthly", day:8},
+    {id:"monthly-21", name:"Disney+", cents:2200, frequency:"monthly", day:8},
+
+    {id:"weekly-0", name:"Groceries - Wednesday", cents:5000, frequency:"weekly", weekday:3},
+    {id:"weekly-1", name:"Groceries - Saturday", cents:7500, frequency:"weekly", weekday:6},
+    {id:"weekly-2", name:"Talkspace", cents:500, frequency:"weekly", weekday:0}
+  ];
+
+  const TD_REVISION = JSON.stringify(TD_DEFAULT_BILLS);
+
+  let tdBills = [];
+  let tdMonth = dateOnly(new Date());
+  tdMonth.setDate(1);
+
+  let tdBillDate = dateOnly(new Date());
+  let tdEditId = null;
+  let tdFiles = new Map();
+  let tdDatabase = null;
+  let tdObjectURL = null;
+
+  const tdMoney = cents => new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: cents % 100 ? 2 : 0
+  }).format(cents / 100);
+
+  const tdISO = date =>
+    `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
+
+  function tdEl(tag, text, className) {
+    const element = document.createElement(tag);
+
+    if (text !== undefined) element.textContent = text;
+    if (className) element.className = className;
+
+    return element;
+  }
+
+  function tdButton(label, action, className = "") {
+    const button = tdEl("button", label, "td-btn " + className);
+
+    button.type = "button";
+    button.addEventListener("click", action);
+
+    return button;
+  }
+
+  function tdToast(message) {
+    const element = $("tdToast");
+
+    element.textContent = message;
+    element.hidden = false;
+
+    clearTimeout(tdToast.timer);
+    tdToast.timer = setTimeout(() => element.hidden = true, 7000);
+  }
+
+  function tdValidateBills(input) {
+    if (!Array.isArray(input) || input.length > 500) {
+      throw Error("Choose a bill backup with at most 500 entries.");
+    }
+
+    const ids = new Set();
+
+    return input.map((bill, index) => {
+      if (
+        !bill ||
+        typeof bill.name !== "string" ||
+        !bill.name.trim() ||
+        bill.name.length > 100 ||
+        !Number.isSafeInteger(bill.cents) ||
+        bill.cents < 0 ||
+        bill.cents > 99999900 ||
+        !["monthly", "weekly"].includes(bill.frequency)
+      ) {
+        throw Error("An entry has an invalid name, amount, or recurrence.");
+      }
+
+      if (
+        bill.frequency === "monthly" &&
+        (!Number.isInteger(bill.day) || bill.day < 1 || bill.day > 31)
+      ) {
+        throw Error("Monthly days must be 1-31.");
+      }
+
+      if (
+        bill.frequency === "weekly" &&
+        (!Number.isInteger(bill.weekday) || bill.weekday < 0 || bill.weekday > 6)
+      ) {
+        throw Error("Weekly days must be Sunday-Saturday.");
+      }
+
+      const id = typeof bill.id === "string" && bill.id.length < 120
+        ? bill.id
+        : `bill-${Date.now()}-${index}`;
+
+      if (ids.has(id)) throw Error("Duplicate bill identifiers in this backup.");
+      ids.add(id);
+
+      return {
+        id,
+        name: bill.name.trim(),
+        cents: bill.cents,
+        frequency: bill.frequency,
+        ...(bill.frequency === "monthly"
+          ? {day: bill.day}
+          : {weekday: bill.weekday})
+      };
+    });
+  }
+
+  tdBills = tdValidateBills(TD_DEFAULT_BILLS);
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(TD_KEY) || "null");
+
+    if (saved && saved.revision === TD_REVISION) {
+      tdBills = tdValidateBills(saved.bills);
+    }
+  } catch (error) {
+    setTimeout(() => tdToast(
+      "Bill data could not be loaded. Import a backup to restore your edits."
+    ), 100);
+  }
+
+  function tdDue(date, bills = tdBills) {
+    return bills.filter(bill => {
+      if (bill.frequency === "weekly") {
+        return date.getDay() === bill.weekday;
+      }
+
+      const lastDay = new Date(
+        date.getFullYear(),
+        date.getMonth() + 1,
+        0
+      ).getDate();
+
+      return date.getDate() === Math.min(bill.day, lastDay);
+    });
+  }
+
+  function tdSum(bills) {
+    return bills.reduce((total, bill) => total + bill.cents, 0);
+  }
+
+  function tdSave(bills) {
+    localStorage.setItem(TD_KEY, JSON.stringify({
+      revision: TD_REVISION,
+      bills
+    }));
+
+    tdBills = bills;
+    tdRefresh();
+  }
+
+  function tdBillRows(container, bills, emptyText = "No bills due.") {
+    container.replaceChildren();
+
+    if (!bills.length) {
+      container.append(tdEl("p", emptyText, "td-muted"));
+      return;
+    }
+
+    for (const bill of bills) {
+      const row = tdEl("div", undefined, "td-bill-line");
+
+      row.append(
+        tdEl("span", bill.name),
+        tdEl("strong", tdMoney(bill.cents))
+      );
+
+      container.append(row);
+    }
+  }
+
+  /* =========================
+     TODAY + MONDAY-SUNDAY
+     ========================= */
+
+  function tdRenderSummary() {
+    const today = new Date();
+    const monday = mondayOf(today);
+    const sunday = addDays(monday, 6);
+    const todayBills = tdDue(today);
+
+    $("tdTodayTotal").textContent = tdMoney(tdSum(todayBills));
+    tdBillRows($("tdTodayRows"), todayBills);
+
+    $("tdWeekDates").textContent =
+      `${monday.toLocaleDateString([], {month:"short", day:"numeric"})}` +
+      ` - ${sunday.toLocaleDateString([], {month:"short", day:"numeric"})}` +
+      " · Mon-Sun";
+
+    const rows = $("tdWeekRows");
+    rows.replaceChildren();
+
+    let total = 0;
+
+    for (let index = 0; index < 7; index++) {
+      const date = addDays(monday, index);
+      const bills = tdDue(date);
+
+      total += tdSum(bills);
+
+      if (bills.length) {
+        const group = tdEl("div");
+
+        group.append(tdEl(
+          "div",
+          `${date.toLocaleDateString([], {
+            weekday:"short",
+            month:"short",
+            day:"numeric"
+          })} · ${tdMoney(tdSum(bills))}`,
+          "td-day-total"
+        ));
+
+        const list = tdEl("div");
+        tdBillRows(list, bills);
+
+        group.append(list);
+        rows.append(group);
+      }
+    }
+
+    if (!rows.children.length) {
+      rows.append(tdEl("p", "No bills entered for this week.", "td-muted"));
+    }
+
+    $("tdWeekTotal").textContent = tdMoney(total);
+  }
+
+  /* =========================
+     BILL CALENDAR
+     ========================= */
+
+  function tdRenderBills() {
+    $("tdMonthLabel").textContent = tdMonth.toLocaleDateString([], {
+      month: "long",
+      year: "numeric"
+    });
+
+    const grid = $("tdCalendar");
+    grid.replaceChildren();
+
+    for (const day of ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]) {
+      grid.append(tdEl("div", day, "td-cal-label"));
+    }
+
+    const offset = (tdMonth.getDay() + 6) % 7;
+
+    for (let index = 0; index < offset; index++) {
+      grid.append(tdEl("span"));
+    }
+
+    const daysInMonth = new Date(
+      tdMonth.getFullYear(),
+      tdMonth.getMonth() + 1,
+      0
+    ).getDate();
+
+    let monthTotal = 0;
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const date = new Date(
+        tdMonth.getFullYear(),
+        tdMonth.getMonth(),
+        day
+      );
+
+      const total = tdSum(tdDue(date));
+      monthTotal += total;
+
+      const button = tdButton("", () => {
+        tdBillDate = date;
+        tdRenderBills();
+      }, "td-date");
+
+      button.append(
+        tdEl("span", String(day)),
+        tdEl("small", tdMoney(total))
+      );
+
+      button.setAttribute(
+        "aria-pressed",
+        String(sameDate(date, tdBillDate))
+      );
+
+      button.setAttribute(
+        "aria-label",
+        `${date.toLocaleDateString([], {
+          month:"long",
+          day:"numeric"
+        })}: ${tdMoney(total)} due`
+      );
+
+      if (sameDate(date, new Date())) button.classList.add("today");
+
+      grid.append(button);
+    }
+
+    $("tdMonthTotal").textContent = tdMoney(monthTotal);
+
+    $("tdSelectedLabel").textContent = tdBillDate.toLocaleDateString([], {
+      weekday: "long",
+      month: "long",
+      day: "numeric"
+    });
+
+    const selectedBills = tdDue(tdBillDate);
+
+    $("tdSelectedTotal").textContent = tdMoney(tdSum(selectedBills));
+    tdBillRows($("tdSelectedBills"), selectedBills);
+
+    const recurring = $("tdRecurring");
+    recurring.replaceChildren();
+
+    if (!tdBills.length) {
+      recurring.append(tdEl("p", "Add your first bill.", "td-muted"));
+    }
+
+    const sortedBills = [...tdBills].sort((a, b) =>
+      (a.day ?? 40) - (b.day ?? 40) || a.name.localeCompare(b.name)
+    );
+
+    for (const bill of sortedBills) {
+      const row = tdEl("div", undefined, "td-bill-line");
+      const info = tdEl("div");
+
+      const recurrence = bill.frequency === "monthly"
+        ? `Monthly on day ${bill.day}`
+        : `Every ${DAY_NAMES[bill.weekday]}`;
+
+      info.append(
+        tdEl("strong", bill.name),
+        tdEl("div", `${tdMoney(bill.cents)} · ${recurrence}`, "td-muted")
+      );
+
+      const actions = tdEl("div", undefined, "td-actions");
+
+      actions.append(
+        tdButton("Edit", () => tdEditBill(bill)),
+        tdButton("Delete", () => {
+          if (!confirm(`Delete ${bill.name} from all future dates?`)) return;
+
+          try {
+            tdSave(tdBills.filter(item => item.id !== bill.id));
+          } catch (error) {
+            tdToast("Could not save. Your previous bill list is unchanged.");
+          }
+        })
+      );
+
+      row.append(info, actions);
+      recurring.append(row);
+    }
+  }
+
+  /* =========================
+     ADD / EDIT BILLS
+     ========================= */
+
+  function tdEditBill(bill = null) {
+    tdEditId = bill?.id ?? null;
+
+    $("tdEditor").hidden = false;
+    $("tdEditorTitle").textContent = bill ? "Edit bill" : "Add a bill";
+    $("tdBillName").value = bill?.name ?? "";
+    $("tdBillAmount").value = bill ? (bill.cents / 100).toFixed(2) : "";
+    $("tdBillFrequency").value = bill?.frequency ?? "monthly";
+    $("tdBillDay").value = bill?.day ?? 1;
+    $("tdBillWeekday").value = bill?.weekday ?? 0;
+    $("tdFormError").textContent = "";
+
+    tdToggleFrequency();
+
+    $("tdEditor").scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    $("tdBillName").focus({preventScroll:true});
+  }
+
+  function tdToggleFrequency() {
+    const weekly = $("tdBillFrequency").value === "weekly";
+
+    $("tdWeeklyField").hidden = !weekly;
+    $("tdMonthlyField").hidden = weekly;
+    $("tdBillDay").disabled = weekly;
+    $("tdBillWeekday").disabled = !weekly;
+  }
+
+  $("tdBillFrequency").addEventListener("change", tdToggleFrequency);
+  $("tdAddBill").onclick = () => tdEditBill();
+  $("tdCancelBill").onclick = () => $("tdEditor").hidden = true;
+
+  $("tdBillForm").onsubmit = event => {
+    event.preventDefault();
+
+    try {
+      const bill = {
+        id: tdEditId ?? `bill-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+        name: $("tdBillName").value.trim(),
+        cents: Math.round(Number($("tdBillAmount").value) * 100),
+        frequency: $("tdBillFrequency").value,
+        day: Number($("tdBillDay").value),
+        weekday: Number($("tdBillWeekday").value)
+      };
+
+      const validated = tdValidateBills([bill])[0];
+
+      tdSave(tdEditId
+        ? tdBills.map(item => item.id === tdEditId ? validated : item)
+        : [...tdBills, validated]
+      );
+
+      $("tdEditor").hidden = true;
+      tdToast("Bill saved on this phone.");
+    } catch (error) {
+      $("tdFormError").textContent = error.message;
+    }
+  };
+
+  $("tdPrevMonth").onclick = () => {
+    tdMonth.setMonth(tdMonth.getMonth() - 1);
+    tdRenderBills();
+  };
+
+  $("tdNextMonth").onclick = () => {
+    tdMonth.setMonth(tdMonth.getMonth() + 1);
+    tdRenderBills();
+  };
+
+  $("tdBillToday").onclick = () => {
+    tdBillDate = dateOnly(new Date());
+
+    tdMonth = new Date(
+      tdBillDate.getFullYear(),
+      tdBillDate.getMonth(),
+      1
+    );
+
+    tdRenderBills();
+  };
+
+  /* =========================
+     OPTIONAL BILL BACKUPS
+     ========================= */
+
+  $("tdImport").onclick = () => $("tdImportPicker").click();
+
+  $("tdImportPicker").onchange = async event => {
+    const file = event.target.files[0];
+    event.target.value = "";
+
+    if (!file) return;
+
+    try {
+      if (file.size > 1000000) {
+        throw Error("Choose a JSON bill backup smaller than 1 MB.");
+      }
+
+      const data = JSON.parse(await file.text());
+      const bills = tdValidateBills(data.bills ?? data);
+
+      if (
+        tdBills.length &&
+        !confirm("Replace the current bill list with this backup?")
+      ) return;
+
+      tdSave(bills);
+      tdToast(`${bills.length} recurring entries imported.`);
+    } catch (error) {
+      tdToast("Import failed: " + error.message);
+    }
+  };
+
+  $("tdExport").onclick = () => {
+    const blob = new Blob([
+      JSON.stringify({version:1, bills:tdBills}, null, 2)
+    ], {type:"application/json"});
+
+    const url = URL.createObjectURL(blob);
+    const link = tdEl("a");
+
+    link.href = url;
+    link.download = "TimeDash-bills-backup.json";
+    link.click();
+
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  };
+
+  /* =========================
+     PDF STORAGE ON YOUR PHONE
+     ========================= */
+
+  function tdOpenDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open("timedash-private-documents", 1);
+
+      request.onupgradeneeded = () => {
+        request.result.createObjectStore("pdfs", {keyPath:"key"});
+      };
+
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  function tdDBAction(mode, action) {
+    return new Promise((resolve, reject) => {
+      if (!tdDatabase) {
+        reject(Error("Document storage is unavailable in this browser."));
+        return;
+      }
+
+      const transaction = tdDatabase.transaction("pdfs", mode);
+      const request = action(transaction.objectStore("pdfs"));
+
+      let result;
+
+      request.onsuccess = () => result = request.result;
+      transaction.oncomplete = () => resolve(result);
+      transaction.onerror = () => reject(transaction.error);
+      transaction.onabort = () => reject(
+        transaction.error || Error("Document save was interrupted.")
+      );
+    });
+  }
+
+  function tdDocKey(date, block) {
+    return `${activeMode}|${tdISO(date)}|${block.start}|${block.name}`;
+  }
+
+  function tdShowPDF(key) {
+    const documentFile = tdFiles.get(key);
+    if (!documentFile) return;
+
+    if (tdObjectURL) URL.revokeObjectURL(tdObjectURL);
+
+    tdObjectURL = URL.createObjectURL(documentFile.blob);
+
+    $("tdPdfTitle").textContent = documentFile.name;
+    $("tdPdfFrame").src = tdObjectURL;
+    $("tdPdfOpen").href = tdObjectURL;
+    $("tdPdfDownload").href = tdObjectURL;
+    $("tdPdfDownload").download = documentFile.name;
+
+    $("tdPdfDialog").showModal();
+  }
+
+  let tdUploadKey = null;
+
+  function tdPickPDF(key) {
+    tdUploadKey = key;
+    $("tdPdfPicker").click();
+  }
+
+  $("tdPdfPicker").onchange = async event => {
+    const file = event.target.files[0];
+    const key = tdUploadKey;
+
+    event.target.value = "";
+
+    if (!file || !key) return;
+
+    try {
+      if (file.size > 25 * 1024 * 1024) {
+        throw Error("Please choose a PDF smaller than 25 MB.");
+      }
+
+      const signature = await file.slice(0, 5).text();
+
+      if (signature !== "%PDF-") {
+        throw Error("This file is not a PDF.");
+      }
+
+      const documentFile = {
+        key,
+        name: file.name,
+        blob: file,
+        type: "application/pdf"
+      };
+
+      await tdDBAction("readwrite", store => store.put(documentFile));
+      tdFiles.set(key, documentFile);
+
+      if (navigator.storage?.persist) {
+        navigator.storage.persist().catch(() => {});
+      }
+
+      tdRefresh();
+      tdToast("PDF saved on this phone.");
+    } catch (error) {
+      tdToast("PDF was not saved: " + error.message);
+    }
+  };
+
+  function tdAttachControls(container, key, label = "Attach PDF") {
+    const documentFile = tdFiles.get(key);
+    const area = tdEl("div", undefined, "td-attachment");
+    const actions = tdEl("div", undefined, "td-actions");
+
+    if (documentFile) {
+      area.append(tdEl("div", documentFile.name, "td-muted"));
+
+      actions.append(
+        tdButton(
+          key === "global|sub-plan" ? "Open PDF" : "Open grocery list",
+          () => tdShowPDF(key),
+          "file"
+        ),
+
+        tdButton("Replace", () => tdPickPDF(key)),
+
+        tdButton("Remove", async () => {
+          if (!confirm("Remove this attachment from this phone?")) return;
+
+          try {
+            await tdDBAction("readwrite", store => store.delete(key));
+            tdFiles.delete(key);
+            tdRefresh();
+          } catch (error) {
+            tdToast("Could not remove the attachment.");
+          }
+        })
+      );
+    } else {
+      actions.append(tdButton(label, () => tdPickPDF(key), "file"));
+    }
+
+    area.append(actions);
+    container.append(area);
+  }
+
+  $("tdPdfClose").onclick = () => $("tdPdfDialog").close();
+
+  $("tdPdfDialog").addEventListener("close", () => {
+    $("tdPdfFrame").removeAttribute("src");
+
+    if (tdObjectURL) {
+      URL.revokeObjectURL(tdObjectURL);
+      tdObjectURL = null;
+    }
+  });
+
+  /* =========================
+     CONNECT TO YOUR SCHEDULE
+     ========================= */
+
+  function tdIsGroceryBlock(block) {
+    return /\bgrocery\s+(trip|stop|shopping)\b/i.test(block.name);
+  }
+
+  const tdOriginalDay = renderDay;
+  const tdOriginalWeek = renderWeek;
+  const tdOriginalNow = renderNow;
+  const tdOriginalSetView = setView;
+
+  renderDay = function() {
+    tdOriginalDay();
+
+    const blocks = currentSchedules()[dayName(selectedDay)];
+
+    $("timeline").querySelectorAll(".timeline-card").forEach((card, index) => {
+      if (tdIsGroceryBlock(blocks[index])) {
+        tdAttachControls(
+          card,
+          tdDocKey(selectedDay, blocks[index]),
+          "Add grocery list"
+        );
+      }
+    });
+
+    const previous = $("tdDayBills");
+    if (previous) previous.remove();
+
+    const total = tdEl(
+      "div",
+      `Bills due this day: ${tdMoney(tdSum(tdDue(selectedDay)))}`,
+      "td-day-total"
+    );
+
+    total.id = "tdDayBills";
+    $("heroDescription").after(total);
+  };
+
+  renderWeek = function() {
+    tdOriginalWeek();
+
+    const monday = mondayOf(new Date());
+
+    $("weekGrid").querySelectorAll(".day-card").forEach((card, index) => {
+      card.append(tdEl(
+        "div",
+        `Bills: ${tdMoney(tdSum(tdDue(addDays(monday, index))))}`,
+        "td-day-total"
+      ));
+    });
+  };
+
+  renderNow = function() {
+    tdOriginalNow();
+
+    const previous = $("tdNowDoc");
+    if (previous) previous.remove();
+
+    const now = new Date();
+    const current = blockAt(now);
+
+    const date = current.source === "previous"
+      ? addDays(now, -1)
+      : now;
+
+    const container = tdEl("div");
+    container.id = "tdNowDoc";
+
+    if (!current.synthetic && tdIsGroceryBlock(current.block)) {
+      tdAttachControls(
+        container,
+        tdDocKey(date, current.block),
+        "Add grocery list"
+      );
+    }
+
+    $("nowRange").after(container);
+    tdRenderSummary();
+  };
+
+  setView = function(name) {
+    if (!["week","day","now","sub","bills"].includes(name)) {
+      name = "now";
+    }
+
+    tdOriginalSetView(name);
+
+    if (name === "bills") tdRenderBills();
+    if (name === "sub") tdRenderSub();
+  };
+
+  function tdRenderSub() {
+    const container = $("tdSubDocument");
+    container.replaceChildren();
+
+    tdAttachControls(
+      container,
+      "global|sub-plan",
+      "Attach my sub plan PDF"
+    );
+
+    container.append(tdEl(
+      "p",
+      "Keep your current work calendar here. Replace it whenever your plan changes.",
+      "td-muted"
+    ));
+  }
+
+  function tdRefresh() {
+    renderDay();
+    renderWeek();
+    renderNow();
+    tdRenderBills();
+    tdRenderSub();
+  }
+
+  tdRenderSummary();
+  tdRenderBills();
+  tdRenderSub();
+
+  tdOpenDB().then(async database => {
+    tdDatabase = database;
+
+    const documents = await tdDBAction(
+      "readonly",
+      store => store.getAll()
+    );
+
+    tdFiles = new Map(documents.map(item => [item.key, item]));
+    tdRefresh();
+  }).catch(() => {
+    tdToast(
+      "PDF storage is unavailable. Keep documents in Files and use a regular browser session."
+    );
+  });
+
+  applyMode(activeMode);
+  setView(localStorage.getItem("timedash-view") || "now");
+})();
+</script>
 </html>
