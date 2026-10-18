@@ -825,18 +825,15 @@ const NORMAL_DAY_META={
 const SUB_SCHEDULES={
 
   Monday:[
-    {name:"Wake up + lounge",start:"04:00",end:"04:30",category:"Wake"},
-    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"05:30",category:"Beauty"},
-    {name:"Arms workout",start:"06:00",end:"07:00",category:"Exercise"},
-    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:00",end:"07:30",category:"Transition"},
-    {name:"Commute / arrive at nearby school",start:"07:30",end:"08:30",category:"Transition"},
-    {name:"CPS substitute assignment — close + 8:30 start",start:"08:30",end:"15:45",category:"Work"},
-    {name:"Commute home",start:"15:45",end:"16:15",category:"Transition"},
-    {name:"Dinner + decompress",start:"16:15",end:"17:00",category:"Meal"},
-    {name:"SAC focused work",start:"17:00",end:"19:00",category:"Work"},
-    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
-    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
-    {name:"Sleep",start:"20:00",end:"04:00",category:"Sleep"}
+    {name:"Wake up",start:"04:00",end:"04:30",category:"Wake"},
+    {name:"Beauty routine",start:"04:30",end:"06:00",category:"Beauty"},
+    {name:"Legs workout",start:"06:00",end:"07:30",category:"Exercise"},
+    {name:"Transition",start:"07:30",end:"08:00",category:"Transition"},
+    {name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},
+    {name:"Free time",start:"16:00",end:"18:30",category:"Free"},
+    {name:"Set Wednesday intention",start:"18:30",end:"19:00",category:"Intention"},
+    {name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"05:30",category:"Sleep"}
   ],
 
   Tuesday:[
@@ -893,10 +890,10 @@ const SUB_SCHEDULES={
     {name:"CPS substitute assignment — close + 8:30 start",start:"08:30",end:"15:45",category:"Work"},
     {name:"Commute home",start:"15:45",end:"16:15",category:"Transition"},
     {name:"Dinner + decompress",start:"16:15",end:"17:00",category:"Meal"},
-    {name:"Food Management",start:"17:00",end:"19:00",category:"Meal"},
-    {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
-    {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
-    {name:"Sleep",start:"20:00",end:"06:00",category:"Sleep"}
+    {name:"Start Crockpot Meal",start:"17:00",end:"18:30",category:"Meal"},
+    {name:"Create grocery list for Sat and Wed",start:"18:30",end:"20:00",category:"Meal"},
+    {name:"In bed / settle",start:"20:00",end:"20:30",category:"WindDown"},
+    {name:"Sleep",start:"20:30",end:"06:00",category:"Sleep"}
   ],
 
   Saturday:[
@@ -931,8 +928,8 @@ const SUB_SCHEDULES={
 const SUB_DAY_META={
 
   Monday:{
-    summary:"Sub + Arms + SAC",
-    desc:"Close 8:30-start school, full morning workout, then a focused SAC block after work.",
+    summary:"SAC WORK + Arms",
+    desc:"Cafe Day with SAC WORK + Arm workout",
     wake:"4:00 AM"
   },
 
