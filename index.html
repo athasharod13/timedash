@@ -825,26 +825,30 @@ const NORMAL_DAY_META={
 const SUB_SCHEDULES={
 
   Monday:[
-    {name:"Wake up",start:"04:00",end:"04:30",category:"Wake"},
+    {name:"Wake up + lounge",start:"04:00",end:"04:30",category:"Wake"},
     {name:"Beauty routine",start:"04:30",end:"06:00",category:"Beauty"},
-    {name:"Legs workout",start:"06:00",end:"07:30",category:"Exercise"},
-    {name:"Transition",start:"07:30",end:"08:00",category:"Transition"},
-    {name:"Protected work block / CPS",start:"08:00",end:"16:00",category:"Work"},
+    {name:"Head to gym",start:"06:00",end:"06:20",category:"Transition"},
+    {name:"Legs workout",start:"06:20",end:"07:10",category:"Exercise"},
+    {name:"Head home",start:"07:10",end:"07:30",category:"Transition"},
+    {name:"Quick get ready for work",start:"07:30",end:"08:00",category:"Transition"},
+    {name:"SAC Work Block",start:"08:00",end:"16:00",category:"Work"},
     {name:"Free time",start:"16:00",end:"18:30",category:"Free"},
     {name:"Set Wednesday intention",start:"18:30",end:"19:00",category:"Intention"},
     {name:"Night Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"20:00",category:"WindDown"},
-    {name:"Sleep",start:"20:00",end:"05:30",category:"Sleep"}
+    {name:"Sleep",start:"20:00",end:"04:00",category:"Sleep"}
   ],
 
   Tuesday:[
     {name:"Wake up + lounge",start:"04:00",end:"04:30",category:"Wake"},
-    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"05:30",category:"Beauty"},
-    {name:"Legs workout",start:"06:00",end:"07:00",category:"Exercise"},
-    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:00",end:"07:30",category:"Transition"},
-    {name:"Commute / arrive at nearby school",start:"07:30",end:"08:30",category:"Transition"},
-    {name:"CPS substitute assignment — close + 8:30 start",start:"08:30",end:"15:45",category:"Work"},
+    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"06:00",category:"Beauty"},
+    {name:"Head to gym",start:"06:00",end:"06:20",category:"Transition"},
+    {name:"Legs workout",start:"06:20",end:"07:00",category:"Exercise"},
+    {name:"Head home",start:"07:00",end:"07:20",category:"Transition"},
+    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:20",end:"08:15",category:"Transition"},
+    {name:"Commute / arrive at nearby school",start:"08:15",end:"08:45",category:"Transition"},
+    {name:"CPS substitute assignment — close + 8:45 start",start:"08:45",end:"15:45",category:"Work"},
     {name:"Commute home",start:"15:45",end:"16:15",category:"Transition"},
-    {name:"Dinner + decompress",start:"16:15",end:"17:00",category:"Meal"},
+    {name:"Decompress/wash up + grab some food",start:"16:15",end:"17:00",category:"Meal"},
     {name:"SAC focused work / onboarding calls",start:"17:00",end:"19:00",category:"Work"},
     {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
     {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
@@ -868,13 +872,15 @@ const SUB_SCHEDULES={
 
   Thursday:[
     {name:"Wake up + lounge",start:"04:00",end:"04:30",category:"Wake"},
-    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"05:30",category:"Beauty"},
-    {name:"Core workout",start:"06:00",end:"07:00",category:"Exercise"},
-    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:00",end:"07:30",category:"Transition"},
-    {name:"Commute / arrive at nearby school",start:"07:30",end:"08:30",category:"Transition"},
-    {name:"CPS substitute assignment — close + 8:30 start",start:"08:30",end:"15:45",category:"Work"},
+    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"06:00",category:"Beauty"},
+    {name:"Head to gym",start:"06:00",end:"06:20",category:"Transition"},
+    {name:"Cardio workout",start:"06:20",end:"07:00",category:"Exercise"},
+    {name:"Head home",start:"07:00",end:"07:20",category:"Transition"},
+    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:20",end:"08:15",category:"Transition"},
+    {name:"Commute / arrive at nearby school",start:"08:15",end:"08:45",category:"Transition"},
+    {name:"CPS substitute assignment — close + 8:45 start",start:"08:45",end:"15:45",category:"Work"},
     {name:"Commute home",start:"15:45",end:"16:15",category:"Transition"},
-    {name:"Dinner + decompress",start:"16:15",end:"17:00",category:"Meal"},
+    {name:"Decompress/wash up + grab some food",start:"16:15",end:"17:00",category:"Meal"},
     {name:"SAC focused work + payroll systems check",start:"17:00",end:"19:00",category:"Work"},
     {name:"Evening Beauty Routine ✦ Sleeping Beauty",start:"19:00",end:"19:45",category:"WindDown"},
     {name:"In bed / settle",start:"19:45",end:"20:00",category:"WindDown"},
@@ -883,16 +889,17 @@ const SUB_SCHEDULES={
 
   Friday:[
     {name:"Wake up + lounge",start:"04:00",end:"04:30",category:"Wake"},
-    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"05:30",category:"Beauty"},
-    {name:"Cardio workout",start:"06:00",end:"07:00",category:"Exercise"},
-    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:00",end:"07:30",category:"Transition"},
-    {name:"Commute / arrive at nearby school",start:"07:30",end:"08:30",category:"Transition"},
-    {name:"CPS substitute assignment — close + 8:30 start",start:"08:30",end:"15:45",category:"Work"},
+    {name:"Morning beauty + get ready + check assignment",start:"04:30",end:"06:00",category:"Beauty"},
+    {name:"Set up mat and video",start:"06:00",end:"06:20",category:"Transition"},
+    {name:"Core workout",start:"06:20",end:"07:00",category:"Exercise"},
+    {name:"Put away mat",start:"07:00",end:"07:15",category:"Transition"},
+    {name:"Quick rinse + dress + grab breakfast/lunch",start:"07:15",end:"08:15",category:"Transition"},
+    {name:"Commute / arrive at nearby school",start:"08:15",end:"08:45",category:"Transition"},
+    {name:"CPS substitute assignment — close + 8:45 start",start:"08:45",end:"15:45",category:"Work"},
     {name:"Commute home",start:"15:45",end:"16:15",category:"Transition"},
     {name:"Dinner + decompress",start:"16:15",end:"17:00",category:"Meal"},
-    {name:"Start Crockpot Meal",start:"17:00",end:"18:30",category:"Meal"},
-    {name:"Create grocery list for Sat and Wed",start:"18:30",end:"20:00",category:"Meal"},
-    {name:"In bed / settle",start:"20:00",end:"20:30",category:"WindDown"},
+    {name:"Start Crockpot Meal",start:"17:00",end:"18:30",category:"Cooking"},
+    {name:"In bed Task! Create weekly grocery lists",start:"18:30",end:"20:00",category:"Meal"},
     {name:"Sleep",start:"20:30",end:"06:00",category:"Sleep"}
   ],
 
@@ -904,16 +911,15 @@ const SUB_SCHEDULES={
     {name:"Check Crockpot Meal",start:"12:00",end:"12:30",category:"Meal"},
     {name:"Laundry — full lifecycle",start:"12:30",end:"17:30",category:"Laundry"},
     {name:"Short grocery stop",start:"17:30",end:"18:30",category:"Transition"},
-    {name:"Put laundry away + put groceries away",start:"18:30",end:"19:15",category:"Cooking"},
-    {name:"Break Time + Wash up",start:"19:15",end:"20:00",category:"WindDown"},
-    {name:"Food Management",start:"20:00",end:"23:00",category:"Cooking"},
-    {name:"Sleep",start:"23:00",end:"06:00",category:"Sleep"}
+    {name:"Put laundry away + put groceries away",start:"18:30",end:"19:30",category:"Cooking"},
+    {name:"Wash up",start:"19:15",end:"20:00",category:"WindDown"},
+    {name:"Sleep",start:"20:00",end:"06:00",category:"Sleep"}
   ],
 
   Sunday:[
     {name:"Wake up",start:"07:00",end:"07:30",category:"Wake"},
     {name:"Beauty routine & Lounge",start:"07:30",end:"09:00",category:"Beauty"},
-    {name:"SAC deep work",start:"09:00",end:"12:00",category:"Work"},
+    {name:"REST",start:"09:00",end:"12:00",category:"WindDown"},
     {name:"Meal Prep",start:"12:00",end:"17:00",category:"Cooking"},
     {name:"Break Time + Wash up",start:"17:00",end:"18:00",category:"WindDown"},
     {name:"Therapy",start:"18:00",end:"19:00",category:"Free"},
@@ -929,7 +935,7 @@ const SUB_DAY_META={
 
   Monday:{
     summary:"SAC WORK + Arms",
-    desc:"Cafe Day with SAC WORK + Arm workout",
+    desc:"SAC WORK + Arm workout",
     wake:"4:00 AM"
   },
 
