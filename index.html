@@ -449,51 +449,7 @@
       .timeline-row{grid-template-columns:62px 16px minmax(0,1fr)}
       .timeline-time{font-size:10px}
     }
-  /* Personal documents and bills: saved only in this browser. */
-:root{--mint:#67efcc;--lilac:#c4a0ff;--amber:#efbf66}
-body:not(.light){--bg:#0b0d10;--panel:#15181d;--panel-2:#1b1f26;--line:#2b3038;--text:#f2f3f5;--muted:#aeb4bf;--accent:#e7c27f;--accent-2:#e7c27f;--teal:#67efcc}
-body.light{--mint:#176958;--lilac:#74529b;--amber:#805516}
-.bottom-nav{grid-template-columns:repeat(5,minmax(0,1fr))}.bottom-nav button{min-width:0}.desktop-tabs button{padding:9px 12px}
-.bill-summary{display:grid;grid-template-columns:1fr 1.4fr;gap:12px;margin:0 0 22px}.bill-summary section{padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}.bill-summary section:first-child{border-left:3px solid var(--amber)}.bill-summary section:last-child{border-left:3px solid var(--mint)}
-.td-kicker{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700}.td-total{font-family:'DM Sans',sans-serif;font-size:28px;margin:7px 0}.td-muted{color:var(--muted);font-size:12px;line-height:1.5}.td-bill-line{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}.td-bill-line:last-child{border-bottom:0}.td-bill-line span{overflow-wrap:anywhere}
-.td-btn{font:inherit;border:1px solid var(--line);background:var(--panel-2);color:var(--text);padding:11px 14px;border-radius:12px;cursor:pointer;min-height:44px}.td-btn.primary{background:var(--nav-active);color:var(--accent-2)}.td-btn.file{color:var(--mint)}.td-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.td-panel{padding:20px;border:1px solid var(--line);border-radius:22px;background:var(--panel);margin:14px 0}.td-panel h3{margin-bottom:10px}.td-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px}.td-month-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}.td-month-head h2{margin:0;font-size:22px}.td-cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.td-cal-label{text-align:center;color:var(--muted);font-size:11px;padding:8px 0}.td-date{border:1px solid var(--line);border-radius:12px;min-height:70px;padding:8px 3px;background:var(--panel-2);color:var(--text);font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}.td-date small{font-size:11px;color:var(--mint);font-variant-numeric:tabular-nums}.td-date[aria-pressed=true]{border-color:var(--mint);box-shadow:inset 0 0 0 1px var(--mint)}.td-date.today{border-top:3px solid var(--amber)}
-.td-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.td-form-grid label{display:flex;flex-direction:column;gap:7px}.td-form-grid input,.td-form-grid select{width:100%;font:inherit;font-size:16px;padding:12px;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:10px}.td-form-grid .full{grid-column:1/-1}.td-error{color:var(--amber);font-size:13px;min-height:1.3em}.td-attachment{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.td-attachment .td-actions{margin-bottom:0}.timeline-card{flex-wrap:wrap}.timeline-card .td-attachment{flex-basis:100%}.td-day-total{color:var(--mint);font-size:12px;margin-top:12px}.td-notice{color:var(--muted);font-size:12px;line-height:1.5}.td-toast{position:fixed;bottom:100px;left:20px;right:20px;margin:auto;max-width:520px;z-index:150;background:var(--panel-2);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
-.td-dialog{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:22px;width:min(95vw,940px);max-height:90dvh;padding:18px}.td-dialog::backdrop{background:#000b}.td-dialog iframe{width:100%;height:62dvh;border:0;background:#fff}.td-dialog h2{overflow-wrap:anywhere;font-size:20px}.td-dialog .td-actions{justify-content:flex-end}.td-dialog a{color:var(--mint)}[hidden]{display:none!important}
-body:not(.light) .timeline-row.current .timeline-card{border-color:var(--mint);border-left:3px solid var(--mint)}body:not(.light) .hero-summary{border-left:2px solid var(--lilac);padding-left:14px}body:not(.light) .bottom-nav button.active{color:var(--mint);background:#20262a}
-@media(max-width:699px){.bill-summary,.td-layout{grid-template-columns:1fr}.bill-summary{gap:9px}.bill-summary section{padding:13px 15px}.td-total{font-size:24px}.td-panel{padding:14px}.td-cal{gap:3px}.td-date{min-height:60px;font-size:13px;border-radius:9px}.td-date small{font-size:10px}.td-form-grid{grid-template-columns:1fr}.td-panel h3{font-size:17px}.top-actions{gap:4px}.bottom-nav button{font-size:9px}.td-bill-line{font-size:13px}}
-@media(min-width:700px) and (max-width:1000px){.topbar{flex-wrap:wrap}.desktop-tabs{order:3;width:100%;justify-content:center}}
-
-</style>
-<style>body{--profile-rgb:221,139,172;--profile-ink:#efbad0;--profile-glow:.10;background:radial-gradient(ellipse at 15% 0,rgba(var(--profile-rgb),var(--profile-glow)),transparent 52%),var(--bg)}
-body[data-person="lancine"]{--profile-rgb:113,167,234;--profile-ink:#accef5}
-body.light{--profile-rgb:197,93,138;--profile-ink:#974363;--profile-glow:.10}
-body.light[data-person="lancine"]{--profile-rgb:61,123,199;--profile-ink:#315f97}
-body .profile-button[aria-pressed="true"],body .mode-switch button.active{color:var(--profile-ink);background:rgba(var(--profile-rgb),.12);box-shadow:0 0 18px rgba(var(--profile-rgb),.06)}
-body .day-hero,body .timeline,body .now-card{box-shadow:0 12px 48px rgba(var(--profile-rgb),.045),var(--shadow)}
-.family-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;width:min(1540px,100%);margin:0 auto;padding:4px clamp(16px,3vw,38px) 12px}
-.profile-picker{display:flex;gap:5px;padding:4px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
-.profile-button{padding:10px 19px;min-height:44px;border:0;border-radius:12px;background:transparent;color:var(--muted);font-weight:600}
-.profile-caption{font-size:12px;color:var(--muted)}
-.family-editor{margin:0 0 18px}.family-editor summary{min-height:44px;display:flex;align-items:center;color:var(--profile-ink);font-size:13px}
-.family-editor .td-actions{margin-bottom:0}.family-editor label{font-size:13px}.family-editor input[type=checkbox]{width:20px;height:20px;accent-color:var(--profile-ink)}
-.family-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0;font-size:13px;color:var(--muted)}
-.family-line select{font:inherit;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:44px;max-width:100%}
-.family-line label{display:flex;gap:8px;align-items:center}
-.family-chip{display:inline-block;color:var(--profile-ink);background:rgba(var(--profile-rgb),.10);padding:6px 9px;border-radius:9px;font-size:12px}
-.family-message{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}
-.family-time-heading{grid-column:1/-1;font-size:12px;color:var(--profile-ink);padding:18px 4px 8px;letter-spacing:.05em}
-.sub-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.sub-stats>div{background:var(--panel-2);border-radius:13px;padding:14px;min-width:0}.sub-stats strong{display:block;font-family:'DM Sans',sans-serif;font-size:23px;margin-top:8px}.sub-stats span{color:var(--muted);font-size:12px}
-.sub-calendar .td-date{min-height:79px;min-width:0;padding:6px 1px;gap:4px}.sub-calendar .td-date small{font-size:10px;color:var(--muted);white-space:normal;line-height:1.25;text-align:center}.sub-calendar .td-date.booked{border-bottom:3px solid var(--profile-ink)}.sub-calendar .td-date.worked{border-bottom:3px solid var(--mint)}.sub-calendar .td-date.closed{opacity:.65}.sub-calendar .td-date.available small{color:var(--profile-ink)}.sub-calendar .pay-dot{color:var(--amber);font-size:10px;font-weight:700}
-.sub-date-detail{font-size:13px;line-height:1.6;color:var(--muted)}
-.sub-pay-row{padding:14px 0;border-bottom:1px solid var(--line)}.sub-pay-row:last-child{border-bottom:0}.sub-pay-row strong{display:block;margin-bottom:5px}.sub-pay-row p{margin:0;font-size:12px;color:var(--muted);line-height:1.6}.sub-pay-row .pay-amount{color:var(--profile-ink);font-size:18px}
-.sub-cps-link{color:var(--profile-ink);font-size:12px}.sub-backup-actions{display:flex;gap:8px;flex-wrap:wrap}
-.td-form-grid input[type=time],.td-form-grid input[type=date]{min-width:0}
-.day-card{outline-offset:3px}.timeline-title,.timeline-category{overflow-wrap:anywhere}.td-bill-line{flex-wrap:wrap}.bill-summary section,.td-panel{min-width:0}
-button{cursor:pointer}.family-editor[hidden]{display:none!important}
-@media(max-width:699px){.family-bar{padding:4px 14px 8px;gap:8px}.profile-caption{font-size:11px}.profile-button{padding:9px 16px}.topbar{gap:7px}.brand{gap:6px}.mode-switch button{min-height:36px}.td-layout{grid-template-columns:minmax(0,1fr)}.sub-calendar .td-date{min-height:71px}.sub-calendar .td-date small{font-size:10px}.sub-stats strong{font-size:21px}.family-bar>.family-editor{width:100%}.section-head{gap:8px}.date-controls{gap:4px}.round-btn{width:38px;height:38px}}
-@media(max-width:360px){.brand-text b{font-size:12px}.logo-mark{width:29px;height:29px}.top-actions{gap:3px}.mode-switch button{padding:6px 5px}.icon-btn{width:36px;height:36px}.sub-calendar .td-date{min-height:68px}.sub-stats{gap:6px}.td-month-head h2{font-size:18px}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style>
+  </style>
 </head>
 
 <body>
@@ -530,7 +486,6 @@ button{cursor:pointer}.family-editor[hidden]{display:none!important}
       <button data-view="week">Week</button>
       <button data-view="day">Day</button>
       <button data-view="now" class="active">Now</button>
-<button data-view="sub">Sub Plan</button><button data-view="bills">Bills</button>
     </nav>
 
     <div class="top-actions">
@@ -552,7 +507,6 @@ button{cursor:pointer}.family-editor[hidden]{display:none!important}
 
 
   <main class="main">
-<div class="bill-summary" aria-label="Bills overview"><section><div class="td-kicker">Due today</div><div id="tdTodayTotal" class="td-total"></div><div id="tdTodayRows"></div></section><section><div class="td-kicker">Bills this week</div><div id="tdWeekDates" class="td-muted"></div><div id="tdWeekTotal" class="td-total"></div><details><summary class="td-muted">View this week's bills</summary><div id="tdWeekRows"></div></details></section></div>
 
     <section class="view" id="weekView">
 
@@ -662,17 +616,6 @@ button{cursor:pointer}.family-editor[hidden]{display:none!important}
 
     </section>
 
-<section class="view" id="billsView">
- <div class="section-head"><div><div class="eyebrow">Bills + subscriptions</div><h1>Our bills</h1><p>Recurring dates. Every day has a total.</p></div></div>
- <div class="td-actions"><button class="td-btn primary" id="tdAddBill">+ Add a bill</button><button class="td-btn" id="tdImport">Import bills</button><button class="td-btn" id="tdExport">Export backup</button></div>
- <div class="td-layout"><div class="td-panel"><div class="td-month-head"><button class="td-btn" id="tdPrevMonth" aria-label="Previous month">‹</button><h2 id="tdMonthLabel"></h2><button class="td-btn" id="tdNextMonth" aria-label="Next month">›</button></div><div class="td-cal" id="tdCalendar"></div><div class="td-actions"><button class="td-btn" id="tdBillToday">Today</button></div><div class="td-kicker">Total for this month</div><div class="td-total" id="tdMonthTotal"></div></div>
- <div class="td-panel"><h2 id="tdSelectedLabel"></h2><div class="td-total" id="tdSelectedTotal"></div><div id="tdSelectedBills"></div></div></div>
- <div class="td-panel" id="tdEditor" hidden><h2 id="tdEditorTitle">Add a bill</h2><form id="tdBillForm"><div class="td-form-grid"><label class="full">Name<input id="tdBillName" maxlength="100" required autocomplete="off"></label><label>Amount ($)<input id="tdBillAmount" type="number" min="0" max="999999" step="0.01" required></label><label>Repeats<select id="tdBillFrequency"><option value="monthly">Monthly</option><option value="weekly">Weekly</option></select></label><label id="tdMonthlyField">Day of month<input id="tdBillDay" type="number" min="1" max="31" value="1"></label><label id="tdWeeklyField" hidden>Day of week<select id="tdBillWeekday"><option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select></label></div><div class="td-actions"><button class="td-btn primary" type="submit">Save bill</button><button class="td-btn" type="button" id="tdCancelBill">Cancel</button></div><div class="td-error" id="tdFormError" role="alert"></div></form></div>
- <div class="td-panel"><h2>Recurring bills</h2><div id="tdRecurring"></div></div>
- <p class="td-notice">Your default bills are included in the app code. In-app edits are saved on this phone; changing the published defaults reloads the updated code list. Export backup keeps a copy of your edits in Files. PDFs remain on this phone. Days 29-31 fall on the last day in shorter months.</p>
-</section>
-<section class="view" id="subView"><div class="section-head"><div><div class="eyebrow">My sub plan</div><h1>Work + life</h1><p>Your calendar and paydays, together.</p></div></div><div class="td-panel"><h2>My sub calendar</h2><div id="tdSubDocument"></div></div></section>
-
   </main>
 
 
@@ -704,12 +647,11 @@ button{cursor:pointer}.family-editor[hidden]{display:none!important}
       <span>NOW</span>
     </button>
 
-  <button data-view="sub"><span aria-hidden="true">▦</span><span>SUB PLAN</span></button><button data-view="bills"><span aria-hidden="true">$</span><span>BILLS</span></button></nav>
+  </nav>
 
 </div>
 
 
-<input id="tdImportPicker" type="file" accept="application/json,.json" hidden><input id="tdPdfPicker" type="file" accept="application/pdf,.pdf" hidden><div id="tdToast" class="td-toast" role="status" hidden></div><dialog id="tdPdfDialog" class="td-dialog"><h2 id="tdPdfTitle">Document</h2><div class="td-actions"><a id="tdPdfOpen" class="td-btn file" target="_blank" rel="noopener">Open full screen</a><a id="tdPdfDownload" class="td-btn">Save a copy</a><button id="tdPdfClose" class="td-btn">Close</button></div><iframe id="tdPdfFrame" title="Attached PDF" sandbox="allow-same-origin"></iframe><p class="td-muted">If the PDF does not display, tap Open full screen.</p></dialog>
 <script>
 
 const DAY_NAMES=[
@@ -2549,318 +2491,7 @@ else{
    START
    ===================================================== */
 
-/* Edit TD_DEFAULT_BILLS below to change the bills published with TimeDash.
-   Bill changes in this array take priority after a code update.
-   In-app changes persist locally while the published defaults are unchanged.
-   PDF attachments always remain local to this phone. */
-const TD_KEY='timedash-bills-embedded-v1';
-const TD_DEFAULT_BILLS=[
-  {
-    "id": "monthly-0",
-    "name": "Rent",
-    "cents": 110000,
-    "frequency": "monthly",
-    "day": 1
-  },
-  {
-    "id": "monthly-1",
-    "name": "Atha - Capital One Platinum",
-    "cents": 30000,
-    "frequency": "monthly",
-    "day": 3
-  },
-  {
-    "id": "monthly-2",
-    "name": "Lancine - Chase Freedom Unlimited",
-    "cents": 5900,
-    "frequency": "monthly",
-    "day": 8
-  },
-  {
-    "id": "monthly-3",
-    "name": "Lancine - American Express",
-    "cents": 4000,
-    "frequency": "monthly",
-    "day": 8
-  },
-  {
-    "id": "monthly-4",
-    "name": "Peoples Gas",
-    "cents": 18000,
-    "frequency": "monthly",
-    "day": 9
-  },
-  {
-    "id": "monthly-5",
-    "name": "Atha - Capital One Savor",
-    "cents": 3500,
-    "frequency": "monthly",
-    "day": 11
-  },
-  {
-    "id": "monthly-6",
-    "name": "Atha - Capital One Quicksilver",
-    "cents": 26000,
-    "frequency": "monthly",
-    "day": 12
-  },
-  {
-    "id": "monthly-7",
-    "name": "Atha - Chase Freedom Unlimited",
-    "cents": 4000,
-    "frequency": "monthly",
-    "day": 14
-  },
-  {
-    "id": "monthly-8",
-    "name": "Atha - Chase Slate Edge",
-    "cents": 16000,
-    "frequency": "monthly",
-    "day": 16
-  },
-  {
-    "id": "monthly-9",
-    "name": "Car note",
-    "cents": 70000,
-    "frequency": "monthly",
-    "day": 16
-  },
-  {
-    "id": "monthly-10",
-    "name": "Phone",
-    "cents": 32000,
-    "frequency": "monthly",
-    "day": 18
-  },
-  {
-    "id": "monthly-11",
-    "name": "Electric",
-    "cents": 10000,
-    "frequency": "monthly",
-    "day": 19
-  },
-  {
-    "id": "monthly-12",
-    "name": "Car insurance",
-    "cents": 25000,
-    "frequency": "monthly",
-    "day": 25
-  },
-  {
-    "id": "monthly-13",
-    "name": "Lancine - Chase Slate Edge",
-    "cents": 4000,
-    "frequency": "monthly",
-    "day": 27
-  },
-  {
-    "id": "monthly-14",
-    "name": "Lancine - Apple Card",
-    "cents": 5000,
-    "frequency": "monthly",
-    "day": 28
-  },
-  {
-    "id": "monthly-15",
-    "name": "Atha - Patreon",
-    "cents": 500,
-    "frequency": "monthly",
-    "day": 30
-  },
-  {
-    "id": "monthly-16",
-    "name": "Apple subscription",
-    "cents": 2500,
-    "frequency": "monthly",
-    "day": 29
-  },
-  {
-    "id": "monthly-17",
-    "name": "Second Patreon",
-    "cents": 500,
-    "frequency": "monthly",
-    "day": 4
-  },
-  {
-    "id": "monthly-18",
-    "name": "ChatGPT",
-    "cents": 2300,
-    "frequency": "monthly",
-    "day": 1
-  },
-  {
-    "id": "monthly-19",
-    "name": "Claude",
-    "cents": 2300,
-    "frequency": "monthly",
-    "day": 27
-  },
-  {
-    "id": "monthly-20",
-    "name": "Hulu",
-    "cents": 3300,
-    "frequency": "monthly",
-    "day": 8
-  },
-  {
-    "id": "monthly-21",
-    "name": "Disney+",
-    "cents": 2200,
-    "frequency": "monthly",
-    "day": 8
-  },
-  {
-    "id": "weekly-0",
-    "name": "Groceries - Wednesday",
-    "cents": 5000,
-    "frequency": "weekly",
-    "weekday": 3
-  },
-  {
-    "id": "weekly-1",
-    "name": "Groceries - Saturday",
-    "cents": 7500,
-    "frequency": "weekly",
-    "weekday": 6
-  },
-  {
-    "id": "weekly-2",
-    "name": "Talkspace",
-    "cents": 500,
-    "frequency": "weekly",
-    "weekday": 0
-  }
-];
-// Derived from the defaults so updating amounts/dates in code refreshes the app.
-const TD_REVISION=JSON.stringify(TD_DEFAULT_BILLS);
-let tdBills=[];let tdMonth=dateOnly(new Date());tdMonth.setDate(1);
-let tdBillDate=dateOnly(new Date());let tdEditId=null;let tdFiles=new Map();let tdDatabase=null;let tdObjectURL=null;
-const tdMoney=c=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:c%100?2:0}).format(c/100);
-const tdISO=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-function tdEl(tag,text,cls){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;}
-function tdButton(label,fn,cls=''){const b=tdEl('button',label,'td-btn '+cls);b.type='button';b.addEventListener('click',fn);return b;}
-function tdToast(message){const e=$('tdToast');e.textContent=message;e.hidden=false;clearTimeout(tdToast.timer);tdToast.timer=setTimeout(()=>e.hidden=true,7000);}
-function tdValidateBills(input){
- if(!Array.isArray(input)||input.length>500)throw Error('Choose a bill backup with at most 500 entries.');
- const ids=new Set();return input.map((b,i)=>{
-  if(!b||typeof b.name!=='string'||!b.name.trim()||b.name.length>100||!Number.isSafeInteger(b.cents)||b.cents<0||b.cents>99999900||!['monthly','weekly'].includes(b.frequency))throw Error('An entry has an invalid name, amount, or recurrence.');
-  if(b.frequency==='monthly'&&(!Number.isInteger(b.day)||b.day<1||b.day>31))throw Error('Monthly days must be 1-31.');
-  if(b.frequency==='weekly'&&(!Number.isInteger(b.weekday)||b.weekday<0||b.weekday>6))throw Error('Weekly days must be Sunday-Saturday.');
-  const id=typeof b.id==='string'&&b.id.length<120?b.id:`bill-${Date.now()}-${i}`;if(ids.has(id))throw Error('Duplicate bill identifiers in this backup.');ids.add(id);
-  return {id,name:b.name.trim(),cents:b.cents,frequency:b.frequency,...(b.frequency==='monthly'?{day:b.day}:{weekday:b.weekday})};
- });
-}
-tdBills=tdValidateBills(TD_DEFAULT_BILLS);
-try{const saved=JSON.parse(localStorage.getItem(TD_KEY)||'null');if(saved&&saved.revision===TD_REVISION)tdBills=tdValidateBills(saved.bills);}catch(e){setTimeout(()=>tdToast('Bill data could not be loaded. Your saved data was not overwritten; import a backup to restore it.'),100);}
-function tdDue(date,bills=tdBills){return bills.filter(b=>b.frequency==='weekly'?date.getDay()===b.weekday:date.getDate()===Math.min(b.day,new Date(date.getFullYear(),date.getMonth()+1,0).getDate()));}
-function tdSum(bills){return bills.reduce((n,b)=>n+b.cents,0);}
-function tdSave(bills){localStorage.setItem(TD_KEY,JSON.stringify({revision:TD_REVISION,bills}));tdBills=bills;tdRefresh();}
-function tdBillRows(host,bills,empty='No bills due.'){host.replaceChildren();if(!bills.length){host.append(tdEl('p',empty,'td-muted'));return;}for(const b of bills){const row=tdEl('div',undefined,'td-bill-line');row.append(tdEl('span',b.name),tdEl('strong',tdMoney(b.cents)));host.append(row);}}
-function tdRenderSummary() {
-  const today = new Date();
-  const viewingDay = $('dayView').classList.contains('active');
-  const date = viewingDay ? selectedDay : today;
-  const monday = mondayOf(date);
-  const sunday = addDays(monday, 6);
-  const bills = tdDue(date);
-  const heading = document.querySelector('.bill-summary section:first-child .td-kicker');
-  heading.textContent = sameDate(date, today)
-    ? 'Due today'
-    : 'Due ' + date.toLocaleDateString([], {weekday:'short', month:'short', day:'numeric'});
-  $('tdTodayTotal').textContent = tdMoney(tdSum(bills));
-  tdBillRows($('tdTodayRows'), bills);
-  $('tdWeekDates').textContent =
-    monday.toLocaleDateString([], {month:'short', day:'numeric'}) + ' - ' +
-    sunday.toLocaleDateString([], {month:'short', day:'numeric'}) + ' · Mon-Sun';
-  const rows = $('tdWeekRows');
-  rows.replaceChildren();
-  let total = 0;
-  for (let i = 0; i < 7; i++) {
-    const day = addDays(monday, i);
-    const items = tdDue(day);
-    total += tdSum(items);
-    if (!items.length) continue;
-    const group = tdEl('div');
-    group.append(tdEl('div', day.toLocaleDateString([], {
-      weekday:'short', month:'short', day:'numeric'
-    }) + ' · ' + tdMoney(tdSum(items)), 'td-day-total'));
-    const list = tdEl('div');
-    tdBillRows(list, items);
-    group.append(list);
-    rows.append(group);
-  }
-  if (!rows.children.length) rows.append(tdEl('p', 'No bills due this week.', 'td-muted'));
-  $('tdWeekTotal').textContent = tdMoney(total);
-}
-function tdRenderBills(){
- $('tdMonthLabel').textContent=tdMonth.toLocaleDateString([],{month:'long',year:'numeric'});const grid=$('tdCalendar');grid.replaceChildren();
- for(const day of ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'])grid.append(tdEl('div',day,'td-cal-label'));
- const offset=(tdMonth.getDay()+6)%7;for(let i=0;i<offset;i++)grid.append(tdEl('span'));
- const length=new Date(tdMonth.getFullYear(),tdMonth.getMonth()+1,0).getDate();let monthTotal=0;
- for(let n=1;n<=length;n++){const d=new Date(tdMonth.getFullYear(),tdMonth.getMonth(),n),sum=tdSum(tdDue(d));monthTotal+=sum;const b=tdButton('',()=>{tdBillDate=d;tdRenderBills();},'td-date');b.append(tdEl('span',String(n)),tdEl('small',tdMoney(sum)));b.setAttribute('aria-pressed',String(sameDate(d,tdBillDate)));b.setAttribute('aria-label',`${d.toLocaleDateString([],{month:'long',day:'numeric'})}: ${tdMoney(sum)} due`);if(sameDate(d,new Date()))b.classList.add('today');grid.append(b);}
- $('tdMonthTotal').textContent=tdMoney(monthTotal);$('tdSelectedLabel').textContent=tdBillDate.toLocaleDateString([],{weekday:'long',month:'long',day:'numeric'});const selected=tdDue(tdBillDate);$('tdSelectedTotal').textContent=tdMoney(tdSum(selected));tdBillRows($('tdSelectedBills'),selected);
- const recurring=$('tdRecurring');recurring.replaceChildren();if(!tdBills.length)recurring.append(tdEl('p','Import your private bill list or add your first bill.','td-muted'));
- for(const b of [...tdBills].sort((a,b)=>(a.day??40)-(b.day??40)||a.name.localeCompare(b.name))){const row=tdEl('div',undefined,'td-bill-line'),info=tdEl('div');info.append(tdEl('strong',b.name),tdEl('div',`${tdMoney(b.cents)} · ${b.frequency==='monthly'?`Monthly on day ${b.day}`:`Every ${DAY_NAMES[b.weekday]}`}`,'td-muted'));const actions=tdEl('div',undefined,'td-actions');actions.append(tdButton('Edit',()=>tdEditBill(b)),tdButton('Delete',()=>{if(confirm(`Delete ${b.name} from the recurring calendar (all dates)?`)){try{tdSave(tdBills.filter(x=>x.id!==b.id));}catch(e){tdToast('Could not save. Your previous bill list is unchanged.');}}}));row.append(info,actions);recurring.append(row);}
-}
-function tdEditBill(b=null){tdEditId=b?.id??null;$('tdEditor').hidden=false;$('tdEditorTitle').textContent=b?'Edit bill':'Add a bill';$('tdBillName').value=b?.name??'';$('tdBillAmount').value=b?(b.cents/100).toFixed(2):'';$('tdBillFrequency').value=b?.frequency??'monthly';$('tdBillDay').value=b?.day??1;$('tdBillWeekday').value=b?.weekday??0;$('tdFormError').textContent='';tdToggleFrequency();$('tdEditor').scrollIntoView({behavior:'smooth',block:'center'});$('tdBillName').focus({preventScroll:true});}
-function tdToggleFrequency(){const weekly=$('tdBillFrequency').value==='weekly';$('tdWeeklyField').hidden=!weekly;$('tdMonthlyField').hidden=weekly;$('tdBillDay').disabled=weekly;$('tdBillWeekday').disabled=!weekly;}
-$('tdBillFrequency').addEventListener('change',tdToggleFrequency);$('tdAddBill').onclick=()=>tdEditBill();$('tdCancelBill').onclick=()=>$('tdEditor').hidden=true;
-$('tdBillForm').onsubmit=e=>{e.preventDefault();try{const bill={id:tdEditId??`bill-${Date.now()}-${Math.random().toString(36).slice(2)}`,name:$('tdBillName').value.trim(),cents:Math.round(Number($('tdBillAmount').value)*100),frequency:$('tdBillFrequency').value,day:Number($('tdBillDay').value),weekday:Number($('tdBillWeekday').value)};const validated=tdValidateBills([bill])[0];tdSave(tdEditId?tdBills.map(b=>b.id===tdEditId?validated:b):[...tdBills,validated]);$('tdEditor').hidden=true;tdToast('Bill saved on this phone.');}catch(err){$('tdFormError').textContent=err.message;}};
-$('tdPrevMonth').onclick=()=>{tdMonth.setMonth(tdMonth.getMonth()-1);tdRenderBills();};$('tdNextMonth').onclick=()=>{tdMonth.setMonth(tdMonth.getMonth()+1);tdRenderBills();};$('tdBillToday').onclick=()=>{tdBillDate=dateOnly(new Date());tdMonth=new Date(tdBillDate.getFullYear(),tdBillDate.getMonth(),1);tdRenderBills();};
-$('tdImport').onclick=()=>$('tdImportPicker').click();
-$('tdImportPicker').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{if(f.size>1000000)throw Error('Choose a JSON bill backup smaller than 1 MB.');const data=JSON.parse(await f.text()),bills=tdValidateBills(data.bills??data);if(tdBills.length&&!confirm('Replace the current bill list with this backup?'))return;tdSave(bills);tdToast(`${bills.length} recurring entries imported on this phone.`);}catch(err){tdToast('Import failed: '+err.message);}};
-$('tdExport').onclick=()=>{const blob=new Blob([JSON.stringify({version:1,bills:tdBills},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=tdEl('a');a.href=url;a.download='TimeDash-private-bills.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),60000);};
-// IndexedDB stores PDF bytes, separate from public app code.
-function tdOpenDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open('timedash-private-documents',1);req.onupgradeneeded=()=>req.result.createObjectStore('pdfs',{keyPath:'key'});req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
-function tdDBAction(mode,action){return new Promise((resolve,reject)=>{if(!tdDatabase){reject(Error('Document storage is unavailable in this browser.'));return;}const tx=tdDatabase.transaction('pdfs',mode),req=action(tx.objectStore('pdfs'));let result;req.onsuccess=()=>result=req.result;tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||Error('Document save was interrupted.'));});}
-function tdDocKey(d,b){return `${activeMode}|${tdISO(d)}|${b.start}|${b.name}`;}
-function tdShowPDF(key){const doc=tdFiles.get(key);if(!doc)return;if(tdObjectURL)URL.revokeObjectURL(tdObjectURL);tdObjectURL=URL.createObjectURL(doc.blob);$('tdPdfTitle').textContent=doc.name;$('tdPdfFrame').src=tdObjectURL;$('tdPdfOpen').href=tdObjectURL;$('tdPdfDownload').href=tdObjectURL;$('tdPdfDownload').download=doc.name;$('tdPdfDialog').showModal();}
-let tdUploadKey=null;
-function tdPickPDF(key){tdUploadKey=key;$('tdPdfPicker').click();}
-$('tdPdfPicker').onchange=async e=>{const file=e.target.files[0],key=tdUploadKey;e.target.value='';if(!file||!key)return;try{if(file.size>25*1024*1024)throw Error('Please choose a PDF smaller than 25 MB.');const signature=await file.slice(0,5).text();if(signature!=='%PDF-')throw Error('This file is not a PDF.');const doc={key,name:file.name,blob:file,type:'application/pdf'};await tdDBAction('readwrite',s=>s.put(doc));tdFiles.set(key,doc);if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});tdRefresh();tdToast('PDF saved on this phone.');}catch(err){tdToast('PDF was not saved: '+err.message);}};
-function tdAttachControls(host,key,label='Attach PDF'){const doc=tdFiles.get(key),area=tdEl('div',undefined,'td-attachment'),actions=tdEl('div',undefined,'td-actions');if(doc){area.append(tdEl('div',doc.name,'td-muted'));actions.append(tdButton(key==='global|sub-plan'?'Open PDF':'Open grocery list',()=>tdShowPDF(key),'file'),tdButton('Replace',()=>tdPickPDF(key)),tdButton('Remove',async()=>{if(!confirm('Remove this attachment from this phone?'))return;try{await tdDBAction('readwrite',s=>s.delete(key));tdFiles.delete(key);tdRefresh();}catch(err){tdToast('Could not remove the attachment.');}}));}else actions.append(tdButton(label,()=>tdPickPDF(key),'file'));area.append(actions);host.append(area);}
-$('tdPdfClose').onclick=()=>$('tdPdfDialog').close();$('tdPdfDialog').addEventListener('close',()=>{$('tdPdfFrame').removeAttribute('src');if(tdObjectURL){URL.revokeObjectURL(tdObjectURL);tdObjectURL=null;}});
-function tdIsGroceryBlock(b){return /\bgrocery\s+(trip|stop|shopping)\b/i.test(b.name);}
-const tdOriginalDay=renderDay,tdOriginalWeek=renderWeek,tdOriginalNow=renderNow,tdOriginalSetView=setView;
-renderDay = function() {
-  tdOriginalDay();
-  const blocks = currentSchedules()[dayName(selectedDay)];
-  $('timeline').querySelectorAll('.timeline-card').forEach((card, index) => {
-    if (tdIsGroceryBlock(blocks[index])) {
-      tdAttachControls(card, tdDocKey(selectedDay, blocks[index]), 'Add grocery list');
-    }
-  });
-  const previous = $('tdDayBills');
-  if (previous) previous.remove();
-  const bills = tdDue(selectedDay);
-  const panel = tdEl('div');
-  panel.id = 'tdDayBills';
-  panel.append(tdEl('div', 'Bills due this day: ' + tdMoney(tdSum(bills)), 'td-day-total'));
-  const list = tdEl('div');
-  tdBillRows(list, bills);
-  panel.append(list);
-  $('heroDescription').after(panel);
-  tdRenderSummary();
-};
-renderWeek=function(){tdOriginalWeek();const mon=mondayOf(new Date());$('weekGrid').querySelectorAll('.day-card').forEach((card,i)=>card.append(tdEl('div',`Bills: ${tdMoney(tdSum(tdDue(addDays(mon,i))))}`,'td-day-total')));};
-renderNow=function(){tdOriginalNow();const old=$('tdNowDoc');if(old)old.remove();const now=new Date(),cur=blockAt(now),date=cur.source==='previous'?addDays(now,-1):now;const host=tdEl('div');host.id='tdNowDoc';if(!cur.synthetic&&tdIsGroceryBlock(cur.block)){const key=tdDocKey(date,cur.block);tdAttachControls(host,key,'Add grocery list');}$('nowRange').after(host);tdRenderSummary();};
-setView=function(name){if(!['week','day','now','sub','bills'].includes(name))name='now';tdOriginalSetView(name);if(name==='bills')tdRenderBills();if(name==='sub')tdRenderSub();tdRenderSummary();};
-function tdRenderSub(){const host=$('tdSubDocument');host.replaceChildren();tdAttachControls(host,'global|sub-plan','Attach my sub plan PDF');host.append(tdEl('p','Keep your current work calendar here. Replace it whenever your plan changes.','td-muted'));}
-function tdRefresh(){renderDay();renderWeek();renderNow();tdRenderBills();tdRenderSub();}
-tdRenderSummary();tdRenderBills();tdRenderSub();
-tdOpenDB().then(async db=>{tdDatabase=db;const docs=await tdDBAction('readonly',s=>s.getAll());tdFiles=new Map(docs.map(d=>[d.key,d]));tdRefresh();}).catch(()=>tdToast('PDF storage is unavailable. Keep documents in Files and use a regular browser session.'));
-
-applyMode(activeMode);
-
-
-setView(
-  localStorage.getItem(
-    "timedash-view"
-  )
-  ||
-  "now"
-);
-
+// Startup runs after the bills and family extensions are installed.
 
 setInterval(
   ()=>{
@@ -2921,139 +2552,1686 @@ setInterval(
 
 </noscript>
 
-<script>/* TimeDash family schedules + CPS sub calendar. Browser-local data only. */
+  <script>
+(() => {
+  if (document.getElementById("tdCalendar")) return;
+
+  /* =========================
+     DESIGN
+     ========================= */
+
+  const style = document.createElement("style");
+
+  style.textContent = `
+    :root {
+      --mint: #67efcc;
+      --lilac: #c4a0ff;
+      --amber: #efbf66;
+    }
+
+    body:not(.light) {
+      --bg: #0b0d10;
+      --panel: #15181d;
+      --panel-2: #1b1f26;
+      --line: #2b3038;
+      --text: #f2f3f5;
+      --muted: #aeb4bf;
+      --accent: #e7c27f;
+      --accent-2: #e7c27f;
+      --teal: #67efcc;
+    }
+
+    body.light {
+      --mint: #176958;
+      --lilac: #74529b;
+      --amber: #805516;
+    }
+
+    .bottom-nav {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .bottom-nav button {
+      min-width: 0;
+    }
+
+    .desktop-tabs button {
+      padding: 9px 12px;
+    }
+
+    .bill-summary {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 12px;
+      margin: 0 0 22px;
+    }
+
+    .bill-summary section {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+    }
+
+    .bill-summary section:first-child {
+      border-left: 3px solid var(--amber);
+    }
+
+    .bill-summary section:last-child {
+      border-left: 3px solid var(--mint);
+    }
+
+    .td-kicker {
+      font-size: 11px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .td-total {
+      font-family: "DM Sans", sans-serif;
+      font-size: 28px;
+      margin: 7px 0;
+    }
+
+    .td-muted {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .td-bill-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .td-bill-line:last-child {
+      border-bottom: 0;
+    }
+
+    .td-bill-line span {
+      overflow-wrap: anywhere;
+    }
+
+    .td-btn {
+      font: inherit;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      color: var(--text);
+      padding: 11px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      min-height: 44px;
+    }
+
+    .td-btn.primary {
+      background: var(--nav-active);
+      color: var(--accent-2);
+    }
+
+    .td-btn.file {
+      color: var(--mint);
+    }
+
+    .td-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+
+    .td-panel {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      margin: 14px 0;
+    }
+
+    .td-panel h3 {
+      margin-bottom: 10px;
+    }
+
+    .td-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .td-month-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .td-month-head h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .td-cal {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 5px;
+    }
+
+    .td-cal-label {
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      padding: 8px 0;
+    }
+
+    .td-date {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      min-height: 70px;
+      padding: 8px 3px;
+      background: var(--panel-2);
+      color: var(--text);
+      font: inherit;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .td-date small {
+      font-size: 11px;
+      color: var(--mint);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .td-date[aria-pressed="true"] {
+      border-color: var(--mint);
+      box-shadow: inset 0 0 0 1px var(--mint);
+    }
+
+    .td-date.today {
+      border-top: 3px solid var(--amber);
+    }
+
+    .td-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .td-form-grid label {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .td-form-grid input,
+    .td-form-grid select {
+      width: 100%;
+      font: inherit;
+      font-size: 16px;
+      padding: 12px;
+      background: var(--input);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .td-form-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .td-error {
+      color: var(--amber);
+      font-size: 13px;
+      min-height: 1.3em;
+    }
+
+    .td-attachment {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .td-attachment .td-actions {
+      margin-bottom: 0;
+    }
+
+    .timeline-card {
+      flex-wrap: wrap;
+    }
+
+    .timeline-card .td-attachment {
+      flex-basis: 100%;
+    }
+
+    .td-day-total {
+      color: var(--mint);
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    .td-notice {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .td-toast {
+      position: fixed;
+      bottom: 100px;
+      left: 20px;
+      right: 20px;
+      margin: auto;
+      max-width: 520px;
+      z-index: 150;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .td-dialog {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      width: min(95vw, 940px);
+      max-height: 90dvh;
+      padding: 18px;
+    }
+
+    .td-dialog::backdrop {
+      background: #000b;
+    }
+
+    .td-dialog iframe {
+      width: 100%;
+      height: 62dvh;
+      border: 0;
+      background: #fff;
+    }
+
+    .td-dialog h2 {
+      overflow-wrap: anywhere;
+      font-size: 20px;
+    }
+
+    .td-dialog .td-actions {
+      justify-content: flex-end;
+    }
+
+    .td-dialog a {
+      color: var(--mint);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body:not(.light) .timeline-row.current .timeline-card {
+      border-color: var(--mint);
+      border-left: 3px solid var(--mint);
+    }
+
+    body:not(.light) .hero-summary {
+      border-left: 2px solid var(--lilac);
+      padding-left: 14px;
+    }
+
+    body:not(.light) .bottom-nav button.active {
+      color: var(--mint);
+      background: #20262a;
+    }
+
+    @media (max-width: 699px) {
+      .bill-summary,
+      .td-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .bill-summary {
+        gap: 9px;
+      }
+
+      .bill-summary section {
+        padding: 13px 15px;
+      }
+
+      .td-total {
+        font-size: 24px;
+      }
+
+      .td-panel {
+        padding: 14px;
+      }
+
+      .td-cal {
+        gap: 3px;
+      }
+
+      .td-date {
+        min-height: 60px;
+        font-size: 13px;
+        border-radius: 9px;
+      }
+
+      .td-date small {
+        font-size: 10px;
+      }
+
+      .td-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .td-panel h3 {
+        font-size: 17px;
+      }
+
+      .top-actions {
+        gap: 4px;
+      }
+
+      .bottom-nav button {
+        font-size: 9px;
+      }
+
+      .td-bill-line {
+        font-size: 13px;
+      }
+    }
+
+    @media (min-width: 700px) and (max-width: 1000px) {
+      .topbar {
+        flex-wrap: wrap;
+      }
+
+      .desktop-tabs {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  `;
+
+  document.head.append(style);
+
+  /* =========================
+     NEW APP SECTIONS
+     ========================= */
+
+  document.querySelector("main").insertAdjacentHTML("afterbegin", `
+    <div class="bill-summary" aria-label="Bills overview">
+      <section>
+        <div class="td-kicker">Due today</div>
+        <div id="tdTodayTotal" class="td-total"></div>
+        <div id="tdTodayRows"></div>
+      </section>
+
+      <section>
+        <div class="td-kicker">Bills this week</div>
+        <div id="tdWeekDates" class="td-muted"></div>
+        <div id="tdWeekTotal" class="td-total"></div>
+
+        <details>
+          <summary class="td-muted">View this week's bills</summary>
+          <div id="tdWeekRows"></div>
+        </details>
+      </section>
+    </div>
+  `);
+
+  document.querySelector("main").insertAdjacentHTML("beforeend", `
+    <section class="view" id="billsView">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Bills + subscriptions</div>
+          <h1>Our bills</h1>
+          <p>Recurring dates. Every day has a total.</p>
+        </div>
+      </div>
+
+      <div class="td-actions">
+        <button class="td-btn primary" id="tdAddBill">+ Add a bill</button>
+        <button class="td-btn" id="tdImport">Import bills</button>
+        <button class="td-btn" id="tdExport">Export backup</button>
+      </div>
+
+      <div class="td-layout">
+        <div class="td-panel">
+          <div class="td-month-head">
+            <button class="td-btn" id="tdPrevMonth" aria-label="Previous month">‹</button>
+            <h2 id="tdMonthLabel"></h2>
+            <button class="td-btn" id="tdNextMonth" aria-label="Next month">›</button>
+          </div>
+
+          <div class="td-cal" id="tdCalendar"></div>
+
+          <div class="td-actions">
+            <button class="td-btn" id="tdBillToday">Today</button>
+          </div>
+
+          <div class="td-kicker">Total for this month</div>
+          <div class="td-total" id="tdMonthTotal"></div>
+        </div>
+
+        <div class="td-panel">
+          <h2 id="tdSelectedLabel"></h2>
+          <div class="td-total" id="tdSelectedTotal"></div>
+          <div id="tdSelectedBills"></div>
+        </div>
+      </div>
+
+      <div class="td-panel" id="tdEditor" hidden>
+        <h2 id="tdEditorTitle">Add a bill</h2>
+
+        <form id="tdBillForm">
+          <div class="td-form-grid">
+            <label class="full">
+              Name
+              <input id="tdBillName" maxlength="100" required autocomplete="off">
+            </label>
+
+            <label>
+              Amount ($)
+              <input id="tdBillAmount" type="number"
+                min="0" max="999999" step="0.01" required>
+            </label>
+
+            <label>
+              Repeats
+              <select id="tdBillFrequency">
+                <option value="monthly">Monthly</option>
+                <option value="weekly">Weekly</option>
+              </select>
+            </label>
+
+            <label id="tdMonthlyField">
+              Day of month
+              <input id="tdBillDay" type="number" min="1" max="31" value="1">
+            </label>
+
+            <label id="tdWeeklyField" hidden>
+              Day of week
+              <select id="tdBillWeekday">
+                <option value="0">Sunday</option>
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="td-actions">
+            <button class="td-btn primary" type="submit">Save bill</button>
+            <button class="td-btn" type="button" id="tdCancelBill">Cancel</button>
+          </div>
+
+          <div class="td-error" id="tdFormError" role="alert"></div>
+        </form>
+      </div>
+
+      <div class="td-panel">
+        <h2>Recurring bills</h2>
+        <div id="tdRecurring"></div>
+      </div>
+
+      <p class="td-notice">
+        Your default bills are included in the app code.
+        In-app edits are saved on this phone.
+        Changing the published defaults reloads the updated code list.
+        Export backup keeps a copy of your edits in Files.
+        PDFs remain on this phone.
+        Days 29-31 fall on the last day in shorter months.
+      </p>
+    </section>
+
+    <section class="view" id="subView">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">My sub plan</div>
+          <h1>Work + life</h1>
+          <p>Your calendar and paydays, together.</p>
+        </div>
+      </div>
+
+      <div class="td-panel">
+        <h2>My sub calendar</h2>
+        <div id="tdSubDocument"></div>
+      </div>
+    </section>
+  `);
+
+  document.body.insertAdjacentHTML("beforeend", `
+    <input id="tdImportPicker" type="file"
+      accept="application/json,.json" hidden>
+
+    <input id="tdPdfPicker" type="file"
+      accept="application/pdf,.pdf" hidden>
+
+    <div id="tdToast" class="td-toast" role="status" hidden></div>
+
+    <dialog id="tdPdfDialog" class="td-dialog">
+      <h2 id="tdPdfTitle">Document</h2>
+
+      <div class="td-actions">
+        <a id="tdPdfOpen" class="td-btn file"
+          target="_blank" rel="noopener">Open full screen</a>
+
+        <a id="tdPdfDownload" class="td-btn">Save a copy</a>
+
+        <button id="tdPdfClose" class="td-btn">Close</button>
+      </div>
+
+      <iframe id="tdPdfFrame" title="Attached PDF"
+        sandbox="allow-same-origin"></iframe>
+
+      <p class="td-muted">
+        If the PDF does not display, tap Open full screen.
+      </p>
+    </dialog>
+  `);
+
+  document.querySelector(".desktop-tabs").insertAdjacentHTML("beforeend", `
+    <button data-view="sub">Sub Plan</button>
+    <button data-view="bills">Bills</button>
+  `);
+
+  document.querySelector(".bottom-nav").insertAdjacentHTML("beforeend", `
+    <button data-view="sub">
+      <span aria-hidden="true">▦</span>
+      <span>SUB PLAN</span>
+    </button>
+
+    <button data-view="bills">
+      <span aria-hidden="true">$</span>
+      <span>BILLS</span>
+    </button>
+  `);
+
+  document.querySelectorAll(
+    '[data-view="sub"],[data-view="bills"]'
+  ).forEach(button => {
+    button.onclick = () => setView(button.dataset.view);
+  });
+
+  /* =========================
+     YOUR RECURRING BILLS
+     Amounts are stored in cents.
+     Example: $50 = 5000 cents.
+     ========================= */
+
+  const TD_KEY = "timedash-bills-embedded-v1";
+
+  const TD_DEFAULT_BILLS = [
+    {id:"monthly-0", name:"Rent", cents:110000, frequency:"monthly", day:1},
+    {id:"monthly-1", name:"Atha - Capital One Platinum", cents:30000, frequency:"monthly", day:3},
+    {id:"monthly-2", name:"Lancine - Chase Freedom Unlimited", cents:5900, frequency:"monthly", day:8},
+    {id:"monthly-3", name:"Lancine - American Express", cents:4000, frequency:"monthly", day:8},
+    {id:"monthly-4", name:"Peoples Gas", cents:18000, frequency:"monthly", day:9},
+    {id:"monthly-5", name:"Atha - Capital One Savor", cents:3500, frequency:"monthly", day:11},
+    {id:"monthly-6", name:"Atha - Capital One Quicksilver", cents:26000, frequency:"monthly", day:12},
+    {id:"monthly-7", name:"Atha - Chase Freedom Unlimited", cents:4000, frequency:"monthly", day:14},
+    {id:"monthly-8", name:"Atha - Chase Slate Edge", cents:16000, frequency:"monthly", day:16},
+    {id:"monthly-9", name:"Car note", cents:70000, frequency:"monthly", day:16},
+    {id:"monthly-10", name:"Phone", cents:32000, frequency:"monthly", day:18},
+    {id:"monthly-11", name:"Electric", cents:10000, frequency:"monthly", day:19},
+    {id:"monthly-12", name:"Car insurance", cents:25000, frequency:"monthly", day:25},
+    {id:"monthly-13", name:"Lancine - Chase Slate Edge", cents:4000, frequency:"monthly", day:27},
+    {id:"monthly-14", name:"Lancine - Apple Card", cents:5000, frequency:"monthly", day:28},
+    {id:"monthly-15", name:"Atha - Patreon", cents:500, frequency:"monthly", day:30},
+    {id:"monthly-16", name:"Apple subscription", cents:2500, frequency:"monthly", day:29},
+    {id:"monthly-17", name:"Second Patreon", cents:500, frequency:"monthly", day:4},
+    {id:"monthly-18", name:"ChatGPT", cents:2300, frequency:"monthly", day:1},
+    {id:"monthly-19", name:"Claude", cents:2300, frequency:"monthly", day:27},
+    {id:"monthly-20", name:"Hulu", cents:3300, frequency:"monthly", day:8},
+    {id:"monthly-21", name:"Disney+", cents:2200, frequency:"monthly", day:8},
+
+    {id:"weekly-0", name:"Groceries - Wednesday", cents:5000, frequency:"weekly", weekday:3},
+    {id:"weekly-1", name:"Groceries - Saturday", cents:7500, frequency:"weekly", weekday:6},
+    {id:"weekly-2", name:"Talkspace", cents:500, frequency:"weekly", weekday:0}
+  ];
+
+  const TD_REVISION = JSON.stringify(TD_DEFAULT_BILLS);
+
+  let tdBills = [];
+  let tdMonth = dateOnly(new Date());
+  tdMonth.setDate(1);
+
+  let tdBillDate = dateOnly(new Date());
+  let tdEditId = null;
+  let tdFiles = new Map();
+  let tdDatabase = null;
+  let tdObjectURL = null;
+
+  const tdMoney = cents => new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: cents % 100 ? 2 : 0
+  }).format(cents / 100);
+
+  const tdISO = date =>
+    `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
+
+  function tdEl(tag, text, className) {
+    const element = document.createElement(tag);
+
+    if (text !== undefined) element.textContent = text;
+    if (className) element.className = className;
+
+    return element;
+  }
+
+  function tdButton(label, action, className = "") {
+    const button = tdEl("button", label, "td-btn " + className);
+
+    button.type = "button";
+    button.addEventListener("click", action);
+
+    return button;
+  }
+
+  function tdToast(message) {
+    const element = $("tdToast");
+
+    element.textContent = message;
+    element.hidden = false;
+
+    clearTimeout(tdToast.timer);
+    tdToast.timer = setTimeout(() => element.hidden = true, 7000);
+  }
+
+  function tdValidateBills(input) {
+    if (!Array.isArray(input) || input.length > 500) {
+      throw Error("Choose a bill backup with at most 500 entries.");
+    }
+
+    const ids = new Set();
+
+    return input.map((bill, index) => {
+      if (
+        !bill ||
+        typeof bill.name !== "string" ||
+        !bill.name.trim() ||
+        bill.name.length > 100 ||
+        !Number.isSafeInteger(bill.cents) ||
+        bill.cents < 0 ||
+        bill.cents > 99999900 ||
+        !["monthly", "weekly"].includes(bill.frequency)
+      ) {
+        throw Error("An entry has an invalid name, amount, or recurrence.");
+      }
+
+      if (
+        bill.frequency === "monthly" &&
+        (!Number.isInteger(bill.day) || bill.day < 1 || bill.day > 31)
+      ) {
+        throw Error("Monthly days must be 1-31.");
+      }
+
+      if (
+        bill.frequency === "weekly" &&
+        (!Number.isInteger(bill.weekday) || bill.weekday < 0 || bill.weekday > 6)
+      ) {
+        throw Error("Weekly days must be Sunday-Saturday.");
+      }
+
+      const id = typeof bill.id === "string" && bill.id.length < 120
+        ? bill.id
+        : `bill-${Date.now()}-${index}`;
+
+      if (ids.has(id)) throw Error("Duplicate bill identifiers in this backup.");
+      ids.add(id);
+
+      return {
+        id,
+        name: bill.name.trim(),
+        cents: bill.cents,
+        frequency: bill.frequency,
+        ...(bill.frequency === "monthly"
+          ? {day: bill.day}
+          : {weekday: bill.weekday})
+      };
+    });
+  }
+
+  tdBills = tdValidateBills(TD_DEFAULT_BILLS);
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(TD_KEY) || "null");
+
+    if (saved && saved.revision === TD_REVISION) {
+      tdBills = tdValidateBills(saved.bills);
+    }
+  } catch (error) {
+    setTimeout(() => tdToast(
+      "Bill data could not be loaded. Import a backup to restore your edits."
+    ), 100);
+  }
+
+  function tdDue(date, bills = tdBills) {
+    return bills.filter(bill => {
+      if (bill.frequency === "weekly") {
+        return date.getDay() === bill.weekday;
+      }
+
+      const lastDay = new Date(
+        date.getFullYear(),
+        date.getMonth() + 1,
+        0
+      ).getDate();
+
+      return date.getDate() === Math.min(bill.day, lastDay);
+    });
+  }
+
+  function tdSum(bills) {
+    return bills.reduce((total, bill) => total + bill.cents, 0);
+  }
+
+  function tdSave(bills) {
+    localStorage.setItem(TD_KEY, JSON.stringify({
+      revision: TD_REVISION,
+      bills
+    }));
+
+    tdBills = bills;
+    tdRefresh();
+  }
+
+  function tdBillRows(container, bills, emptyText = "No bills due.") {
+    container.replaceChildren();
+
+    if (!bills.length) {
+      container.append(tdEl("p", emptyText, "td-muted"));
+      return;
+    }
+
+    for (const bill of bills) {
+      const row = tdEl("div", undefined, "td-bill-line");
+
+      row.append(
+        tdEl("span", bill.name),
+        tdEl("strong", tdMoney(bill.cents))
+      );
+
+      container.append(row);
+    }
+  }
+
+  /* =========================
+     TODAY + MONDAY-SUNDAY
+     ========================= */
+
+  function tdRenderSummary() {
+    const today = new Date();
+    const monday = mondayOf(today);
+    const sunday = addDays(monday, 6);
+    const todayBills = tdDue(today);
+
+    $("tdTodayTotal").textContent = tdMoney(tdSum(todayBills));
+    tdBillRows($("tdTodayRows"), todayBills);
+
+    $("tdWeekDates").textContent =
+      `${monday.toLocaleDateString([], {month:"short", day:"numeric"})}` +
+      ` - ${sunday.toLocaleDateString([], {month:"short", day:"numeric"})}` +
+      " · Mon-Sun";
+
+    const rows = $("tdWeekRows");
+    rows.replaceChildren();
+
+    let total = 0;
+
+    for (let index = 0; index < 7; index++) {
+      const date = addDays(monday, index);
+      const bills = tdDue(date);
+
+      total += tdSum(bills);
+
+      if (bills.length) {
+        const group = tdEl("div");
+
+        group.append(tdEl(
+          "div",
+          `${date.toLocaleDateString([], {
+            weekday:"short",
+            month:"short",
+            day:"numeric"
+          })} · ${tdMoney(tdSum(bills))}`,
+          "td-day-total"
+        ));
+
+        const list = tdEl("div");
+        tdBillRows(list, bills);
+
+        group.append(list);
+        rows.append(group);
+      }
+    }
+
+    if (!rows.children.length) {
+      rows.append(tdEl("p", "No bills entered for this week.", "td-muted"));
+    }
+
+    $("tdWeekTotal").textContent = tdMoney(total);
+  }
+
+  /* =========================
+     BILL CALENDAR
+     ========================= */
+
+  function tdRenderBills() {
+    $("tdMonthLabel").textContent = tdMonth.toLocaleDateString([], {
+      month: "long",
+      year: "numeric"
+    });
+
+    const grid = $("tdCalendar");
+    grid.replaceChildren();
+
+    for (const day of ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]) {
+      grid.append(tdEl("div", day, "td-cal-label"));
+    }
+
+    const offset = (tdMonth.getDay() + 6) % 7;
+
+    for (let index = 0; index < offset; index++) {
+      grid.append(tdEl("span"));
+    }
+
+    const daysInMonth = new Date(
+      tdMonth.getFullYear(),
+      tdMonth.getMonth() + 1,
+      0
+    ).getDate();
+
+    let monthTotal = 0;
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const date = new Date(
+        tdMonth.getFullYear(),
+        tdMonth.getMonth(),
+        day
+      );
+
+      const total = tdSum(tdDue(date));
+      monthTotal += total;
+
+      const button = tdButton("", () => {
+        tdBillDate = date;
+        tdRenderBills();
+      }, "td-date");
+
+      button.append(
+        tdEl("span", String(day)),
+        tdEl("small", tdMoney(total))
+      );
+
+      button.setAttribute(
+        "aria-pressed",
+        String(sameDate(date, tdBillDate))
+      );
+
+      button.setAttribute(
+        "aria-label",
+        `${date.toLocaleDateString([], {
+          month:"long",
+          day:"numeric"
+        })}: ${tdMoney(total)} due`
+      );
+
+      if (sameDate(date, new Date())) button.classList.add("today");
+
+      grid.append(button);
+    }
+
+    $("tdMonthTotal").textContent = tdMoney(monthTotal);
+
+    $("tdSelectedLabel").textContent = tdBillDate.toLocaleDateString([], {
+      weekday: "long",
+      month: "long",
+      day: "numeric"
+    });
+
+    const selectedBills = tdDue(tdBillDate);
+
+    $("tdSelectedTotal").textContent = tdMoney(tdSum(selectedBills));
+    tdBillRows($("tdSelectedBills"), selectedBills);
+
+    const recurring = $("tdRecurring");
+    recurring.replaceChildren();
+
+    if (!tdBills.length) {
+      recurring.append(tdEl("p", "Add your first bill.", "td-muted"));
+    }
+
+    const sortedBills = [...tdBills].sort((a, b) =>
+      (a.day ?? 40) - (b.day ?? 40) || a.name.localeCompare(b.name)
+    );
+
+    for (const bill of sortedBills) {
+      const row = tdEl("div", undefined, "td-bill-line");
+      const info = tdEl("div");
+
+      const recurrence = bill.frequency === "monthly"
+        ? `Monthly on day ${bill.day}`
+        : `Every ${DAY_NAMES[bill.weekday]}`;
+
+      info.append(
+        tdEl("strong", bill.name),
+        tdEl("div", `${tdMoney(bill.cents)} · ${recurrence}`, "td-muted")
+      );
+
+      const actions = tdEl("div", undefined, "td-actions");
+
+      actions.append(
+        tdButton("Edit", () => tdEditBill(bill)),
+        tdButton("Delete", () => {
+          if (!confirm(`Delete ${bill.name} from the recurring calendar (all dates)?`)) return;
+
+          try {
+            tdSave(tdBills.filter(item => item.id !== bill.id));
+          } catch (error) {
+            tdToast("Could not save. Your previous bill list is unchanged.");
+          }
+        })
+      );
+
+      row.append(info, actions);
+      recurring.append(row);
+    }
+  }
+
+  /* =========================
+     ADD / EDIT BILLS
+     ========================= */
+
+  function tdEditBill(bill = null) {
+    tdEditId = bill?.id ?? null;
+
+    $("tdEditor").hidden = false;
+    $("tdEditorTitle").textContent = bill ? "Edit bill" : "Add a bill";
+    $("tdBillName").value = bill?.name ?? "";
+    $("tdBillAmount").value = bill ? (bill.cents / 100).toFixed(2) : "";
+    $("tdBillFrequency").value = bill?.frequency ?? "monthly";
+    $("tdBillDay").value = bill?.day ?? 1;
+    $("tdBillWeekday").value = bill?.weekday ?? 0;
+    $("tdFormError").textContent = "";
+
+    tdToggleFrequency();
+
+    $("tdEditor").scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    $("tdBillName").focus({preventScroll:true});
+  }
+
+  function tdToggleFrequency() {
+    const weekly = $("tdBillFrequency").value === "weekly";
+
+    $("tdWeeklyField").hidden = !weekly;
+    $("tdMonthlyField").hidden = weekly;
+    $("tdBillDay").disabled = weekly;
+    $("tdBillWeekday").disabled = !weekly;
+  }
+
+  $("tdBillFrequency").addEventListener("change", tdToggleFrequency);
+  $("tdAddBill").onclick = () => tdEditBill();
+  $("tdCancelBill").onclick = () => $("tdEditor").hidden = true;
+
+  $("tdBillForm").onsubmit = event => {
+    event.preventDefault();
+
+    try {
+      const bill = {
+        id: tdEditId ?? `bill-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+        name: $("tdBillName").value.trim(),
+        cents: Math.round(Number($("tdBillAmount").value) * 100),
+        frequency: $("tdBillFrequency").value,
+        day: Number($("tdBillDay").value),
+        weekday: Number($("tdBillWeekday").value)
+      };
+
+      const validated = tdValidateBills([bill])[0];
+
+      tdSave(tdEditId
+        ? tdBills.map(item => item.id === tdEditId ? validated : item)
+        : [...tdBills, validated]
+      );
+
+      $("tdEditor").hidden = true;
+      tdToast("Bill saved on this phone.");
+    } catch (error) {
+      $("tdFormError").textContent = error.message;
+    }
+  };
+
+  $("tdPrevMonth").onclick = () => {
+    tdMonth.setMonth(tdMonth.getMonth() - 1);
+    tdRenderBills();
+  };
+
+  $("tdNextMonth").onclick = () => {
+    tdMonth.setMonth(tdMonth.getMonth() + 1);
+    tdRenderBills();
+  };
+
+  $("tdBillToday").onclick = () => {
+    tdBillDate = dateOnly(new Date());
+
+    tdMonth = new Date(
+      tdBillDate.getFullYear(),
+      tdBillDate.getMonth(),
+      1
+    );
+
+    tdRenderBills();
+  };
+
+  /* =========================
+     OPTIONAL BILL BACKUPS
+     ========================= */
+
+  $("tdImport").onclick = () => $("tdImportPicker").click();
+
+  $("tdImportPicker").onchange = async event => {
+    const file = event.target.files[0];
+    event.target.value = "";
+
+    if (!file) return;
+
+    try {
+      if (file.size > 1000000) {
+        throw Error("Choose a JSON bill backup smaller than 1 MB.");
+      }
+
+      const data = JSON.parse(await file.text());
+      const bills = tdValidateBills(data.bills ?? data);
+
+      if (
+        tdBills.length &&
+        !confirm("Replace the current bill list with this backup?")
+      ) return;
+
+      tdSave(bills);
+      tdToast(`${bills.length} recurring entries imported.`);
+    } catch (error) {
+      tdToast("Import failed: " + error.message);
+    }
+  };
+
+  $("tdExport").onclick = () => {
+    const blob = new Blob([
+      JSON.stringify({version:1, bills:tdBills}, null, 2)
+    ], {type:"application/json"});
+
+    const url = URL.createObjectURL(blob);
+    const link = tdEl("a");
+
+    link.href = url;
+    link.download = "TimeDash-bills-backup.json";
+    link.click();
+
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  };
+
+  /* =========================
+     PDF STORAGE ON YOUR PHONE
+     ========================= */
+
+  function tdOpenDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open("timedash-private-documents", 1);
+
+      request.onupgradeneeded = () => {
+        request.result.createObjectStore("pdfs", {keyPath:"key"});
+      };
+
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  function tdDBAction(mode, action) {
+    return new Promise((resolve, reject) => {
+      if (!tdDatabase) {
+        reject(Error("Document storage is unavailable in this browser."));
+        return;
+      }
+
+      const transaction = tdDatabase.transaction("pdfs", mode);
+      const request = action(transaction.objectStore("pdfs"));
+
+      let result;
+
+      request.onsuccess = () => result = request.result;
+      transaction.oncomplete = () => resolve(result);
+      transaction.onerror = () => reject(transaction.error);
+      transaction.onabort = () => reject(
+        transaction.error || Error("Document save was interrupted.")
+      );
+    });
+  }
+
+  function tdDocKey(date, block) {
+    return `${activeMode}|${tdISO(date)}|${block.start}|${block.name}`;
+  }
+
+  function tdShowPDF(key) {
+    const documentFile = tdFiles.get(key);
+    if (!documentFile) return;
+
+    if (tdObjectURL) URL.revokeObjectURL(tdObjectURL);
+
+    tdObjectURL = URL.createObjectURL(documentFile.blob);
+
+    $("tdPdfTitle").textContent = documentFile.name;
+    $("tdPdfFrame").src = tdObjectURL;
+    $("tdPdfOpen").href = tdObjectURL;
+    $("tdPdfDownload").href = tdObjectURL;
+    $("tdPdfDownload").download = documentFile.name;
+
+    $("tdPdfDialog").showModal();
+  }
+
+  let tdUploadKey = null;
+
+  function tdPickPDF(key) {
+    tdUploadKey = key;
+    $("tdPdfPicker").click();
+  }
+
+  $("tdPdfPicker").onchange = async event => {
+    const file = event.target.files[0];
+    const key = tdUploadKey;
+
+    event.target.value = "";
+
+    if (!file || !key) return;
+
+    try {
+      if (file.size > 25 * 1024 * 1024) {
+        throw Error("Please choose a PDF smaller than 25 MB.");
+      }
+
+      const signature = await file.slice(0, 5).text();
+
+      if (signature !== "%PDF-") {
+        throw Error("This file is not a PDF.");
+      }
+
+      const documentFile = {
+        key,
+        name: file.name,
+        blob: file,
+        type: "application/pdf"
+      };
+
+      await tdDBAction("readwrite", store => store.put(documentFile));
+      tdFiles.set(key, documentFile);
+
+      if (navigator.storage?.persist) {
+        navigator.storage.persist().catch(() => {});
+      }
+
+      tdRefresh();
+      tdToast("PDF saved on this phone.");
+    } catch (error) {
+      tdToast("PDF was not saved: " + error.message);
+    }
+  };
+
+  function tdAttachControls(container, key, label = "Attach PDF") {
+    const documentFile = tdFiles.get(key);
+    const area = tdEl("div", undefined, "td-attachment");
+    const actions = tdEl("div", undefined, "td-actions");
+
+    if (documentFile) {
+      area.append(tdEl("div", documentFile.name, "td-muted"));
+
+      actions.append(
+        tdButton(
+          key === "global|sub-plan" ? "Open PDF" : "Open grocery list",
+          () => tdShowPDF(key),
+          "file"
+        ),
+
+        tdButton("Replace", () => tdPickPDF(key)),
+
+        tdButton("Remove", async () => {
+          if (!confirm("Remove this attachment from this phone?")) return;
+
+          try {
+            await tdDBAction("readwrite", store => store.delete(key));
+            tdFiles.delete(key);
+            tdRefresh();
+          } catch (error) {
+            tdToast("Could not remove the attachment.");
+          }
+        })
+      );
+    } else {
+      actions.append(tdButton(label, () => tdPickPDF(key), "file"));
+    }
+
+    area.append(actions);
+    container.append(area);
+  }
+
+  $("tdPdfClose").onclick = () => $("tdPdfDialog").close();
+
+  $("tdPdfDialog").addEventListener("close", () => {
+    $("tdPdfFrame").removeAttribute("src");
+
+    if (tdObjectURL) {
+      URL.revokeObjectURL(tdObjectURL);
+      tdObjectURL = null;
+    }
+  });
+
+  /* =========================
+     CONNECT TO YOUR SCHEDULE
+     ========================= */
+
+  function tdIsGroceryBlock(block) {
+    return /\bgrocery\s+(trip|stop|shopping)\b/i.test(block.name);
+  }
+
+  const tdOriginalDay = renderDay;
+  const tdOriginalWeek = renderWeek;
+  const tdOriginalNow = renderNow;
+  const tdOriginalSetView = setView;
+
+  renderDay = function() {
+    tdOriginalDay();
+
+    const blocks = currentSchedules()[dayName(selectedDay)];
+
+    $("timeline").querySelectorAll(".timeline-card").forEach((card, index) => {
+      if (tdIsGroceryBlock(blocks[index])) {
+        tdAttachControls(
+          card,
+          tdDocKey(selectedDay, blocks[index]),
+          "Add grocery list"
+        );
+      }
+    });
+
+    const previous = $("tdDayBills");
+    if (previous) previous.remove();
+
+    const total = tdEl(
+      "div",
+      `Bills due this day: ${tdMoney(tdSum(tdDue(selectedDay)))}`,
+      "td-day-total"
+    );
+
+    total.id = "tdDayBills";
+    $("heroDescription").after(total);
+  };
+
+  renderWeek = function() {
+    tdOriginalWeek();
+
+    const monday = mondayOf(new Date());
+
+    $("weekGrid").querySelectorAll(".day-card").forEach((card, index) => {
+      card.append(tdEl(
+        "div",
+        `Bills: ${tdMoney(tdSum(tdDue(addDays(monday, index))))}`,
+        "td-day-total"
+      ));
+    });
+  };
+
+  renderNow = function() {
+    tdOriginalNow();
+
+    const previous = $("tdNowDoc");
+    if (previous) previous.remove();
+
+    const now = new Date();
+    const current = blockAt(now);
+
+    const date = current.source === "previous"
+      ? addDays(now, -1)
+      : now;
+
+    const container = tdEl("div");
+    container.id = "tdNowDoc";
+
+    if (!current.synthetic && tdIsGroceryBlock(current.block)) {
+      tdAttachControls(
+        container,
+        tdDocKey(date, current.block),
+        "Add grocery list"
+      );
+    }
+
+    $("nowRange").after(container);
+    tdRenderSummary();
+  };
+
+  setView = function(name) {
+    if (!["week","day","now","sub","bills"].includes(name)) {
+      name = "now";
+    }
+
+    tdOriginalSetView(name);
+
+    if (name === "bills") tdRenderBills();
+    if (name === "sub") tdRenderSub();
+  };
+
+  function tdRenderSub() {
+    const container = $("tdSubDocument");
+    container.replaceChildren();
+
+    tdAttachControls(
+      container,
+      "global|sub-plan",
+      "Attach my sub plan PDF"
+    );
+
+    container.append(tdEl(
+      "p",
+      "Keep your current work calendar here. Replace it whenever your plan changes.",
+      "td-muted"
+    ));
+  }
+
+  function tdRefresh() {
+    renderDay();
+    renderWeek();
+    renderNow();
+    tdRenderBills();
+    tdRenderSub();
+  }
+  // Follow the date selected in Day view.
+  function tdRenderSummary() {
+    const today = new Date();
+    const viewingDay = $("dayView").classList.contains("active");
+    const date = viewingDay ? selectedDay : today;
+
+    const monday = mondayOf(date);
+    const sunday = addDays(monday, 6);
+    const bills = tdDue(date);
+
+    const heading = document.querySelector(
+      ".bill-summary section:first-child .td-kicker"
+    );
+
+    heading.textContent = sameDate(date, today)
+      ? "Due today"
+      : "Due " + date.toLocaleDateString([], {
+          weekday: "short",
+          month: "short",
+          day: "numeric"
+        });
+
+    $("tdTodayTotal").textContent = tdMoney(tdSum(bills));
+    tdBillRows($("tdTodayRows"), bills);
+
+    $("tdWeekDates").textContent =
+      monday.toLocaleDateString([], {
+        month: "short",
+        day: "numeric"
+      }) +
+      " - " +
+      sunday.toLocaleDateString([], {
+        month: "short",
+        day: "numeric"
+      }) +
+      " · Mon-Sun";
+
+    const rows = $("tdWeekRows");
+    rows.replaceChildren();
+
+    let total = 0;
+
+    for (let index = 0; index < 7; index++) {
+      const day = addDays(monday, index);
+      const items = tdDue(day);
+
+      total += tdSum(items);
+
+      if (!items.length) continue;
+
+      const group = tdEl("div");
+
+      group.append(tdEl(
+        "div",
+        day.toLocaleDateString([], {
+          weekday: "short",
+          month: "short",
+          day: "numeric"
+        }) + " · " + tdMoney(tdSum(items)),
+        "td-day-total"
+      ));
+
+      const list = tdEl("div");
+      tdBillRows(list, items);
+
+      group.append(list);
+      rows.append(group);
+    }
+
+    if (!rows.children.length) {
+      rows.append(tdEl("p", "No bills due this week.", "td-muted"));
+    }
+
+    $("tdWeekTotal").textContent = tdMoney(total);
+  }
+
+  // Show bill names and amounts beneath the selected day's total.
+  renderDay = function() {
+    tdOriginalDay();
+
+    const blocks = currentSchedules()[dayName(selectedDay)];
+
+    $("timeline").querySelectorAll(".timeline-card").forEach((card, index) => {
+      if (tdIsGroceryBlock(blocks[index])) {
+        tdAttachControls(
+          card,
+          tdDocKey(selectedDay, blocks[index]),
+          "Add grocery list"
+        );
+      }
+    });
+
+    const previous = $("tdDayBills");
+    if (previous) previous.remove();
+
+    const bills = tdDue(selectedDay);
+    const panel = tdEl("div");
+    panel.id = "tdDayBills";
+
+    panel.append(tdEl(
+      "div",
+      "Bills due this day: " + tdMoney(tdSum(bills)),
+      "td-day-total"
+    ));
+
+    const list = tdEl("div");
+    tdBillRows(list, bills);
+    panel.append(list);
+
+    $("heroDescription").after(panel);
+
+    tdRenderSummary();
+  };
+
+  // Refresh the summary when switching views, too.
+  setView = function(name) {
+    if (!["week", "day", "now", "sub", "bills"].includes(name)) {
+      name = "now";
+    }
+
+    tdOriginalSetView(name);
+
+    if (name === "bills") tdRenderBills();
+    if (name === "sub") tdRenderSub();
+
+    tdRenderSummary();
+  };  
+  tdRenderSummary();
+  tdRenderBills();
+  tdRenderSub();
+
+  tdOpenDB().then(async database => {
+    tdDatabase = database;
+
+    const documents = await tdDBAction(
+      "readonly",
+      store => store.getAll()
+    );
+
+    tdFiles = new Map(documents.map(item => [item.key, item]));
+    tdRefresh();
+  }).catch(() => {
+    tdToast(
+      "PDF storage is unavailable. Keep documents in Files and use a regular browser session."
+    );
+  });
+
+  const familyStyle=document.createElement("style");
+  familyStyle.textContent="body{--profile-rgb:221,139,172;--profile-ink:#efbad0;--profile-glow:.10;background:radial-gradient(ellipse at 15% 0,rgba(var(--profile-rgb),var(--profile-glow)),transparent 52%),var(--bg)}\nbody[data-person=\"lancine\"]{--profile-rgb:113,167,234;--profile-ink:#accef5}\nbody.light{--profile-rgb:197,93,138;--profile-ink:#974363;--profile-glow:.10}\nbody.light[data-person=\"lancine\"]{--profile-rgb:61,123,199;--profile-ink:#315f97}\nbody .profile-button[aria-pressed=\"true\"],body .mode-switch button.active{color:var(--profile-ink);background:rgba(var(--profile-rgb),.12);box-shadow:0 0 18px rgba(var(--profile-rgb),.06)}\nbody .day-hero,body .timeline,body .now-card{box-shadow:0 12px 48px rgba(var(--profile-rgb),.045),var(--shadow)}\n.family-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;width:min(1540px,100%);margin:0 auto;padding:4px clamp(16px,3vw,38px) 12px}\n.profile-picker{display:flex;gap:5px;padding:4px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}\n.profile-button{padding:10px 19px;min-height:44px;border:0;border-radius:12px;background:transparent;color:var(--muted);font-weight:600}\n.profile-caption{font-size:12px;color:var(--muted)}\n.family-editor{margin:0 0 18px}.family-editor summary{min-height:44px;display:flex;align-items:center;color:var(--profile-ink);font-size:13px}\n.family-editor .td-actions{margin-bottom:0}.family-editor label{font-size:13px}.family-editor input[type=checkbox]{width:20px;height:20px;accent-color:var(--profile-ink)}\n.family-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0;font-size:13px;color:var(--muted)}\n.family-line select{font:inherit;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:44px;max-width:100%}\n.family-line label{display:flex;gap:8px;align-items:center}\n.family-chip{display:inline-block;color:var(--profile-ink);background:rgba(var(--profile-rgb),.10);padding:6px 9px;border-radius:9px;font-size:12px}\n.family-message{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}\n.family-time-heading{grid-column:1/-1;font-size:12px;color:var(--profile-ink);padding:18px 4px 8px;letter-spacing:.05em}\n.sub-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.sub-stats>div{background:var(--panel-2);border-radius:13px;padding:14px;min-width:0}.sub-stats strong{display:block;font-family:'DM Sans',sans-serif;font-size:23px;margin-top:8px}.sub-stats span{color:var(--muted);font-size:12px}\n.sub-calendar .td-date{min-height:79px;min-width:0;padding:6px 1px;gap:4px}.sub-calendar .td-date small{font-size:10px;color:var(--muted);white-space:normal;line-height:1.25;text-align:center}.sub-calendar .td-date.booked{border-bottom:3px solid var(--profile-ink)}.sub-calendar .td-date.worked{border-bottom:3px solid var(--mint)}.sub-calendar .td-date.closed{opacity:.65}.sub-calendar .td-date.available small{color:var(--profile-ink)}.sub-calendar .pay-dot{color:var(--amber);font-size:10px;font-weight:700}\n.sub-date-detail{font-size:13px;line-height:1.6;color:var(--muted)}\n.sub-pay-row{padding:14px 0;border-bottom:1px solid var(--line)}.sub-pay-row:last-child{border-bottom:0}.sub-pay-row strong{display:block;margin-bottom:5px}.sub-pay-row p{margin:0;font-size:12px;color:var(--muted);line-height:1.6}.sub-pay-row .pay-amount{color:var(--profile-ink);font-size:18px}\n.sub-cps-link{color:var(--profile-ink);font-size:12px}.sub-backup-actions{display:flex;gap:8px;flex-wrap:wrap}\n.td-form-grid input[type=time],.td-form-grid input[type=date]{min-width:0}\n.day-card{outline-offset:3px}.timeline-title,.timeline-category{overflow-wrap:anywhere}.td-bill-line{flex-wrap:wrap}.bill-summary section,.td-panel{min-width:0}\nbutton{cursor:pointer}.family-editor[hidden]{display:none!important}\n@media(max-width:699px){.family-bar{padding:4px 14px 8px;gap:8px}.profile-caption{font-size:11px}.profile-button{padding:9px 16px}.topbar{gap:7px}.brand{gap:6px}.mode-switch button{min-height:36px}.td-layout{grid-template-columns:minmax(0,1fr)}.sub-calendar .td-date{min-height:71px}.sub-calendar .td-date small{font-size:10px}.sub-stats strong{font-size:21px}.family-bar>.family-editor{width:100%}.section-head{gap:8px}.date-controls{gap:4px}.round-btn{width:38px;height:38px}}\n@media(max-width:360px){.brand-text b{font-size:12px}.logo-mark{width:29px;height:29px}.top-actions{gap:3px}.mode-switch button{padding:6px 5px}.icon-btn{width:36px;height:36px}.sub-calendar .td-date{min-height:68px}.sub-stats{gap:6px}.td-month-head h2{font-size:18px}}\n@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}\n/* Balanced edge light, with a quiet center and profile-tinted surfaces. */\nbody[data-person]{--profile-glow:.18;background:radial-gradient(ellipse 54% 92% at -12% 42%,rgba(var(--profile-rgb),.18),transparent 100%),radial-gradient(ellipse 48% 88% at 112% 42%,rgba(var(--profile-rgb),.14),transparent 100%),var(--bg);background-attachment:fixed}\nbody[data-person=\"atha\"]:not(.light){--profile-rgb:192,116,170;--profile-ink:#e9b6d6;--bg:#0e0b10;--bg-2:#151017;--panel:#1b161e;--panel-2:#211b25;--week-card:#1b161e;--input:#29212e;--line:rgba(221,178,218,.15);--glass:rgba(29,23,33,.88);--nav-bg:rgba(15,12,18,.92);--nav-active:#302335;--muted:#b9afbd;--muted-2:#938699}\nbody[data-person=\"lancine\"]:not(.light){--bg:#0b0e12;--panel:#151a21;--panel-2:#1b222b;--week-card:#151a21;--input:#202a36;--line:rgba(173,197,229,.15);--glass:rgba(20,27,36,.88);--nav-bg:rgba(10,15,21,.92);--nav-active:#202e40}\nbody.light[data-person=\"atha\"]{--bg:#f6eff5;--bg-2:#fcf8fc;--panel:#fffafd;--panel-2:#f4eaf3;--week-card:#fffafd;--input:#eee1ee;--glass:rgba(255,249,254,.9);--nav-bg:rgba(251,243,250,.94);--line:rgba(104,53,104,.14);--nav-active:#eddaeb}\nbody.light[data-person=\"lancine\"]{--bg:#eff4fa;--panel:#fafdff;--panel-2:#eaf1f9;--week-card:#fafdff;--input:#e0eaf5;--glass:rgba(247,251,255,.9);--nav-bg:rgba(243,248,254,.94);--line:rgba(48,83,126,.14);--nav-active:#dbe8f7}\nbody[data-person] .bottom-nav button.active{color:var(--profile-ink);background:rgba(var(--profile-rgb),.13)}\nbody[data-person] .hero-summary{border-left-color:var(--profile-ink)}\n.family-template-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;width:min(1540px,100%);margin:0 auto;padding:0 clamp(16px,3vw,38px) 18px}\n.family-template-bar>span{font-size:14px;color:var(--muted)}.family-template-bar p{flex-basis:100%;margin:0;color:var(--muted);font-size:12px}\nbody[data-person] .timeline-title{font-size:18px;line-height:1.4}body[data-person] .timeline-category{font-size:15px;line-height:1.5;margin-top:5px}body[data-person] .timeline-time{font-size:14px;line-height:1.45}\nbody[data-person] .timeline-card>div:first-child{flex:1;min-width:0}.category-icon{flex:0 0 auto;align-self:center}.timeline-card .td-attachment{flex:1 0 100%}\nbody[data-person] .hero-summary strong{font-size:19px}body[data-person] .mini-time{font-size:13px}body[data-person] .mini-row{font-size:14px}\n.sub-calendar .td-date.planned{border-bottom:3px solid var(--profile-ink)}.sub-calendar .td-date.planned small{color:var(--profile-ink)}\n@media(max-width:699px){.family-template-bar{padding:0 14px 16px}body[data-person] .timeline-title{font-size:17px}body[data-person] .timeline-category{font-size:14px}body[data-person] .timeline-time{font-size:13px}.timeline-row{grid-template-columns:85px 16px minmax(0,1fr);gap:5px}.timeline-card{gap:9px;padding:14px 11px}.category-icon{font-size:19px}}\n@media(max-width:380px){.timeline-row{grid-template-columns:73px 13px minmax(0,1fr)}body[data-person] .timeline-time{font-size:12px}.timeline-card{padding:12px 9px}.category-icon{font-size:17px}}\n";
+  document.head.append(familyStyle);
+/* TimeDash: ready-made day templates and an automatic sub plan. */
 (() => {
   'use strict';
-  const KEY='timedash-family-v1';
-  const iso=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-  const validDate=s=>/^\d{4}-\d{2}-\d{2}$/.test(s||'')&&iso(fromISO(s))===s;
+  const KEY='timedash-family-v1',iso=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
   function fromISO(s){const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);}
   const ordinal=d=>Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000;
-  const defaults={person:'atha',flex:'sunday-amazon',lancineDates:{},subDates:{'2026-10-13':{status:'worked',school:'Completed assignment',amount:125,start:'08:45',end:'15:45'},'2026-10-14':{status:'half-worked',school:'Morgan Park',amount:71.50,start:'12:00',end:'14:45'},'2026-10-15':{status:'worked',school:'Completed assignment',amount:125,start:'08:45',end:'15:45'},'2026-10-16':{status:'worked',school:'Completed assignment',amount:125,start:'08:45',end:'15:45'},'2026-11-27':{status:'off',school:'Trip'},'2026-11-28':{status:'off',school:'Trip'},'2026-11-29':{status:'off',school:'Trip'},'2026-11-30':{status:'off',school:'Trip'}},settings:{full:125,half:71.50,periodStart:'2026-10-04',firstPayday:'2026-10-30',bankStart:'2026-10-19',flexDays:4}};
+  const defaults={person:'atha',lancineMode:'amazon',subDates:{'2026-10-13':{status:'worked',school:'Completed assignment',amount:125},'2026-10-14':{status:'half-worked',school:'Morgan Park',amount:71.5},'2026-10-15':{status:'worked',school:'Completed assignment',amount:125},'2026-10-16':{status:'worked',school:'Completed assignment',amount:125},'2026-11-27':{status:'off',school:'Trip'},'2026-11-28':{status:'off',school:'Trip'},'2026-11-29':{status:'off',school:'Trip'},'2026-11-30':{status:'off',school:'Trip'}},settings:{full:125,half:71.5,periodStart:'2026-10-04',firstPayday:'2026-10-30',bankStart:'2026-10-19',flexDays:4}};
   let state=structuredClone(defaults),storageProblem=false;
-  try{const raw=localStorage.getItem(KEY);if(raw){const p=JSON.parse(raw);if(!p||typeof p!=='object'||Array.isArray(p))throw Error('Invalid saved data');state={...defaults,...p,settings:{...defaults.settings,...p.settings},subDates:p.subDates||{},lancineDates:p.lancineDates||{}};}}catch(e){storageProblem=true;}
+  try{const raw=localStorage.getItem(KEY);if(raw){const p=JSON.parse(raw);if(!p||typeof p!=='object'||Array.isArray(p))throw Error('Invalid data');state={...defaults,...p,settings:{...defaults.settings,...p.settings},subDates:p.subDates||defaults.subDates};}}catch{storageProblem=true;}
   if(!['atha','lancine'].includes(state.person))state.person='atha';
-  if(!['sunday-amazon','thursday-amazon'].includes(state.flex))state.flex='sunday-amazon';
-  // Never let malformed settings turn projections into invalid amounts or dates.
-  for(const key of ['full','half'])if(!Number.isFinite(state.settings[key])||state.settings[key]<0||state.settings[key]>10000)state.settings[key]=defaults.settings[key];
-  for(const key of ['periodStart','firstPayday','bankStart'])if(!validDate(state.settings[key]))state.settings[key]=defaults.settings[key];
-  if(!Number.isInteger(state.settings.flexDays)||state.settings.flexDays<0||state.settings.flexDays>60)state.settings.flexDays=4;
-  if(!state.subDates||typeof state.subDates!=='object'||Array.isArray(state.subDates))state.subDates={};
-  if(!state.lancineDates||typeof state.lancineDates!=='object'||Array.isArray(state.lancineDates))state.lancineDates={};
-  let previewExtra=false;
-  let subMonth=new Date(new Date().getFullYear(),new Date().getMonth(),1),subSelected=dateOnly(new Date());
-  const dollar=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:n%1?2:0}).format(n);
+  if(!['amazon','uber'].includes(state.lancineMode))state.lancineMode='amazon';
+  if(!state.subDates||typeof state.subDates!=='object'||Array.isArray(state.subDates))state.subDates=structuredClone(defaults.subDates);
+  for(const k of ['full','half'])if(!Number.isFinite(state.settings[k])||state.settings[k]<0||state.settings[k]>10000)state.settings[k]=defaults.settings[k];
+  for(const k of ['periodStart','firstPayday']){const s=state.settings[k];if(typeof s!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(s)||iso(fromISO(s))!==s)state.settings[k]=defaults.settings[k];}
+  const lan=()=>state.person==='lancine',locale=()=>lan()?'fr-FR':'en-US';
   const el=(tag,text,cls)=>{const x=document.createElement(tag);if(text!==undefined)x.textContent=text;if(cls)x.className=cls;return x;};
-  const button=(text,fn,cls='td-btn')=>{const b=el('button',text,cls);b.type='button';b.onclick=fn;return b;};
-  function persist(next){if(storageProblem){alert('Saved family data could not be loaded. Export or recover it before making changes; it has not been overwritten.');return false;}try{localStorage.setItem(KEY,JSON.stringify(next));state=next;return true;}catch(e){alert('This change could not be saved. Your previous data is unchanged.');return false;}}
-  function change(mutator){const next=structuredClone(state);mutator(next);if(persist(next)){refreshFamily();return true;}return false;}
-  const bar=el('div',undefined,'family-bar');
-  bar.innerHTML='<div class="profile-picker" aria-label="Whose schedule"><button class="profile-button" id="familyAtha" type="button">Atha</button><button class="profile-button" id="familyLancine" type="button">Lancine</button></div><span class="profile-caption" id="familyCaption"></span>';
+  const btn=(text,fn,cls='td-btn')=>{const x=el('button',text,cls);x.type='button';x.onclick=fn;return x;};
+  const money=n=>new Intl.NumberFormat(locale(),{style:'currency',currency:'USD',maximumFractionDigits:n%1?2:0}).format(n);
+  const short=d=>d.toLocaleDateString(locale(),{month:'short',day:'numeric',year:'numeric'});
+  const clock=d=>d.toLocaleTimeString(locale(),{hour:'numeric',minute:'2-digit'});
+  function persist(mutator){if(storageProblem){alert(lan()?'Les données enregistrées n’ont pas pu être chargées. Elles ont été conservées.':'Saved data could not be loaded. It has not been overwritten.');return;}const next=structuredClone(state);mutator(next);try{localStorage.setItem(KEY,JSON.stringify(next));state=next;refresh();}catch{alert(lan()?'Impossible d’enregistrer ce changement.':'Could not save this change.');}}
+  const bar=el('div',undefined,'family-bar');bar.innerHTML='<div class="profile-picker" aria-label="Whose schedule"><button class="profile-button" id="familyAtha" type="button">Atha</button><button class="profile-button" id="familyLancine" type="button">Lancine</button></div><span class="profile-caption" id="familyCaption"></span>';
   document.querySelector('.topbar').after(bar);
-  const controls=el('details',undefined,'td-panel family-editor');controls.id='lancineSettings';
-  controls.innerHTML=`<summary>Amazon / Uber schedule settings</summary><div class="family-line"><label>Flexible days <select id="familyFlex"><option value="sunday-amazon">Sunday Amazon · Thursday Uber</option><option value="thursday-amazon">Thursday Amazon · Sunday Uber</option></select></label></div><p class="family-message">Monday–Wednesday: Amazon. Friday–Saturday: Uber. Thursday/Sunday follow the choice above unless you save a date exception.</p><div class="family-line"><label><input type="checkbox" id="familyExtra">Preview second-car plan: Uber Tuesday + Wednesday mornings</label></div><p class="family-message" id="familyProposal" hidden>Proposed only: Uber 5–8 a.m., wash up 8–8:30, sleep 8:30 a.m.–4:30 p.m. The 5:30–6:30 p.m. Amazon commute needs confirmation. Preview resets when you reload.</p><div class="td-form-grid"><label>Date<input id="familyDate" type="date"></label><label>Evening work<select id="familyDateMode"><option value="default">Use weekly schedule</option><option value="amazon">Amazon</option><option value="uber">Uber</option></select></label></div><div class="td-actions"><button type="button" class="td-btn" id="familySaveDate">Save date exception</button><button type="button" class="td-btn" id="familyClearDate">Use weekly schedule</button></div><p class="family-message" id="familyExceptions"></p>`;
-  document.querySelector('.main').prepend(controls);
-  $('familyDate').value=iso(selectedDay);
-  $('familyAtha').onclick=()=>change(s=>s.person='atha');
-  $('familyLancine').onclick=()=>change(s=>s.person='lancine');
-  $('familyFlex').onchange=e=>change(s=>s.flex=e.target.value);
-  $('familyExtra').onchange=e=>{previewExtra=e.target.checked;refreshFamily();};
-  $('familyDate').onchange=()=>{$('familyDateMode').value=state.lancineDates[$('familyDate').value]||'default';};
-  $('familySaveDate').onclick=()=>{const date=$('familyDate').value,mode=$('familyDateMode').value;if(!validDate(date))return;change(s=>{if(mode==='default')delete s.lancineDates[date];else s.lancineDates[date]=mode;});};
-  $('familyClearDate').onclick=()=>{const d=$('familyDate').value;change(s=>delete s.lancineDates[d]);$('familyDateMode').value='default';};
-  function modeFor(d){const override=state.lancineDates[iso(d)];if(['amazon','uber'].includes(override))return override;const n=d.getDay();if([1,2,3].includes(n))return'amazon';if([5,6].includes(n))return'uber';return (n===0)===(state.flex==='sunday-amazon')?'amazon':'uber';}
-  function extraAfter(d){return previewExtra&&modeFor(d)==='amazon'&&[1,2].includes(d.getDay());}
-  function stamp(d,time,days=0){const x=addDays(dateOnly(d),days);const [h,m]=time.split(':').map(Number);x.setHours(h,m,0,0);return x;}
-  function shiftEvents(d){
-    const mode=modeFor(d),later=extraAfter(addDays(d,-1)),after=extraAfter(d),wake=later?'16:30':'15:00',events=[];
-    const add=(name,start,end,category,startDay=0,endDay=0)=>events.push({name,start:stamp(d,start,startDay),end:stamp(d,end,endDay),category,origin:dateOnly(d),mode});
-    if(mode==='amazon'){
-      add('Wake, shower + eat',wake,later?'17:30':'17:00','Beauty');
-      add('Drive to Amazon',later?'17:30':'17:00','18:30','Transition');
-      add('Amazon shift','18:30','05:00','Work',0,1);
-      if(after){add('Uber after Amazon · proposed','05:00','08:00','Work',1,1);add('Home + wash up','08:00','08:30','WindDown',1,1);add('Sleep','08:30','16:30','Sleep',1,1);}
-      else{add('Drive home','05:00','06:00','Transition',1,1);add('Eat + wash up + wind down','06:00','07:30','WindDown',1,1);add('Sleep','07:30','15:00','Sleep',1,1);}
-    }else{
-      // An unusual date exception can follow the optional late-sleep preview.
-      const depart=later?'17:30':'16:00';add('Wake, eat + get ready',wake,depart,'Beauty');
-      add('Uber · home by 6 a.m.',depart,'06:00','Work',0,1);add('Home + shower + wind down','06:00','08:00','WindDown',1,1);add('Sleep','08:00','15:00','Sleep',1,1);
-    }return events;
-  }
-  function absoluteEvents(d,person=state.person){
-    if(person==='lancine')return shiftEvents(d);
-    return currentSchedules()[dayName(d)].map(b=>({...b,start:stamp(d,b.start),end:stamp(d,b.end,parseHM(b.end)<=parseHM(b.start)?1:0),origin:dateOnly(d),original:b}));
-  }
-  function dayEvents(d,person=state.person){const start=dateOnly(d),end=addDays(start,1);return [addDays(start,-1),start].flatMap(x=>absoluteEvents(x,person)).filter(b=>b.end>start&&b.start<end).sort((a,b)=>a.start-b.start);}
-  const clock=d=>d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
-  function eventRange(e){const cross=!sameDate(e.start,e.end);return `${clock(e.start)} – ${clock(e.end)}${cross?' · next morning':''}`;}
-  function clippedRange(e,d){const a=new Date(Math.max(+e.start,+dateOnly(d))),b=new Date(Math.min(+e.end,+addDays(dateOnly(d),1)));return `${clock(a)} – ${sameDate(b,addDays(dateOnly(d),1))?'midnight':clock(b)}${e.start<dateOnly(d)?' · from previous night':''}${e.end>addDays(dateOnly(d),1)?' · continues tomorrow':''}`;}
-  function currentEvent(now,person=state.person){const events=[addDays(now,-1),now,addDays(now,1)].flatMap(d=>absoluteEvents(d,person)).sort((a,b)=>a.start-b.start);const cur=events.find(b=>b.start<=now&&b.end>now);const next=events.find(b=>b.start>(cur?cur.start:now));return{cur,next};}
-  const savedAthaMode=applyMode;
-  const previousDocKey=tdDocKey;
-  tdDocKey=function(date,block){const exact=previousDocKey(date,block);if(tdFiles.has(exact))return exact;const prefix=activeMode+'|'+iso(date)+'|',suffix='|'+block.name;const matches=[...tdFiles.keys()].filter(k=>k.startsWith(prefix)&&k.endsWith(suffix));return matches.length===1?matches[0]:exact;};
-  function syncChrome(){document.body.dataset.person=state.person;for(const p of ['atha','lancine'])$('family'+(p==='atha'?'Atha':'Lancine')).setAttribute('aria-pressed',String(state.person===p));const lan=state.person==='lancine';$('lancineSettings').hidden=!lan;document.querySelector('.mode-switch').hidden=lan;$('familyFlex').value=state.flex;$('familyProposal').hidden=!previewExtra;$('familyCaption').textContent=lan?(previewExtra?'Lancine · second-car preview':'Lancine · overnight schedule'):'Atha · your schedule';$('familyExceptions').textContent=Object.entries(state.lancineDates).filter(([d,m])=>validDate(d)&&['amazon','uber'].includes(m)).sort().map(([d,m])=>`${d}: ${m==='amazon'?'Amazon':'Uber'}`).join(' · ')||'No date exceptions saved.';}
-  function metaFor(d){if(state.person==='atha')return currentMeta()[dayName(d)];return{summary:modeFor(d)==='amazon'?'Amazon night':'Uber night',wake:extraAfter(addDays(d,-1))?'4:30 PM':'3:00 PM',desc:'Calendar-day view: early morning belongs to the previous night’s shift. '+(previewExtra?'Second-car preview is on.':'Current shared-car routine.')};}
-  const originalAthaDay=renderDay,originalAthaWeek=renderWeek,originalAthaNow=renderNow;
-  renderDay=function(){
-    syncChrome();
-    if(state.person==='atha'){originalAthaDay();return;}
-    const name=dayName(selectedDay),meta=metaFor(selectedDay);$('dayEyebrow').textContent='Lancine';$('heroDay').textContent=name;$('heroDate').textContent=selectedDay.toLocaleDateString([],{month:'long',day:'numeric',year:'numeric'});$('heroSummary').textContent=meta.summary;$('heroDescription').textContent=meta.desc;
-    $('tdDayBills')?.remove();const bp=el('div');bp.id='tdDayBills';bp.append(el('div','Bills due this day: '+tdMoney(tdSum(tdDue(selectedDay))),'td-day-total'));const billList=el('div');tdBillRows(billList,tdDue(selectedDay));bp.append(billList);$('heroDescription').after(bp);
-    const timeline=$('timeline');timeline.replaceChildren();const now=new Date();let divider=false;
-    for(const e of dayEvents(selectedDay)){
-      const fromPrev=e.start<dateOnly(selectedDay);if(!fromPrev&&!divider){timeline.append(el('div','Afternoon + tonight’s shift','family-time-heading'));divider=true;}
-      const row=el('div',undefined,'timeline-row'+(e.start<=now&&now<e.end?' current':''));row.append(el('div',fromPrev?'Midnight':clock(e.start),'timeline-time'));const track=el('div',undefined,'timeline-track');track.append(el('span',undefined,'timeline-dot'));row.append(track);const card=el('div',undefined,'timeline-card'),copy=el('div');copy.append(el('div',e.name,'timeline-title'),el('div',clippedRange(e,selectedDay),'timeline-category'));card.append(copy,el('div',ICONS[e.category]||'•','category-icon'));row.append(card);timeline.append(row);
-    }tdRenderSummary();
-  };
-  renderWeek=function(){syncChrome();if(state.person==='atha'){originalAthaWeek();return;}const now=new Date(),mon=mondayOf(now);$('weekTitle').textContent=mon.toLocaleDateString([],{month:'short',day:'numeric'})+' – '+addDays(mon,6).toLocaleDateString([],{month:'short',day:'numeric'});const grid=$('weekGrid');grid.replaceChildren();for(let i=0;i<7;i++){const d=addDays(mon,i),meta=metaFor(d),card=el('article',undefined,'day-card'+(sameDate(d,now)?' today':''));card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',`${dayName(d)}: ${meta.summary}`);const head=el('div',undefined,'day-card-head'),title=el('div');title.append(el('div',dayName(d).slice(0,3).toUpperCase(),'day-name'),el('div',d.toLocaleDateString([],{month:'short',day:'numeric'}),'day-date'));head.append(title,el('div',meta.wake+' wake','wake-chip'));card.append(head,el('div',meta.summary,'day-summary'));const list=el('div',undefined,'mini-list');for(const e of shiftEvents(d).slice(0,5)){const r=el('div',undefined,'mini-row');r.append(el('span',clock(e.start),'mini-time'),el('span',e.name,'mini-task'));list.append(r);}card.append(list,el('div','Bills: '+tdMoney(tdSum(tdDue(d))),'td-day-total'));const open=()=>{selectedDay=d;setView('day');};card.onclick=open;card.onkeydown=e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();open();}};grid.append(card);}}
-  renderNow=function(){syncChrome();if(state.person==='atha'){originalAthaNow();return;}const now=new Date(),{cur,next}=currentEvent(now);$('tdNowDoc')?.remove();$('nowDay').textContent='Lancine · '+dayName(now)+(previewExtra?' · PROPOSED':'');$('nowTitle').textContent=cur?.name||'Open / transition time';$('nowRange').textContent=cur?eventRange(cur):'Between scheduled blocks';const fraction=cur?Math.max(0,Math.min(1,(now-cur.start)/(cur.end-cur.start))):0;$('progressFill').style.width=(fraction*100)+'%';$('remainingText').textContent=cur?formatLeft((cur.end-now)/60000):'';$('nextTitle').textContent=next?.name||'Next shift';$('nextRange').textContent=next?eventRange(next):'';$('nowBg').style.backgroundImage=cur?.category==='Sleep'?'none':`url("${BACKGROUNDS[cur?.category]||BACKGROUNDS.Free}")`;$('liveClock').textContent=clock(now);$('liveDate').textContent=now.toLocaleDateString([],{weekday:'short',month:'short',day:'numeric'});tdRenderSummary();};
-  // CPS 2026-27 family calendar, updated March 5, 2026.
+  const modes=el('div',undefined,'family-template-bar');modes.id='lancineModes';modes.innerHTML='<span id="lancineModeLabel">Ma journée</span><div class="profile-picker" aria-label="Type de journée"><button class="profile-button" id="familyAmazon" type="button">Amazon</button><button class="profile-button" id="familyUber" type="button">Uber</button></div><p>Choisissez simplement le modèle à afficher.</p>';
+  bar.after(modes);
+  $('familyAtha').onclick=()=>persist(s=>s.person='atha');$('familyLancine').onclick=()=>persist(s=>s.person='lancine');
+  $('familyAmazon').onclick=()=>persist(s=>s.lancineMode='amazon');$('familyUber').onclick=()=>persist(s=>s.lancineMode='uber');
+  function modeFor(){return state.lancineMode;}
+  function stamp(d,t,delta=0){const x=addDays(dateOnly(d),delta),[h,m]=t.split(':').map(Number);x.setHours(h,m,0,0);return x;}
+  function shiftEvents(d){const mode=modeFor(),events=[];const add=(name,s,e,category,sd=0,ed=0)=>events.push({name,start:stamp(d,s,sd),end:stamp(d,e,ed),category,origin:dateOnly(d),mode});
+    if(mode==='amazon'){add('Réveil, douche et repas','15:00','17:00','Beauty');add('Trajet vers Amazon','17:00','18:30','Transition');add('Travail chez Amazon','18:30','05:00','Work',0,1);add('Retour à la maison','05:00','06:00','Transition',1,1);add('Repas, toilette et détente','06:00','07:30','WindDown',1,1);add('Sommeil','07:30','15:00','Sleep',1,1);}
+    else{add('Réveil, repas et préparation','15:00','16:00','Beauty');add('Uber · retour à la maison à 6 h','16:00','06:00','Work',0,1);add('Douche et détente à la maison','06:00','08:00','WindDown',1,1);add('Sommeil','08:00','15:00','Sleep',1,1);}return events;}
+  function absoluteEvents(d,person=state.person){return person==='lancine'?shiftEvents(d):currentSchedules()[dayName(d)].map(b=>({...b,start:stamp(d,b.start),end:stamp(d,b.end,parseHM(b.end)<=parseHM(b.start)?1:0),origin:dateOnly(d)}));}
+  function dayEvents(d,person=state.person){const a=dateOnly(d),b=addDays(a,1);return[addDays(a,-1),a].flatMap(x=>absoluteEvents(x,person)).filter(x=>x.end>a&&x.start<b).sort((x,y)=>x.start-y.start);}
+  function currentEvent(now,person=state.person){const events=[addDays(now,-1),now,addDays(now,1)].flatMap(d=>absoluteEvents(d,person)).sort((a,b)=>a.start-b.start);const cur=events.find(e=>e.start<=now&&now<e.end),next=events.find(e=>e.start>(cur?cur.start:now));return{cur,next};}
+  function eventRange(e){return`${clock(e.start)} – ${clock(e.end)}${!sameDate(e.start,e.end)?' · lendemain matin':''}`;}
+  function clippedRange(e,d){const a=dateOnly(d),b=addDays(a,1);return`${clock(new Date(Math.max(+a,+e.start)))} – ${e.end>=b?'minuit':clock(e.end)}${e.start<a?' · nuit précédente':''}${e.end>b?' · suite demain':''}`;}
+  const previousDocKey=tdDocKey;tdDocKey=function(d,b){const key=previousDocKey(d,b);if(tdFiles.has(key))return key;const prefix=activeMode+'|'+iso(d)+'|',suffix='|'+b.name,matches=[...tdFiles.keys()].filter(k=>k.startsWith(prefix)&&k.endsWith(suffix));return matches.length===1?matches[0]:key;};
+  const originalDay=renderDay,originalWeek=renderWeek,originalNow=renderNow,originalSetView=setView,originalApplyMode=applyMode;
+  function syncChrome(){document.body.dataset.person=state.person;document.documentElement.lang=lan()?'fr':'en';$('familyAtha').setAttribute('aria-pressed',String(!lan()));$('familyLancine').setAttribute('aria-pressed',String(lan()));$('lancineModes').hidden=!lan();document.querySelector('.mode-switch').hidden=lan();for(const mode of ['amazon','uber'])$('family'+(mode==='amazon'?'Amazon':'Uber')).setAttribute('aria-pressed',String(state.lancineMode===mode));$('familyCaption').textContent=lan()?'Lancine · mon emploi du temps':'Atha · your schedule';}
+  renderDay=function(){syncChrome();if(!lan()){originalDay();translatePage();return;}
+    $('dayEyebrow').textContent='Lancine';$('heroDay').textContent=selectedDay.toLocaleDateString('fr-FR',{weekday:'long'});$('heroDate').textContent=selectedDay.toLocaleDateString('fr-FR',{month:'long',day:'numeric',year:'numeric'});$('heroSummary').textContent=modeFor()==='amazon'?'Journée Amazon':'Journée Uber';$('heroDescription').textContent='Modèle de journée prêt à suivre. Le début de matinée termine la nuit précédente.';
+    $('tdDayBills')?.remove();const panel=el('div');panel.id='tdDayBills';panel.append(el('div','Factures de ce jour : '+tdMoney(tdSum(tdDue(selectedDay))),'td-day-total'));const bills=el('div');tdBillRows(bills,tdDue(selectedDay));panel.append(bills);$('heroDescription').after(panel);
+    const timeline=$('timeline');timeline.replaceChildren();const now=new Date();for(const e of dayEvents(selectedDay)){if(sameDate(e.start,selectedDay)&&e.start.getHours()===15)timeline.append(el('div','Après-midi et départ au travail','family-time-heading'));const row=el('div',undefined,'timeline-row'+(sameDate(selectedDay,now)&&e.start<=now&&now<e.end?' current':'')),track=el('div',undefined,'timeline-track'),card=el('div',undefined,'timeline-card'),copy=el('div');track.append(el('span',undefined,'timeline-dot'));copy.append(el('div',e.name,'timeline-title'),el('div',clippedRange(e,selectedDay),'timeline-category'));card.append(copy,el('div',ICONS[e.category]||'•','category-icon'));row.append(el('div',e.start<dateOnly(selectedDay)?'Minuit':clock(e.start),'timeline-time'),track,card);timeline.append(row);}tdRenderSummary();translatePage();};
+  renderWeek=function(){syncChrome();if(!lan()){originalWeek();translatePage();return;}const now=new Date(),mon=mondayOf(now);$('weekTitle').textContent=short(mon)+' – '+short(addDays(mon,6));const grid=$('weekGrid');grid.replaceChildren();for(let i=0;i<7;i++){const d=addDays(mon,i),card=el('article',undefined,'day-card'+(sameDate(d,now)?' today':''));card.tabIndex=0;card.setAttribute('role','button');const head=el('div',undefined,'day-card-head'),title=el('div');title.append(el('div',d.toLocaleDateString('fr-FR',{weekday:'short'}).toUpperCase(),'day-name'),el('div',d.toLocaleDateString('fr-FR',{month:'short',day:'numeric'}),'day-date'));head.append(title,el('div','Réveil à 15:00','wake-chip'));card.append(head,el('div',modeFor()==='amazon'?'Journée Amazon':'Journée Uber','day-summary'));const list=el('div',undefined,'mini-list');for(const e of shiftEvents(d)){const r=el('div',undefined,'mini-row');r.append(el('span',clock(e.start),'mini-time'),el('span',e.name,'mini-task'));list.append(r);}card.append(list,el('div','Factures : '+tdMoney(tdSum(tdDue(d))),'td-day-total'));const open=()=>{selectedDay=d;setView('day');};card.onclick=open;card.onkeydown=e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();open();}};grid.append(card);}translatePage();};
+  renderNow=function(){syncChrome();if(!lan()){originalNow();translatePage();return;}const now=new Date(),{cur,next}=currentEvent(now);$('tdNowDoc')?.remove();$('nowDay').textContent='Lancine · '+now.toLocaleDateString('fr-FR',{weekday:'long'});$('nowTitle').textContent=cur?.name||'Temps libre';$('nowRange').textContent=cur?eventRange(cur):'Entre deux activités';$('progressFill').style.width=cur?`${Math.max(0,Math.min(100,100*(now-cur.start)/(cur.end-cur.start)))}%`:'0%';$('remainingText').textContent=cur?Math.ceil((cur.end-now)/60000)+' min restantes':'';$('nextTitle').textContent=next?.name||'Prochaine activité';$('nextRange').textContent=next?eventRange(next):'';$('nowBg').style.backgroundImage=cur?.category==='Sleep'?'none':`url("${BACKGROUNDS[cur?.category]||BACKGROUNDS.Free}")`;$('liveClock').textContent=clock(now);$('liveDate').textContent=now.toLocaleDateString('fr-FR',{weekday:'short',month:'short',day:'numeric'});tdRenderSummary();translatePage();};
   const CPS_SOURCE='https://www.cps.edu/globalassets/cps-pages/calendar/26-27/cps-family-calendar-english-26-27.pdf';
   const CLOSURES={'2026-09-07':'Labor Day','2026-09-25':'Professional development','2026-10-12':'Indigenous Peoples’ Day','2026-11-02':'Parent-teacher conferences','2026-11-03':'Election holiday','2026-11-11':'Professional development','2026-11-26':'Thanksgiving','2026-11-27':'Thanksgiving','2027-01-04':'Professional development','2027-01-18':'Martin Luther King Jr. Day','2027-01-29':'Professional development','2027-02-15':'Presidents’ Day','2027-02-23':'Professional development','2027-04-06':'Professional development','2027-04-12':'Parent-teacher conferences','2027-05-31':'Memorial Day'};
   function closure(d){const k=iso(d);if(k<'2026-08-24'||k>'2027-06-11')return'Outside verified school calendar';if(k>='2026-12-21'&&k<='2027-01-01')return'Winter break';if(k>='2027-03-22'&&k<='2027-03-26')return'Spring break';return CLOSURES[k]||'';}
-  const statuses=['available','booked','worked','half-booked','half-worked','off','flex'];
-  function entry(d){const e=state.subDates[iso(d)];return e&&statuses.includes(e.status)?e:null;}
-  function subInfo(d){const e=entry(d),closed=closure(d),weekday=d.getDay(),school=!closed&&weekday!==0&&weekday!==6;const defaultAvailable=school&&[2,4,5].includes(weekday);const baseLabel=closed||([0,6].includes(weekday)?'Weekend':weekday===1?'Monday · SAC':'Wednesday · protected');
-    if(e){const paid=['booked','worked','half-booked','half-worked'].includes(e.status);const half=e.status.startsWith('half');return{status:e.status,label:({available:'Available',booked:'Booked',worked:'Worked','half-booked':'Half booked','half-worked':'Half worked',off:'Off',flex:'Flex day'})[e.status],amount:paid?(Number.isFinite(e.amount)?e.amount:half?state.settings.half:state.settings.full):0,potential:e.status==='available'?state.settings.full:0,note:closed,record:e};}
-    // Historical dates are not assumed to have been worked or available.
-    const available=defaultAvailable&&d>=dateOnly(new Date());return{status:available?'available':'closed',label:available?'Available':defaultAvailable?'Not recorded':baseLabel,amount:0,potential:available?state.settings.full:0,note:closed,record:null};
-  }
-  function payPeriod(d){const index=Math.floor((ordinal(d)-ordinal(fromISO(state.settings.periodStart)))/14),start=addDays(fromISO(state.settings.periodStart),index*14);return{start,end:addDays(start,13),payday:addDays(fromISO(state.settings.firstPayday),index*14)};}
-  function periodTotal(p){let expected=0,potential=0,worked=0;for(let i=0;i<14;i++){const d=addDays(p.start,i),x=subInfo(d);expected+=x.amount;potential+=x.amount+x.potential;if(['worked','half-worked'].includes(x.status))worked+=x.amount;}return{expected,potential,worked};}
-  function bankSummary(){const start=fromISO(state.settings.bankStart),end=new Date(start);end.setMonth(end.getMonth()+2);let used=0,confirmed=0,unbooked=0;for(let d=new Date(start);d<end;d=addDays(d,1)){const x=subInfo(d);if(x.status==='flex')used++;confirmed+=x.amount;if(x.status==='available')unbooked++;}const remaining=Math.max(0,state.settings.flexDays-used),reserve=Math.min(unbooked,remaining);return{start,end:addDays(end,-1),used,remaining,confirmed,unbooked,projection:confirmed+(unbooked-reserve)*state.settings.full};}
-  const calendarHost=el('div');calendarHost.id='familySubCalendar';
-  calendarHost.innerHTML=`<div class="td-layout"><div class="td-panel"><div class="td-month-head"><button type="button" class="td-btn" id="subPrev" aria-label="Previous sub calendar month">‹</button><h2 id="subMonthLabel"></h2><button type="button" class="td-btn" id="subNext" aria-label="Next sub calendar month">›</button></div><div id="subGrid" class="td-cal sub-calendar"></div><div class="td-actions"><button type="button" class="td-btn" id="subToday">Today</button></div><p class="td-muted">Tue / Thu / Fri: potential workdays · Mon / Wed: off.<br>Booked = rose underline · Worked = mint underline · Pay = expected payday.</p><div class="sub-stats"><div><span>Booked + worked this month</span><strong id="subExpected"></strong></div><div><span>Including available days</span><strong id="subPotential"></strong></div></div><p class="family-message">Available days are projections, not assignments or guaranteed income.</p><a class="sub-cps-link" href="${CPS_SOURCE}" target="_blank" rel="noopener">CPS 2026–27 calendar</a></div><div class="td-panel"><h2 id="subSelectedTitle"></h2><p id="subSelectedInfo" class="sub-date-detail"></p><form id="subEntryForm"><div class="td-form-grid"><label class="full">Day status<select id="subStatus"><option value="default">Use default calendar</option><option value="available">Available (not booked)</option><option value="booked">Booked · full day</option><option value="worked">Worked · full day</option><option value="half-booked">Booked · half day</option><option value="half-worked">Worked · half day</option><option value="off">Extra day off / trip</option><option value="flex">Use one flexible day</option></select></label><label class="full">School / note<input id="subSchool" maxlength="120" autocomplete="off"></label><label>Expected take-home ($)<input id="subAmount" type="number" min="0" max="10000" step="0.01"></label><label>Start time<input id="subStart" type="time" value="08:45"></label><label>End time<input id="subEnd" type="time" value="15:45"></label></div><div class="td-actions"><button type="submit" class="td-btn primary">Save day</button><button type="button" class="td-btn" id="subReset">Use default</button></div><p id="subEntryError" class="td-error" role="alert"></p></form><p id="subSelectedPay" class="family-message"></p></div></div><div class="td-panel"><h2>Expected paychecks</h2><p class="td-muted">Booked + worked amounts grouped by pay period. Projections also include unbooked available days. Timing follows your earlier plan; check payroll settings against your employer’s calendar.</p><div id="subPaychecks"></div></div><div class="td-panel"><h2>Flexible days</h2><p id="subBank" class="sub-date-detail"></p></div><details class="td-panel"><summary>Pay rates, payroll dates + backup</summary><form id="subSettingsForm"><div class="td-form-grid"><label>Full-day planning rate ($)<input id="subFullRate" type="number" min="0" max="10000" step="0.01" required></label><label>Half-day planning rate ($)<input id="subHalfRate" type="number" min="0" max="10000" step="0.01" required></label><label>First pay-period start<input id="subPeriodStart" type="date" required></label><label>Payday for that period<input id="subFirstPay" type="date" required></label><label>Two-month planning window starts<input id="subBankStart" type="date" required></label><label>Flexible days in that window<input id="subFlexCount" type="number" min="0" max="60" required></label></div><p class="family-message">Pay periods repeat every 14 days. A selected rate is your planning amount, not a verified gross wage. Rate changes apply to projections and new entries; saved daily amounts stay as entered.</p><div class="td-actions"><button class="td-btn primary" type="submit">Save settings</button></div><p id="subSettingsError" class="td-error" role="alert"></p></form><div class="sub-backup-actions"><button class="td-btn" type="button" id="familyExport">Export family / sub backup</button><button class="td-btn" type="button" id="familyImport">Import family / sub backup</button></div><input id="familyImportFile" type="file" accept="application/json,.json" hidden><p class="family-message">Family and sub edits are saved in this browser. Bills use their existing backup; grocery PDFs stay in their existing storage.</p></details>`;
-  $('subView').querySelector('.section-head').after(calendarHost);
-  // Retain the prior PDF attachment as an optional reference.
-  $('tdSubDocument').closest('.td-panel').querySelector('h2').textContent='Optional sub-plan PDF';
-  $('subView').querySelector('.section-head p').textContent='Assignments, CPS closures and expected paydays.';
-  function fillEntry(){const x=subInfo(subSelected),e=x.record;$('subSelectedTitle').textContent=subSelected.toLocaleDateString([],{weekday:'long',month:'long',day:'numeric'});$('subSelectedInfo').textContent=x.label+(x.note&&x.note!==x.label?' · '+x.note:'')+(e?.school?' · '+e.school:'');$('subStatus').value=e?.status||'default';$('subSchool').value=e?.school||'';$('subAmount').value=e&&Number.isFinite(e.amount)?e.amount.toFixed(2):state.settings.full.toFixed(2);$('subStart').value=e?.start||'08:45';$('subEnd').value=e?.end||'15:45';$('subEntryError').textContent='';toggleEntry();const p=payPeriod(subSelected);$('subSelectedPay').textContent='Pay period '+short(p.start)+' – '+short(p.end)+'. Expected payday '+short(p.payday)+'.';}
-  function short(d){return d.toLocaleDateString([],{month:'short',day:'numeric',year:'numeric'});}
-  function toggleEntry(){const st=$('subStatus').value,paid=['booked','worked','half-booked','half-worked'].includes(st);for(const id of ['subAmount','subStart','subEnd'])$(id).disabled=!paid;}
-  $('subStatus').onchange=()=>{const st=$('subStatus').value;$('subAmount').value=(st.startsWith('half')?state.settings.half:state.settings.full).toFixed(2);toggleEntry();};
-  $('subEntryForm').onsubmit=e=>{e.preventDefault();const status=$('subStatus').value,key=iso(subSelected),amount=Number($('subAmount').value),start=$('subStart').value,end=$('subEnd').value;const paid=['booked','worked','half-booked','half-worked'].includes(status);if(paid&&(!Number.isFinite(amount)||amount<0||amount>10000||!/^\d{2}:\d{2}$/.test(start)||!/^\d{2}:\d{2}$/.test(end)||end<=start)){$('subEntryError').textContent='Enter a valid amount and an end time after the start time.';return;}const s=structuredClone(state);if(status==='default')delete s.subDates[key];else s.subDates[key]={status,school:$('subSchool').value.trim(),...(paid?{amount:Math.round(amount*100)/100,start,end}:{})};if(persist(s)){renderSubCalendar();fillEntry();}};
-  $('subReset').onclick=()=>{if(change(s=>delete s.subDates[iso(subSelected)]))fillEntry();};
-  $('subPrev').onclick=()=>{subMonth=new Date(subMonth.getFullYear(),subMonth.getMonth()-1,1);renderSubCalendar();};$('subNext').onclick=()=>{subMonth=new Date(subMonth.getFullYear(),subMonth.getMonth()+1,1);renderSubCalendar();};$('subToday').onclick=()=>{subSelected=dateOnly(new Date());subMonth=new Date(subSelected.getFullYear(),subSelected.getMonth(),1);renderSubCalendar();fillEntry();};
+  function subInfo(d){const k=iso(d),e=state.subDates[k],closed=closure(d),dow=d.getDay(),regular=!closed&&[2,4,5].includes(dow);
+    // Preserve previously recorded half days, days off and trip dates; ordinary workdays need no input.
+    if(e&&['off','flex'].includes(e.status))return{status:'off',label:e.school||'Off',amount:0,note:closed,record:e};
+    if(e&&['worked','booked','half-worked','half-booked'].includes(e.status))return{status:e.status,label:e.status.includes('half')?'Half day':'Sub day',amount:Number.isFinite(e.amount)?e.amount:e.status.includes('half')?state.settings.half:state.settings.full,note:closed,record:e};
+    if(regular&&k>='2026-10-19')return{status:'planned',label:'Sub day',amount:state.settings.full,note:'Automatic Tuesday / Thursday / Friday plan',record:null};
+    return{status:'off',label:closed||([0,6].includes(dow)?'Weekend':dow===1?'Monday · SAC':dow===3?'Wednesday · protected':'Not recorded'),amount:0,note:closed,record:null};}
+  function payPeriod(d){const i=Math.floor((ordinal(d)-ordinal(fromISO(state.settings.periodStart)))/14),start=addDays(fromISO(state.settings.periodStart),i*14);return{start,end:addDays(start,13),payday:addDays(fromISO(state.settings.firstPayday),i*14)};}
+  function periodTotal(p){let expected=0,worked=0;for(let i=0;i<14;i++){const x=subInfo(addDays(p.start,i));expected+=x.amount;if(x.status.includes('worked'))worked+=x.amount;}return{expected,potential:expected,worked};}
+  let subMonth=new Date(new Date().getFullYear(),new Date().getMonth(),1),subSelected=dateOnly(new Date());
+  const cal=el('div');cal.id='familySubCalendar';cal.innerHTML=`<div class="td-layout"><div class="td-panel"><div class="td-month-head"><button class="td-btn" id="subPrev" type="button" aria-label="Previous month">‹</button><h2 id="subMonthLabel"></h2><button class="td-btn" id="subNext" type="button" aria-label="Next month">›</button></div><div id="subGrid" class="td-cal sub-calendar"></div><div class="td-actions"><button class="td-btn" id="subToday" type="button">Today</button></div><p class="family-message">Tuesday, Thursday and Friday are automatically planned as workdays. Mondays, Wednesdays, weekends and CPS closures stay off.</p><div class="sub-stats"><div><span>Planned income this month</span><strong id="subExpected"></strong></div><div><span>Regular three-day week</span><strong id="subWeekly"></strong></div></div><p class="family-message">Planning estimates based on your routine, not confirmed assignments or pay received.</p><a class="sub-cps-link" href="${CPS_SOURCE}" target="_blank" rel="noopener">CPS 2026–27 calendar</a></div><div class="td-panel"><h2 id="subSelectedTitle"></h2><p id="subSelectedInfo" class="sub-date-detail"></p><p id="subSelectedPay" class="family-message"></p></div></div><div class="td-panel"><h2>Planned paychecks</h2><p class="family-message">Your regular workdays are already included. Payday dates follow the planning calendar previously entered.</p><div id="subPaychecks"></div></div>`;
+  $('subView').querySelector('.section-head').after(cal);$('subView').querySelector('.section-head p').textContent='Your routine, already planned. No daily entries needed.';
+  const pdfPanel=$('tdSubDocument').closest('.td-panel'),pdfDetails=el('details',undefined,'td-panel');pdfDetails.append(el('summary','Optional sub-plan PDF'));pdfDetails.append($('tdSubDocument'));pdfPanel.replaceWith(pdfDetails);
+  $('subPrev').onclick=()=>{subMonth=new Date(subMonth.getFullYear(),subMonth.getMonth()-1,1);renderSubCalendar();};$('subNext').onclick=()=>{subMonth=new Date(subMonth.getFullYear(),subMonth.getMonth()+1,1);renderSubCalendar();};$('subToday').onclick=()=>{subSelected=dateOnly(new Date());subMonth=new Date(subSelected.getFullYear(),subSelected.getMonth(),1);renderSubCalendar();};
   function renderSubCalendar(){
-    $('subMonthLabel').textContent=subMonth.toLocaleDateString([],{month:'long',year:'numeric'});const grid=$('subGrid');grid.replaceChildren();for(const d of ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'])grid.append(el('div',d,'td-cal-label'));const offset=(subMonth.getDay()+6)%7;for(let i=0;i<offset;i++)grid.append(el('span'));let expected=0,potential=0;const paydays=new Set();for(let i=-1;i<4;i++){const p=payPeriod(addDays(subMonth,i*14));if(p.payday.getMonth()===subMonth.getMonth()&&p.payday.getFullYear()===subMonth.getFullYear())paydays.add(iso(p.payday));}
-    const count=new Date(subMonth.getFullYear(),subMonth.getMonth()+1,0).getDate();for(let i=1;i<=count;i++){const d=new Date(subMonth.getFullYear(),subMonth.getMonth(),i),x=subInfo(d);expected+=x.amount;potential+=x.amount+x.potential;const cls=x.status.includes('worked')?'worked':x.status.includes('booked')?'booked':x.status==='available'?'available':'closed';const b=button('',()=>{subSelected=d;renderSubCalendar();fillEntry();},'td-btn td-date '+cls);b.append(el('span',String(i)),el('small',x.amount?dollar(x.amount):x.status==='available'?'Available':x.status==='closed'?(closure(d)?'CPS off':[0,6].includes(d.getDay())?'Off':[1,3].includes(d.getDay())?'Off':'—'):x.label));if(paydays.has(iso(d)))b.append(el('span','Pay','pay-dot'));b.setAttribute('aria-pressed',String(sameDate(d,subSelected)));b.setAttribute('aria-label',`${short(d)}: ${x.label}${x.amount?', '+dollar(x.amount):''}${paydays.has(iso(d))?', expected payday':''}`);if(sameDate(d,new Date()))b.classList.add('today');grid.append(b);}
-    $('subExpected').textContent=dollar(expected);$('subPotential').textContent=dollar(potential);const pays=$('subPaychecks');pays.replaceChildren();const periodMap=new Map();for(let i=-45;i<65;i++){const p=payPeriod(addDays(subMonth,i));if(p.payday.getMonth()===subMonth.getMonth()&&p.payday.getFullYear()===subMonth.getFullYear())periodMap.set(iso(p.payday),p);}for(const p of [...periodMap.values()].sort((a,b)=>a.payday-b.payday)){const t=periodTotal(p),r=el('div',undefined,'sub-pay-row');r.append(el('strong',short(p.payday)),el('p',`${short(p.start)} – ${short(p.end)}`),el('div',dollar(t.expected)+' expected · booked + worked','pay-amount'),el('p',dollar(t.worked)+' worked · '+dollar(t.potential)+' including available days'),el('p','50% savings: '+dollar(t.expected/2)+' · 50% debt / car goals: '+dollar(t.expected/2)));pays.append(r);}const bank=bankSummary();$('subBank').textContent=`${short(bank.start)} – ${short(bank.end)}: ${bank.used} of ${state.settings.flexDays} flexible days used; ${bank.remaining} remaining. These are in addition to Mondays, Wednesdays and CPS closures. Window projection after reserving up to ${bank.remaining} unbooked full days: ${dollar(bank.projection)}. This reserve is not subtracted from individual paychecks until you choose dates.`;
+    $('subMonthLabel').textContent=subMonth.toLocaleDateString(locale(),{month:'long',year:'numeric'});const grid=$('subGrid');grid.replaceChildren();for(const text of lan()?['Lun','Mar','Mer','Jeu','Ven','Sam','Dim']:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'])grid.append(el('div',text,'td-cal-label'));for(let i=0;i<(subMonth.getDay()+6)%7;i++)grid.append(el('span'));
+    const periods=new Map();for(let i=-45;i<65;i++){const p=payPeriod(addDays(subMonth,i));if(p.payday.getMonth()===subMonth.getMonth()&&p.payday.getFullYear()===subMonth.getFullYear())periods.set(iso(p.payday),p);}let total=0;
+    for(let i=1;i<=new Date(subMonth.getFullYear(),subMonth.getMonth()+1,0).getDate();i++){const d=new Date(subMonth.getFullYear(),subMonth.getMonth(),i),x=subInfo(d),pay=periods.has(iso(d)),b=btn('',()=>{subSelected=d;renderSubCalendar();},'td-btn td-date '+(x.amount?'planned':'closed'));total+=x.amount;b.append(el('span',String(i)),el('small',x.amount?money(x.amount):lan()?'Repos':'Off'));if(pay)b.append(el('span',lan()?'Paie':'Pay','pay-dot'));b.setAttribute('aria-pressed',String(sameDate(d,subSelected)));b.setAttribute('aria-label',short(d)+': '+(x.amount?money(x.amount):lan()?'Repos':'Off'));if(sameDate(d,new Date()))b.classList.add('today');grid.append(b);}
+    $('subExpected').textContent=money(total);$('subWeekly').textContent=money(state.settings.full*3);$('subSelectedTitle').textContent=subSelected.toLocaleDateString(locale(),{weekday:'long',month:'long',day:'numeric'});const x=subInfo(subSelected),p=payPeriod(subSelected);$('subSelectedInfo').textContent=(x.amount?(lan()?'Remplacement prévu':'Planned sub day')+' · '+money(x.amount)+(x.record?.school?' · '+x.record.school:''):x.label)+(x.amount?' · '+(x.record?.start||'08:45')+'–'+(x.record?.end||'15:45'):'');$('subSelectedPay').textContent=x.amount?(lan()?'Période : ':'Pay period: ')+short(p.start)+' – '+short(p.end)+(lan()?' · Paie prévue : ':' · Planned payday: ')+short(p.payday):'';
+    const host=$('subPaychecks');host.replaceChildren();for(const p of [...periods.values()].sort((a,b)=>a.payday-b.payday)){const n=periodTotal(p).expected,row=el('div',undefined,'sub-pay-row');row.append(el('strong',short(p.payday)),el('p',short(p.start)+' – '+short(p.end)),el('div',money(n)+(lan()?' prévus':' planned'),'pay-amount'),el('p',(lan()?'50 % épargne : ':'50% savings: ')+money(n/2)+(lan()?' · 50 % dettes / voiture : ':' · 50% debt / car goals: ')+money(n/2)));host.append(row);}translatePage();}
+  // Translate shared navigation and bill controls while preserving stored bill names/data.
+  const FR={
+    'Choose a bill backup with at most 500 entries.':'Choisissez une sauvegarde contenant au maximum 500 factures.',
+    'An entry has an invalid name, amount, or recurrence.':'Une facture contient un nom, un montant ou une fréquence non valide.',
+    'Monthly days must be 1-31.':'Le jour du mois doit être compris entre 1 et 31.',
+    'Weekly days must be Sunday-Saturday.':'Choisissez un jour de la semaine.',
+    'Duplicate bill identifiers in this backup.':'Cette sauvegarde contient des identifiants de facture en double.',
+    'Could not save. Your previous bill list is unchanged.':'Impossible d’enregistrer. Votre liste précédente est conservée.',
+    'Choose a JSON bill backup smaller than 1 MB.':'Choisissez une sauvegarde JSON de moins de 1 Mo.',
+    'recurring entries imported.':'factures récurrentes importées.', 'Import failed:':'Échec de l’importation :',
+    'Please choose a PDF smaller than 25 MB.':'Choisissez un PDF de moins de 25 Mo.',
+    'This file is not a PDF.':'Ce fichier n’est pas un PDF.', 'PDF was not saved:':'Le PDF n’a pas été enregistré :',
+    'Could not remove the attachment.':'Impossible de retirer la pièce jointe.',
+    'Bill data could not be loaded. Import a backup to restore your edits.':'Impossible de charger les factures. Importez une sauvegarde pour rétablir vos modifications.',
+    'PDF storage is unavailable. Keep documents in Files and use a regular browser session.':'Le stockage des PDF est indisponible. Conservez vos documents dans Fichiers et utilisez une session normale du navigateur.',
+
+    'Week':'Semaine','WEEK':'SEMAINE','Day':'Jour','DAY':'JOUR','Now':'Maintenant','NOW':'EN CE MOMENT','Sub Plan':'Remplacements','SUB PLAN':'REMPLACEMENTS','Bills':'Factures','BILLS':'FACTURES',
+    'Weekly view':'Vue de la semaine','Daily view':'Vue du jour','Your day':'Ma journée','Your whole week, Monday through Sunday.':'Toute la semaine, du lundi au dimanche.','See the entire plan without losing the bigger picture.':'Mon emploi du temps pour la journée.','Tap any day to open the full daily schedule.':'Touchez un jour pour afficher son emploi du temps.','Up next':'À suivre',
+    'Due today':'À payer aujourd’hui','Bills this week':'Factures de la semaine',"View this week's bills":'Voir les factures de la semaine','No bills due.':'Aucune facture à payer.','No bills due this week.':'Aucune facture à payer cette semaine.','No bills entered for this week.':'Aucune facture prévue cette semaine.',
+    'Bills + subscriptions':'Factures et abonnements','Our bills':'Nos factures','Recurring dates. Every day has a total.':'Échéances régulières et montants à payer.','+ Add a bill':'+ Ajouter une facture','Import bills':'Importer les factures','Export backup':'Exporter une sauvegarde','Today':'Aujourd’hui','Total for this month':'Total du mois','Recurring bills':'Factures récurrentes','Add your first bill.':'Ajoutez votre première facture.','Edit':'Modifier','Delete':'Supprimer','Add a bill':'Ajouter une facture','Edit bill':'Modifier la facture','Name':'Nom','Amount ($)':'Montant ($)','Repeats':'Fréquence','Monthly':'Chaque mois','Weekly':'Chaque semaine','Day of month':'Jour du mois','Day of week':'Jour de la semaine','Save bill':'Enregistrer la facture','Cancel':'Annuler',
+    'Rent':'Loyer','Peoples Gas':'Peoples Gas','Car note':'Crédit automobile','Phone':'Téléphone','Electric':'Électricité','Car insurance':'Assurance automobile','Apple subscription':'Abonnement Apple','Second Patreon':'Deuxième Patreon','Groceries - Wednesday':'Courses – mercredi','Groceries - Saturday':'Courses – samedi','Monthly on day':'Chaque mois, le','Every':'Chaque',
+    'My sub plan':'Planning des remplacements','Work + life':'Travail et vie quotidienne','My sub calendar':'Calendrier des remplacements','Your routine, already planned. No daily entries needed.':'Votre routine est déjà prévue. Aucune saisie quotidienne nécessaire.','Optional sub-plan PDF':'Document de référence facultatif','Attach my sub plan PDF':'Joindre le planning en PDF','Keep your current work calendar here. Replace it whenever your plan changes.':'Conservez ici votre planning de référence. Remplacez-le si nécessaire.',
+    'Tuesday, Thursday and Friday are automatically planned as workdays. Mondays, Wednesdays, weekends and CPS closures stay off.':'Les mardis, jeudis et vendredis sont automatiquement prévus comme jours de travail. Repos les lundis, mercredis, week-ends et jours de fermeture de CPS.','Planned income this month':'Revenus prévus ce mois-ci','Regular three-day week':'Semaine habituelle de trois jours','Planning estimates based on your routine, not confirmed assignments or pay received.':'Estimations fondées sur la routine, sans confirmation des missions ni des paiements.','CPS 2026–27 calendar':'Calendrier CPS 2026–2027','Planned paychecks':'Paies prévues','Your regular workdays are already included. Payday dates follow the planning calendar previously entered.':'Les jours de travail habituels sont déjà inclus. Les dates de paie suivent le calendrier prévisionnel précédemment renseigné.',
+    'Document':'Document','Open full screen':'Ouvrir en plein écran','Save a copy':'Enregistrer une copie','Close':'Fermer','If the PDF does not display, tap Open full screen.':'Si le PDF ne s’affiche pas, touchez Ouvrir en plein écran.','Open PDF':'Ouvrir le PDF','Open grocery list':'Ouvrir la liste de courses','Add grocery list':'Joindre la liste de courses','Attach PDF':'Joindre un PDF','Replace':'Remplacer','Remove':'Retirer',
+    'Monday':'lundi','Tuesday':'mardi','Wednesday':'mercredi','Thursday':'jeudi','Friday':'vendredi','Saturday':'samedi','Sunday':'dimanche','Mon':'lun.','Tue':'mar.','Wed':'mer.','Thu':'jeu.','Fri':'ven.','Sat':'sam.','Sun':'dim.',
+    'January':'janvier','February':'février','March':'mars','April':'avril','May':'mai','June':'juin','July':'juillet','August':'août','September':'septembre','October':'octobre','November':'novembre','December':'décembre','Jan':'janv.','Feb':'févr.','Apr':'avr.','Jun':'juin','Jul':'juil.','Aug':'août','Sep':'sept.','Oct':'oct.','Nov':'nov.','Dec':'déc.',
+    'Previous day':'Jour précédent','Next day':'Jour suivant','Go to today':'Aller à aujourd’hui','Previous month':'Mois précédent','Next month':'Mois suivant','Views':'Vues','Whose schedule':'Choix du profil','Toggle light/dark mode':'Changer le thème clair ou sombre','Time. Plan. Execute. Repeat.':'Planifier. Agir. Recommencer.',
+    'Weekend':'Week-end','Monday · SAC':'Lundi · SAC','Wednesday · protected':'Mercredi réservé','Not recorded':'Non renseigné','Trip':'Voyage','Labor Day':'Fête du Travail','Professional development':'Formation du personnel','Indigenous Peoples’ Day':'Journée des peuples autochtones','Parent-teacher conferences':'Rencontres parents-professeurs','Election holiday':'Jour d’élection','Thanksgiving':'Thanksgiving','Martin Luther King Jr. Day':'Journée Martin Luther King','Presidents’ Day':'Journée des présidents','Memorial Day':'Memorial Day','Winter break':'Vacances d’hiver','Spring break':'Vacances de printemps','Outside verified school calendar':'Hors du calendrier scolaire vérifié',
+    'Delete':'Supprimer','from the recurring calendar (all dates)?':'du calendrier récurrent (toutes les dates) ?','Remove this attachment from this phone?':'Retirer cette pièce jointe de cet appareil ?','Replace the current bill list with this backup?':'Remplacer la liste des factures par cette sauvegarde ?','Bill saved on this phone.':'Facture enregistrée sur cet appareil.','PDF saved on this phone.':'PDF enregistré sur cet appareil.','Your default bills are included in the app code. In-app edits are saved on this phone. Changing the published defaults reloads the updated code list. Export backup keeps a copy of your edits in Files. PDFs remain on this phone. Days 29-31 fall on the last day in shorter months.':'Les factures par défaut sont intégrées à l’application. Les modifications et les PDF sont enregistrés sur cet appareil. Exportez une sauvegarde pour conserver vos modifications. Les échéances du 29 au 31 sont reportées au dernier jour des mois plus courts.'
+  };
+  const words=Object.keys(FR).filter(k=>k.length>2).sort((a,b)=>b.length-a.length),escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),wordRE=new RegExp('(?<![A-Za-zÀ-ÿ])('+words.map(escape).join('|')+')(?![A-Za-zÀ-ÿ])','g');
+  function toFrench(text){const clean=text.replace(/\s+/g,' ').trim();if(FR[clean])return (text.match(/^\s*/)?.[0]||'')+FR[clean]+(text.match(/\s*$/)?.[0]||'');return text.replace(/Bills due this day:/g,'Factures de ce jour :').replace(/Bills:/g,'Factures :').replace(/Due (?=\w)/g,'À payer le ').replace(/Mon-Sun/g,'lun.–dim.').replace(/Monthly on day (\d+)/g,'Chaque mois, le $1').replace(/Every /g,'Chaque ').replace(wordRE,m=>FR[m]);}
+  const textMemory=new WeakMap(),attrMemory=new WeakMap();
+  function translatePage(){const french=lan();document.documentElement.lang=french?'fr':'en';const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=walker.nextNode())){if(!n.parentElement||n.parentElement.closest('script,style,textarea,input'))continue;const remembered=textMemory.get(n);let source=n.nodeValue;if(remembered&&source===remembered.output)source=remembered.source;const output=french?toFrench(source):source;if(output!==n.nodeValue)n.nodeValue=output;textMemory.set(n,{source,output});}
+    for(const node of document.querySelectorAll('[aria-label],[title],[placeholder]')){let cache=attrMemory.get(node)||{};for(const a of ['aria-label','title','placeholder'])if(node.hasAttribute(a)){let source=node.getAttribute(a),r=cache[a];if(r&&source===r.output)source=r.source;const output=french?toFrench(source):source;node.setAttribute(a,output);cache[a]={source,output};}attrMemory.set(node,cache);}
   }
-  function fillSettings(){const m={subFullRate:'full',subHalfRate:'half',subPeriodStart:'periodStart',subFirstPay:'firstPayday',subBankStart:'bankStart',subFlexCount:'flexDays'};for(const [id,k] of Object.entries(m))$(id).value=state.settings[k];}
-  $('subSettingsForm').onsubmit=e=>{e.preventDefault();const full=Number($('subFullRate').value),half=Number($('subHalfRate').value),flexDays=Number($('subFlexCount').value),periodStart=$('subPeriodStart').value,firstPayday=$('subFirstPay').value,bankStart=$('subBankStart').value;if(![full,half].every(n=>Number.isFinite(n)&&n>=0&&n<=10000)||!Number.isInteger(flexDays)||flexDays<0||flexDays>60||![periodStart,firstPayday,bankStart].every(validDate)||fromISO(firstPayday)<addDays(fromISO(periodStart),13)){$('subSettingsError').textContent='Check amounts and dates. Payday must be on or after the period ends.';return;}if(change(s=>s.settings={full,half,flexDays,periodStart,firstPayday,bankStart})){$('subSettingsError').textContent='';fillEntry();}};
-  $('familyExport').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({version:1,family:state},null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download='TimeDash-family-sub-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
-  $('familyImport').onclick=()=>$('familyImportFile').click();
-  $('familyImportFile').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{if(f.size>1000000)throw Error('Choose a backup smaller than 1 MB.');const p=JSON.parse(await f.text()).family;if(!p||!['atha','lancine'].includes(p.person)||!['sunday-amazon','thursday-amazon'].includes(p.flex)||!p.settings||!p.subDates||!p.lancineDates)throw Error('Invalid family backup.');for(const key of ['full','half'])if(!Number.isFinite(p.settings[key])||p.settings[key]<0||p.settings[key]>10000)throw Error('Invalid pay rates.');for(const key of ['periodStart','firstPayday','bankStart'])if(!validDate(p.settings[key]))throw Error('Invalid payroll dates.');if(!Number.isInteger(p.settings.flexDays)||p.settings.flexDays<0||p.settings.flexDays>60)throw Error('Invalid flexible-day allowance.');if(Array.isArray(p.subDates)||Array.isArray(p.lancineDates))throw Error('Invalid date records.');for(const [d,v]of Object.entries(p.subDates)){if(!validDate(d)||!v||!statuses.includes(v.status)||typeof v.school!=='string'||v.school.length>120)throw Error('Invalid assignment.');if(['booked','worked','half-booked','half-worked'].includes(v.status)&&(!Number.isFinite(v.amount)||v.amount<0||v.amount>10000||!/^\d{2}:\d{2}$/.test(v.start)||!/^\d{2}:\d{2}$/.test(v.end)||v.end<=v.start))throw Error('Invalid assignment amount or time.');}for(const [d,v]of Object.entries(p.lancineDates))if(!validDate(d)||!['amazon','uber'].includes(v))throw Error('Invalid schedule exception.');if(!confirm('Replace family and sub-calendar data with this backup? Bills and PDFs are unaffected.'))return;const oldProblem=storageProblem;storageProblem=false;if(!persist(p)){storageProblem=oldProblem;return;}refreshFamily();fillSettings();fillEntry();}catch(err){alert(err.message);}};
-  const previousSubRender=tdRenderSub;tdRenderSub=function(){previousSubRender();renderSubCalendar();};
-  const previousSetView=setView;setView=function(name){previousSetView(name);syncChrome();if(name==='sub')renderSubCalendar();};
-  // Event listeners call applyMode dynamically; keep Atha's mode independent of Lancine.
-  applyMode=function(mode){savedAthaMode(mode);syncChrome();};
-  function refreshFamily(){syncChrome();renderDay();renderWeek();renderNow();renderSubCalendar();}
-  // Read-only diagnostics for calendar / overnight verification.
-  window.TimeDashFamily={modeFor,shiftEvents,dayEvents,currentEvent,subInfo,payPeriod,periodTotal,bankSummary,closure,getState:()=>structuredClone(state)};
-  fillSettings();fillEntry();refreshFamily();
-  if(storageProblem)setTimeout(()=>alert('Family data could not be loaded. It has not been overwritten; import a saved backup to recover it.'),100);
+  // Shared bill actions can render without changing views; translate their new labels too.
+  for(const name of ['summary','bills','sub']){if(name==='summary'){const f=tdRenderSummary;tdRenderSummary=function(){f();translatePage();};}if(name==='bills'){const f=tdRenderBills;tdRenderBills=function(){f();if(lan()){$('tdMonthLabel').textContent=tdMonth.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});$('tdSelectedLabel').textContent=tdBillDate.toLocaleDateString('fr-FR',{weekday:'long',month:'long',day:'numeric'});}translatePage();};}if(name==='sub'){const f=tdRenderSub;tdRenderSub=function(){f();renderSubCalendar();};}}
+  const oldBillSubmit=$('tdBillForm').onsubmit;$('tdBillForm').onsubmit=function(event){oldBillSubmit.call(this,event);translatePage();};
+  const oldEdit=tdEditBill;tdEditBill=function(...args){oldEdit(...args);translatePage();};
+  const oldToast=tdToast;tdToast=function(text){oldToast(lan()?toFrench(text):text);};
+  const nativeConfirm=window.confirm.bind(window);window.confirm=text=>nativeConfirm(lan()?toFrench(text):text);
+  setView=function(name){originalSetView(name);syncChrome();if(name==='sub')renderSubCalendar();translatePage();};
+  applyMode=function(mode){originalApplyMode(mode);syncChrome();translatePage();};
+  function refresh(){syncChrome();renderDay();renderWeek();renderNow();tdRenderBills();renderSubCalendar();translatePage();}
+  window.TimeDashFamily={modeFor,shiftEvents,dayEvents,currentEvent,subInfo,payPeriod,periodTotal,closure,getState:()=>structuredClone(state)};
+  refresh();
+})();
+
+  applyMode(activeMode);
+  setView(localStorage.getItem("timedash-view") || "now");
 })();
 </script>
+</body>
+</html>
 </body>
 </html>
